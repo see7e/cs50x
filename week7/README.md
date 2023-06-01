@@ -10,7 +10,17 @@ dependences: CS50
 
 <details> <summary>Table of Contents</summary>
 
-- [](#)
+- [Lecture 7](#lecture-7)
+- [Section](#section)
+- [Shorts](#shorts)
+  - [xxxxxxxxx](#xxxxxxxxx)
+  - [xxxxxxxxx](#xxxxxxxxx-1)
+  - [xxxxxxxxx](#xxxxxxxxx-2)
+  - [xxxxxxxxx](#xxxxxxxxx-3)
+  - [xxxxxxxxx](#xxxxxxxxx-4)
+- [Exercises](#exercises)
+  - [Lab 7: xxxxxxxxx](#lab-7-xxxxxxxxx)
+  - [Problem Set 7](#problem-set-7)
 
 </details>
 
@@ -19,7 +29,7 @@ dependences: CS50
 <details>
 <summary>Keywords, lookup in <a href="./src/transcripts/lecture7.md">transcript</a></summary>
 
-- ####
+- xxxxxxxxx
 
 </details>
 
@@ -29,30 +39,30 @@ dependences: CS50
 # Section 
 > [Transcript](./src/transcripts/section7.md)
 
-- ####
+- xxxxxxxxx
 
 ---
 
 # Shorts
 
-## #### 
-> [Transc](./src/transcripts/shorts7_####.md)
+## xxxxxxxxx 
+> [Transc](./src/transcripts/shorts7_xxxxxxxxx.md)
 
-## ####
-> [Transc](./src/transcripts/shorts7_####.md)
-
-
-
-## ####
-> [Transc](./src/transcripts/shorts7_####.md)
+## xxxxxxxxx
+> [Transc](./src/transcripts/shorts7_xxxxxxxxx.md)
 
 
 
-## #### 
-> [Transc](./src/transcripts/shorts7_####.md)
+## xxxxxxxxx
+> [Transc](./src/transcripts/shorts7_xxxxxxxxx.md)
 
-## ####
-> [Transc](./src/transcripts/shorts7_####.md)
+
+
+## xxxxxxxxx 
+> [Transc](./src/transcripts/shorts7_xxxxxxxxx.md)
+
+## xxxxxxxxx
+> [Transc](./src/transcripts/shorts7_xxxxxxxxx.md)
 
 
 
@@ -60,7 +70,7 @@ dependences: CS50
 
 # Exercises
 
-## [Lab 7: ####](./lab7.md)
+## [Lab 7: xxxxxxxxx](./lab7.md)
 > Full code [here](./src/lab7.c)
 
 ## Problem Set 7

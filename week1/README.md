@@ -6,7 +6,7 @@ languages: C
 dependences: CS50
 ---
 
-> This material is distribured by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my undersantding and integrated to the previous Data Structure of `Programing Studies`.
+> This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
 
 <details> <summary>Table of Contents</summary>
 
