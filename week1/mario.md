@@ -1,6 +1,6 @@
 ---
 title: Problem Set 1 - Mario
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Exercise
 languages: C
 dependences: CS50

@@ -1,6 +1,6 @@
 ---
 title: Lab 3 - Sort
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Exercise
 languages: C
 dependences: CS50

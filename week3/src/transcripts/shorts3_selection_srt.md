@@ -1,6 +1,6 @@
 ---
 title: SHORST3 - SELECTION SORT - TRANSCRIPT
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Transcript
 languages: NULL
 dependences: CS50

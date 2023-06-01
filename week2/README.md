@@ -1,6 +1,6 @@
 ---
 title: CS50 - Week 2
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: C
 dependences: CS50
@@ -27,8 +27,9 @@ dependences: CS50
   - [Variables and Scope](#variables-and-scope)
   - [Debugging](#debugging-1)
   - [Arrays](#arrays-1)
-  - [Comant Line Arguments](#comant-line-arguments)
+  - [Command  Line Arguments](#command--line-arguments)
 - [Exercises](#exercises)
+  - [Practice Problems 2 #](#practice-problems-2-)
   - [Lab 2: Scrabble](#lab-2-scrabble)
   - [Problem Set 2](#problem-set-2)
     - [What to Do](#what-to-do)

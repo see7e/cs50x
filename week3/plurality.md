@@ -1,6 +1,6 @@
 ---
 title: Problem Set 3 - Plurality
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Exercise
 languages: C
 dependences: CS50
@@ -17,6 +17,7 @@ dependences: CS50
   - [Testing](#testing)
   - [How to Submit](#how-to-submit)
 - [Walkthrough](#walkthrough)
+  - [Result](#result)
   - [Log Trace](#log-trace)
   - [Check Style](#check-style)
   - [Submited](#submited)

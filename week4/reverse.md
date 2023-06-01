@@ -1,6 +1,6 @@
 ---
 title: Problem Set 4 - Reverse
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Exercise
 languages: C
 dependences: CS50

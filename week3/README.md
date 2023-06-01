@@ -1,6 +1,6 @@
 ---
 title: CS50 - Week 3
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: C
 dependences: CS50

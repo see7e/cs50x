@@ -1,6 +1,6 @@
 ---
 title: SHORST4 - POINTERS - TRANSCRIPT
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Transcript
 languages: NULL
 dependences: CS50
@@ -72,7 +72,7 @@ Here's where stars get annoying again though, because the * is actually part of 
 
 So if I want to create multiple pointers on the same line, of the same type, and stars, what I actually need to do is say int *pa,*pb,*pc. Now having just said that and now telling you this, you probably will never do this. And it's probably a good thing honestly, because you might inadvertently omit a star, something like that. It's probably best to maybe declare pointers on individual lines, but it's just another one of those annoying syntax things with stars that make pointers so difficult to work with. Because it's just this syntactic mess you have to work through. With practice it does really become second nature. I still make mistakes with it still after programming for 10 years, so don't be upset if something happens to you, it's pretty common honestly. It's really kind of a flaw of the syntax. 
 
-OK so I kind of promised that we would revisit the concept of how large is a string. Well if I told you that a string, we've really kind of been lying to you the whole time. There's no data type called string, and in fact I mentioned this in one of our earliest videos on data types, that string was a data type that was created for you in CS50.h. You have to #include CS50.h in order to use it. 
+OK so I kind of promised that we would revisit the concept of how large is a string. Well if I told you that a string, we've really kind of been lying to you the whole time. There's no data type called string, and in fact I mentioned this in one of our earliest videos on data types, that string was a data type that was created for you in CS50.h. You have to include CS50.h in order to use it. 
 
 Well string is really just an alias for something called the char *, a pointer to a character. Well pointers, recall, are just addresses. So what is the size in bytes of a string? Well it's four or eight. And the reason I say four or eight is because it actually depends on the system, If you're using CS50 ide, char * is the size of a char * is eight, it's a 64-bit system. Every address in memory is 64 bits long. If you're using CS50 appliance or using any 32-bit machine, and you've heard that term 32-bit machine, what is a 32-bit machine? Well it just means that every address in memory is 32 bits long. And so 32 bits is four bytes. So a char * is four or eight bytes depending on your system. And indeed any data types, and a pointer to any data type, since all pointers are just addresses, are four or eight bytes. So let's revisit this diagram and let's conclude this video with a little exercise here. So here's the diagram we left off with at the very beginning of the video. So what happens now if I say *pk=35? So what does it mean when I say, *pk=35? Take a second. *pk. In context here, * is dereference operator. So when the dereference operator is used, we go to the address pointed to by pk, and we change what we find. So *pk=35 effectively does this to the picture. So it's basically syntactically identical to of having said k=35. 
 
