@@ -6,7 +6,7 @@ languages: C
 dependences: CS50
 ---
 
-> This material is distribured by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my undersantding and integrated to the previous Data Structure of `Programing Studies`.
+> This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
 
 <details> <summary>Table of Contents</summary>
 
@@ -53,7 +53,19 @@ dependences: CS50
 <details>
 <summary>Keywords, lookup in <a href="./src/transcripts/lecture4.md">transcript</a></summary>
 
-- xxxxxxx
+- bitmap 
+- `rgb` (0-255 = `unsigned __int8`)
+- `hexadecimal` (base-16)
+- hex convention
+- pointers
+- linking things together
+- string is a pointer to a character
+- dereference
+- addition, substraction, on pointers
+- touching memory that you shouldn't
+- segments of memory
+- string compare
+- 
 
 </details>
 
@@ -68,17 +80,19 @@ dependences: CS50
 -   You can imagine a crime drama where an image is enhanced, enhanced, and enhanced, is not entirely real-life accurate. Indeed, if you keep zooming into an image, you will see pixels.
     
     ![A blurry photo](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide012.png "blurry")
-    
+    > this is a `5`
+
 -   You can imagine as an image as a map of bits, where zeros represent black and ones represent white.
     
     ![Zeros and ones being converted to a black and white smiley](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide015.png "smiley")
-    
+    > try to look at the bitmap from a distance
+
 -   _RGB_, or _red, green, blue_, are numbers that represent the amount of each of these colors. In Adobe Photoshop, you can see these settings as follows:
     
     ![A photoshop panel with RGB values and hexidecimal input](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide016.png "hex in photoshop")
     
     Notice how the amount of red, blue, and green changes the color selected.
-    
+
 -   You can see by the image above that color is not just represented in three values. At the bottom of the window, there is a special value made up of numbers and characters. `255` is represented as `FF`. Why might this be?
     
 
@@ -91,7 +105,7 @@ dependences: CS50
     ```
     
     Notice that `F` represents `15`.
-    
+
 -   Hexadecimal is also known as _base-16_.
 -   When counting in hexadecimal, each column is a power of 16.
 -   The number `0` is represented as `00`.
@@ -107,11 +121,29 @@ dependences: CS50
 
 -   In weeks past, you may recall our artist rendering of concurrent blocks of memory. Applying hexadecimal numbering to each of these blocks of memory, you can visualize these as follows:
     
-    ![Blocks of memory numbered in hex](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide065.png "memory hex")
-    
--   You can imagine how there may be confusion regarding whether the `10` block above may represent a location in memory or the value `10`. Accordingly, by convention, all hexadecimal numbers are often represented with the `0x` prefix as follows:
-    
-    ![blocks of memory numbered in hex with 0x](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide066.png "0x")
+    ![Blocks of memory numbered in hex|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide065.png "memory hex")
+
+-   You can imagine how there may be confusion regarding whether the `10` block above may represent a location in memory or the value `10`. 
+	
+	Accordingly, by convention, **all hexadecimal numbers are often represented with the `0x` prefix as follows:**
+	
+	 > **Short story:** The `0` tells the parser it's dealing with a constant (and not an identifier/reserved word). Something is still needed to specify the number base: the `x` is an arbitrary choice.
+    >
+    > **Long story:** In the 60's, the prevalent programming number systems were decimal and _octal_ — mainframes had 12, 24 or 36 bits per byte, which is nicely divisible by 3 = log2(8).
+    >
+    > The BCPL language used the syntax `8 1234` for octal numbers. When Ken Thompson created B from BCPL, he used the `0` prefix instead. This is great because
+    >
+    > 1. an integer constant now always consists of a single token,
+    > 2. the parser can still tell right away it's got a constant,
+    > 3. the parser can immediately tell the base (`0` is the same in    >both bases),
+    > 4. it's mathematically sane (`00005 == 05`), and
+    > 5. no precious special characters are needed (as in `#123`).
+    >
+    > When C was created from B, the need for hexadecimal numbers arose (the PDP-11 had 16-bit words) and all of the points above were still valid. Since octals were still needed for other machines, `0x` was arbitrarily chosen (`00` was probably ruled out as awkward).
+    > *`C#` is a descendant of `C`, so it inherits the syntax.*
+    > *Found in [here](https://stackoverflow.com/questions/2670639/why-are-hexadecimal-numbers-prefixed-with-0x)*
+	
+    ![blocks of memory numbered in hex with 0x|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide066.png "0x")
     
 -   In your terminal window, type `code addresses.c` and write your code as follows:
     
@@ -126,18 +158,15 @@ dependences: CS50
     ```
     
     Notice how `n` is stored in memory with the value `50`.
-    
+
 -   You can visualize how this program stores this value as follows:
     
-    ![the value 50 stored in a memory location with hex](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide070.png "hex")
-    
+    ![the value 50 stored in a memory location with hex|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide070.png "hex")
+
 -   The `C` language has two powerful operators that relate to memory:
-    
-    ```
-      & Provides the address of something stored in memory.
-      * Instructs the compiler to go to a location in memory.
-    ```
-    
+	- **`&` Provides the address** of something stored in memory.
+	- **`*`** Instructs the compiler to** go to a location in memory**, i.e. a pointer.
+
 -   We can leverage this knowledge by modifying our code as follows:
     
     ```c
@@ -151,11 +180,10 @@ dependences: CS50
     ```
     
     Notice the `%p`, which allows us to view the address of a location in memory. `&n` can be literally translated as “the address of `n`.” Executing this code will return an address of memory beginning with `0x`.
-    
 
-## Pointers
+## [Pointers](../../C/Pointers.md)
 
--   A _pointer_ is a variable that contains the address of some value. Most succinctly, a pointer is an address in your computer’s memory.
+-   **A _pointer_ is a variable that contains the address of some element**. Most succinctly, a pointer is an address in your computer’s memory (*this address could be permanent or temporary*).
 -   Consider the following code:
     
     ```c
@@ -165,7 +193,7 @@ dependences: CS50
     ```
     
     Notice that `p` is a pointer that contains a number that is the address of an integer `n`.
-    
+
 -   Modify your code as follows:
     
     ```c
@@ -174,23 +202,23 @@ dependences: CS50
     int main(void)
     {
         int n = 50;
-        int *p = &n;
-        printf("%p\n", p);
+        int *p = &n; // p receives the address memory of n
+        printf("%p\n", p); // This will print the value of p
     }
     ```
     
     Notice that this code has the same effect as our previous code. We have simply leveraged our new knowledge of the `&` and `*` operators.
-    
+
 -   You can visualize our code as follows:
     
-    ![Same value of 50 in a memory location with a pointer value stored elsewhere](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide078.png "pointer")
+    ![Same value of 50 in a memory location with a pointer value stored elsewhere|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide078.png "pointer")
     
     Notice the pointer seems rather large. Indeed, a pointer is usually stored as an 8-byte value.
-    
+
 -   You can more accurately visualize a pointer as one address that points to another:
     
-    ![A pointer as an arrow, pointing from one location of memory to another](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide079.png "pointer")
-    
+    ![A pointer as an arrow, pointing from one location of memory to another|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide079.png "pointer")
+
 -   To illustrate the use of the `*` operator, consider the following:
     
     ```c
@@ -205,21 +233,22 @@ dependences: CS50
     ```
     
     Notice that the `printf` line prints the integer at the location of `p`.
-    
 
 ## Strings
 
 -   Now that we have a mental model for pointers, we can peel back a level of simplification that was offered earlier in this course.
 -   Recall that a string is simply an array of characters. For example, `string s = "HI!"` can be represented as follows:
     
-    ![The string HI with an exclaimation point stored in memory](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide085.png "hi")
-    
+    ![The string HI with an exclaimation point stored in memory|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide085.png "hi")
+
 -   However, what is `s` really? Where is the `s` stored in memory? As you can imagine, `s` needs to be stored somewhere. You can visualize the relationship of `s` to the string as follows:
     
-    ![Same string HI with a pointer pointing to it](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide086.png "hi pointer")
+    ![Same string HI with a pointer pointing to it|500](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide086.png "hi pointer")
     
     Notice how a pointer called `s` tells the compiler where the first byte of the string exists in memory.
     
+    **The value of `*s`** (*that in this case points to a `string`*) **is the memory address of the first element of the pointed object**. Why? Because if the compiler knows the point where it starts, it will pull the "string" until the very end (which is a `'\0'`).
+
 -   Modify your code as follows:
     
     ```c
@@ -229,6 +258,7 @@ dependences: CS50
     int main(void)
     {
         string s = "HI!";
+        
         printf("%p\n", s);
         printf("%p\n", &s[0]);
         printf("%p\n", &s[1]);
@@ -237,22 +267,31 @@ dependences: CS50
     }
     ```
     
-    Notice the above prints the memory locations of each character in the string `s`.
-    
+    Notice the above prints the memory locations of each character in the string `s` and they're consecutive slots in memory (*each `char` occupies 1 bite in memory*).
+
 -   Likewise, you can modify your code as follows:
-    
+	
     ```c
+    #include <cs50.h>
     #include <stdio.h>
     
     int main(void)
     {
         char *s = "HI!";
-        printf("%s\n", s);
+        
+        printf("%p\n", s);
+        printf("%p\n", &s[0]);
+        printf("%p\n", &s[1]);
+        printf("%p\n", &s[2]);
+        printf("%p\n", &s[3]);
     }
     ```
+	
+    Notice that this code will return the "same" result as the previous one, but the big difference is that now we have a pointer to a char which has the memory location of `s` (*the string*). Just because in `<cs50.h>` there's this `typedef` :
     
-    Notice that this code will present the string that starts at the location of `s`.
-    
+    ```c
+    typedef char *string;
+    ```
 
 ## Pointer Arithmetic
 
@@ -271,7 +310,7 @@ dependences: CS50
     ```
     
     Notice that we are printing each character at the location of `s`.
-    
+
 -   Further, you can modify your code as follows:
     
     ```c
@@ -286,16 +325,18 @@ dependences: CS50
     }
     ```
     
-    Notice that the first character at the location of `s` is printed. Then, the character at the location `s + 1` is printed, and so on.
-    
--   Can you imagine what would happen if you attempted to access something at location `s + 50`? Hackers sometimes attempt to gain access to items in memory they should not have access to. If you attempt this, the program will likely quit as a safety precaution.
-    
+    Notice that the first character at the location of `s` is printed. Then, the character at the location `s + 1` is printed, and so on. **Remember that memory addresses are indeed numbers, and we can jump on each "slot" of the string (*or i.e. and array*) incrementing the bite size of each element.**
+
+-   Can you imagine what would happen if you attempted to access something at location `s + 50`? 
+	If you touch another segment of memory belonged by any other object the compiler will return a `SegmentationFault (core dumped)` error.
+	
+	Hackers sometimes attempt to gain access to items in memory they should not have access to. If you attempt this, the program will likely quit as a safety precaution.
 
 ## Comparing Strings
 
 -   A string of characters is simply an array of characters identified by its first byte.
--   Recall that last week we proposed that we could not compare two strings using the `==` operator.
--   Utilizing the `==` operator in an attempt to compare strings will attempt to compare the memory locations of the strings instead of the characters therein. Accordingly, we recommended the use of `strcmp`.
+-   Recall that last week we proposed that we could not compare two strings using the ` == ` operator.
+-   Utilizing the ` == ` operator in an attempt to compare strings will attempt to compare the memory locations of the strings instead of the characters therein. Accordingly, we recommended the use of `strcmp`.
 -   To illustrate this, type `code compare.c` and write code as follows:
     
     ```c
@@ -321,14 +362,14 @@ dependences: CS50
     ```
     
     Noticing that typing in `HI!` for both strings still results in the output of `Different`.
-    
+
 -   Why are these strings seemingly different? You can use the following to visualize why:
     
-    ![two strings stored separately in memory](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide115.png "two strings")
+    ![two strings stored separately in memory|600](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide115.png "two strings")
     
 -   For clarity, you can see how the following image illustrates pointers pointing to two separate locations in memory:
     
-    ![two strings stored separately in memory with separate pointers pointing at them](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide116.png "two strings")
+    ![two strings stored separately in memory with separate pointers pointing at them|600](https://cs50.harvard.edu/x/2023/notes/4/cs50Week4Slide116.png "two strings")
     
 -   Modify your code as follows:
     
@@ -349,7 +390,7 @@ dependences: CS50
     ```
     
     Notice how we now have two separate strings stored likely at two separate locations.
-    
+
 -   You can see the locations of these two stored strings with a small modification:
     
     ```c

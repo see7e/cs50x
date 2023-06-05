@@ -1,6 +1,6 @@
 ---
 title: CS50 - Introduction
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: NULL
 dependences: NULL
@@ -99,7 +99,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 | -                           | `C` [Lab 2: Sort](./week3/lab3.md)                                         | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
 | -                           | `C` [Plurality](./week3/plurality.md)                                      | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
 | -                           | `C` [Runoff](./week3/runoff.md)                                            | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                           | `C` [Tideman](./week3/tideman.md)                                          | :x:                                                                    |
+| -                           | `C` [Tidman](./week3/tidman.md)                                          | :x:                                                                    |
 
 ## Week 4
 

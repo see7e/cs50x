@@ -17,7 +17,7 @@ dependences: CS50
   - [Linear and Binary Search](#linear-and-binary-search)
   - [Data Structures](#data-structures)
   - [Sorting](#sorting)
-    - [Selection sort](#selection-sort)
+    - [Selection/Insertion Sort](#selectioninsertion-sort)
     - [Bubble sort](#bubble-sort)
   - [Recursion](#recursion)
   - [Merge Sort](#merge-sort)
@@ -27,7 +27,7 @@ dependences: CS50
   - [Linear Search](#linear-search)
   - [Binary Search](#binary-search)
   - [Bubble Sort](#bubble-sort-1)
-  - [Selection Sort](#selection-sort-1)
+  - [Selection Sort](#selection-sort)
   - [Recursion](#recursion-1)
   - [Merge Sort](#merge-sort-1)
 - [Exercises](#exercises)
@@ -302,7 +302,7 @@ Notice that the line beginning with `int numbers[]` allows us to define the valu
 -   When a list is sorted, searching that list is far less taxing on the computer. Recall that we can use binary search on a sorted list, but not on an unsorted one.
 -   It turns out that there are many different types of sort algorithms. 
 
-### Selection sort
+### [Selection/Insertion Sort](../../Other/algo_insertion_sort.md)
 
 is one such search algorithm.
 -   The algorithm for Selection Sort in pseudocode is:
@@ -356,7 +356,7 @@ is one such search algorithm.
 -   and so on.
 
 
-### Bubble sort
+### [Bubble sort](../../Other/algo_bubble_sort.md)
 
 is another sorting algorithm that works by repeatedly swapping elements to “bubble” larger elements to the end.
 -   The pseudocode for bubble sort is:
@@ -582,7 +582,7 @@ is another sorting algorithm that works by repeatedly swapping elements to “bu
     
     At some point, `n-1` will equal `0`, resulting in the `draw` function returning and the program will end.
 
-## Merge Sort
+## [Merge Sort](../../Other/algo_merge_sort.md)
 
 -   We can now leverage recursion in our quest for a more efficient sort algorithm and implement what is called _merge sort_, a very efficient sort algorithm.
 -   The pseudocode for merge sort is quite short:
@@ -643,7 +643,7 @@ Merge sort is a very efficient sort algorithm with a worst case of O(nlog⁡n). 
 In this lesson, you learned about algorithmic thinking and building your own data types. Specifically, you learned…
 
 -   Algorithms.
--   Big _O_ notation.
+-   *Big O* notation.
 -   Binary search and linear search.
 -   Various sort algorithms, including bubble sort, selection sort, and merge sort.
 -   Recursion.
@@ -668,20 +668,103 @@ In this lesson, you learned about algorithmic thinking and building your own dat
 ## Linear Search 
 > [Transc](./src/transcripts/shorts3_linear_srch.md)
 
+- Worst-case scenario: We have to look through the entire array of n elements, either because the target element is the last element of the array or doesn't exist in the array at all.
+- Best-case scenario: The target element is the first element of the array, and so we can stop looking immediately after we start.
+
 ## Binary Search
 > [Transc](./src/transcripts/shorts3_binary_srch.md)
+
+Remember that Binary Srch requires that the data structure is sorted!
+- Worst-case scenario: We have to divide a list of n elements in half repeatedly to find the target element, either because the target element will be found at the end of the last division or doesn't exist in the array at all.
+- Best-case scenario: The target element is at the midpoint of the full array, and so we can stop looking immediately after we start.
 
 ## Bubble Sort
 > [Transc](./src/transcripts/shorts3_bubble_srt.md)
 
+- Worst-case scenario: The array is in reverse order; we have to "bubble" each of the n elements all the way across the array, and since we can only fully bubble one element into position per pass, we must do this n times.
+- Best-case scenario: The array is already perfectly sorted, and we make no swaps on the first pass.
+
 ## Selection Sort 
 > [Transc](./src/transcripts/shorts3_selection_srt.md)
+
+- Worst-case scenario: We have to iterate over each of the n elements of the array (to find the smallest unsorted element) and we must repeat this process n times, since only one element gets sorted on each pass.
+- Best-case scenario: Exactly the same! There's no way to guarantee the array is sorted until we go through this process for all the elements.
 
 ## Recursion
 > [Transc](./src/transcripts/shorts3_recursion.md)
 
-## Merge Sort
+- The definition of a recursive function is one that, as part of its execution, invokes itself. 
+
+Every recursive function has two cases - i.e. is just two conditions which will make the process continue or stop - that could apply, given any input:
+- The **base case**, which when triggered will terminate the recursive process.
+- The **recursive case**, which is where the recursion will actually occur.
+
+```c
+int factorial(int n)
+{
+	if (n == 1) // base case
+	{
+		return 1;
+	}
+	else // recursive case
+	{
+		return n * factorial(n - 1);
+	}
+}
+```
+
+In general a recursive function can replace a loop. And there's a possibility to have more than one base and recursive case, depending on the purpose of the function. E.g, a Fibonacci:
+
+```c
+#include <stdio.h>
+  
+int factorial(int n)
+{
+   if(n == 0) //base case
+   {
+      return 1;
+   }
+   else // recursive case
+   {
+      return n * factorial(n-1);
+   }
+}
+  
+int fibbonacci(int n)
+{
+   if(n == 0) // base case n.1
+   {
+      return 0;
+   }
+   else if(n == 1) // base case n.2
+   {
+      return 1;
+   }
+   else // recursive case
+   {
+      return (fibbonacci(n-1) + fibbonacci(n-2));
+   }
+}
+  
+int main(void)
+{
+   int i;
+   int n = 5;
+
+   printf("Factorial of %d: %d\n" , n , factorial(n));
+   printf("Fibbonacci of %d: " , n);
+   for(i = 0; i < n; i++)
+   {
+      printf("%d ",fibbonacci(i));            
+   }
+}
+```
+
+## Merge Sort 
 > [Transc](./src/transcripts/shorts3_merge.srt.md)
+
+- Worst-case scenario: We have to split n elements up and hen recombine them, effectively doubling the sorted sub-arrays as we build them up. (combining sorted 1-element arrays into 2-element arrays, combining sorted 2-element arrays into 4-element arrays...)
+- Best-case scenario: The array is already perfectly sorted. But we still have to split and recombine it back together with this algorithm.
 
 ---
 
