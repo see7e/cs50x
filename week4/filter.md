@@ -39,10 +39,13 @@ dependences: CS50
   - [Testing](#testing-1)
   - [How to Submit](#how-to-submit-1)
 - [Walkthrough](#walkthrough)
-  - [Result](#result)
+  - [**Grayscale function (`grayscale`):**](#grayscale-function-grayscale)
+  - [**Sepia function (`sepia`):**](#sepia-function-sepia)
+  - [**Reflect function (`reflect`):**](#reflect-function-reflect)
+  - [**Blur function (`blur`):**](#blur-function-blur)
   - [Trace Log](#trace-log)
   - [Style](#style)
-  - [Submited](#submited)
+  - [Submitted](#submitted)
 
 </details>
 
@@ -76,11 +79,11 @@ If the R, G, and B values of some pixel in a BMP are, say, `0xff`, `0x00`, and `
 
 Recall that a file is just a sequence of bits, arranged in some fashion. A 24-bit BMP file, then, is essentially just a sequence of bits, (almost) every 24 of which happen to represent some pixel’s color. But a BMP file also contains some “metadata,” information like an image’s height and width. That metadata is stored at the beginning of the file in the form of two data structures generally referred to as “headers,” not to be confused with C’s header files. (Incidentally, these headers have evolved over time. This problem uses the latest version of Microsoft’s BMP format, 4.0, which debuted with Windows 95.)
 
-The first of these headers, called `BITMAPFILEHEADER`, is 14 bytes long. (Recall that 1 byte equals 8 bits.) The second of these headers, called `BITMAPINFOHEADER`, is 40 bytes long. Immediately following these headers is the actual bitmap: an array of bytes, triples of which represent a pixel’s color. However, BMP stores these triples backwards (i.e., as BGR), with 8 bits for blue, followed by 8 bits for green, followed by 8 bits for red. (Some BMPs also store the entire bitmap backwards, with an image’s top row at the end of the BMP file. But we’ve stored this problem set’s BMPs as described herein, with each bitmap’s top row first and bottom row last.) In other words, were we to convert the 1-bit smiley above to a 24-bit smiley, substituting red for black, a 24-bit BMP would store this bitmap as follows, where `0000ff` signifies red and `ffffff` signifies white; we’ve highlighted in red all instances of `0000ff`.
+The first of these headers, called `BITMAPFILEHEADER`, is 14 bytes long. (*Recall that 1 byte equals 8 bits*) The second of these headers, called `BITMAPINFOHEADER`, is 40 bytes long. Immediately following these headers is the actual bitmap: an array of bytes, triples of which represent a pixel’s color. However, BMP stores these triples backwards (i.e., as BGR), with 8 bits for blue, followed by 8 bits for green, followed by 8 bits for red. (Some BMPs also store the entire bitmap backwards, with an image’s top row at the end of the BMP file. But we’ve stored this problem set’s BMPs as described herein, with each bitmap’s top row first and bottom row last.) In other words, were we to convert the 1-bit smiley above to a 24-bit smiley, substituting red for black, a 24-bit BMP would store this bitmap as follows, where `0000ff` signifies red and `ffffff` signifies white; we’ve highlighted in red all instances of `0000ff`.
 
 ![red smile](https://cs50.harvard.edu/x/2023/psets/4/filter/less//red_smile.png)
 
-Because we’ve presented these bits from left to right, top to bottom, in 8 columns, you can actually see the red smiley if you take a step back.
+> Because we’ve presented these bits from left to right, top to bottom, in 8 columns, you can actually see the red smiley if you take a step back.
 
 To be clear, recall that a hexadecimal digit represents 4 bits. Accordingly, `ffffff` in hexadecimal actually signifies `111111111111111111111111` in binary.
 
@@ -409,28 +412,254 @@ submit50 cs50/problems/2023/x/filter/more
 ---
 
 # Walkthrough
+> Full code [here](./src/filter-less/helpers.c)
 
-## Result
+Firstly we need to add some headers (why not in some `.h` file)
+The process to loop through the array elements is the same as in Smile
 
-```bash
-
+```c
+for (int i = 0; i < height; i++)
+{
+	for (int j = 0; j < width; j++) {...}
+}
 ```
+
+## **Grayscale function (`grayscale`):**
+
+For each pixel, it calculates the average value of the red, green, and blue components by summing them up and dividing by 3.
+
+```c
+RGBTRIPLE pixel = image[i][j];
+
+// Calculate average of RGB values
+BYTE average = (pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3;
+
+// Assign the average value to each RGB component
+image[i][j].rgbtRed = average;
+image[i][j].rgbtGreen = average;
+image[i][j].rgbtBlue = average;
+```
+
+The calculated average value is then assigned to each RGB component of the pixel, effectively converting it to grayscale.
+
+## **Sepia function (`sepia`):**
+
+For each pixel, it applies the sepia transformation by using the [formulas](#sepia) to calculate new values for the red, green, and blue components, slightly changed to fulfill the requirements.
+
+```c
+RGBTRIPLE pixel = image[i][j];
+
+// Apply sepia formula to each RGB component
+int sepiaRed = round(0.393 * pixel.rgbtRed + 0.769 * pixel.rgbtGreen + 0.189 * pixel.rgbtBlue);
+int sepiaGreen = round(0.349 * pixel.rgbtRed + 0.686 * pixel.rgbtGreen + 0.168 * pixel.rgbtBlue);
+int sepiaBlue = round(0.272 * pixel.rgbtRed + 0.534 * pixel.rgbtGreen + 0.131 * pixel.rgbtBlue);
+
+// Cap the values at 255 if they exceed by ternary operator
+image[i][j].rgbtRed = (sepiaRed > 255) ? 255 : sepiaRed;
+image[i][j].rgbtGreen = (sepiaGreen > 255) ? 255 : sepiaGreen;
+image[i][j].rgbtBlue = (sepiaBlue > 255) ? 255 : sepiaBlue;
+```
+
+The calculated values are then assigned to the corresponding RGB components of the pixel.
+
+## **Reflect function (`reflect`):**
+
+For each row of pixels, it swaps (using the traditional `temp`) the pixels from the left and right sides of the image, and that’s it.
+
+```c
+// Swap pixels from left and right sides
+RGBTRIPLE temp = image[i][j];
+image[i][j] = image[i][width - 1 - j];
+image[i][width - 1 - j] = temp;
+```
+
+`temp` holds the value of the pixel on the left side, then assigning the value of the pixel on the right side to the left side, and finally assigning the temporary value to the right side, and so, inverting the image horizontally.
+
+
+## **Blur function (`blur`):**
+
+This was a bit more complex. It starts by creating a temporary copy of the image, stored in the `tempImage` array, using `calloc` as dynamic memory allocation.
+> **Why?** 
+> *Short answer*:
+> Using `calloc` eliminates the need to manually initialize the memory block to zero after using `malloc`. It provides a convenient (*or laziness*) way to allocate and initialize memory in a single step.
+> 
+> *Long answer*:
+> Because the initialization (*just a convenience*). `malloc` allocates uninitialized memory, which means the contents of the allocated memory block are undefined. On the other hand, `calloc` allocates memory and initializes all its bytes to zero.
+> 
+> Since `tempImage` represents an image, initializing it with zeroes is desirable because it ensures that all the pixels in the temporary image are initialized to black (RGB values of 0). This is important because the `blur` function calculates the average RGB values by summing the RGB values of neighbouring pixels. If the memory were uninitialized, these calculations would be incorrect.
+
+```c
+// Create a temporary copy of the image
+RGBTRIPLE(*tempImage)[width] = calloc(height, width * sizeof(RGBTRIPLE));
+if (tempImage == NULL)
+{
+	printf("Not enough memory to store temporary image.\n");
+	return;
+}
+```
+> Personal suggestion: as the error return values in `filter.c` are all numbers different of `0`, it would make sense if `buffer()` is changed to an `int` function type.
+
+For each pixel, it calculates the sum of the RGB values of the pixel itself and its neighbouring pixels (including diagonals) within a `3x3` grid.
+
+```c
+for (int k = -1; k <= 1; k++)
+{
+	for (int l = -1; l <= 1; l++) {...}
+}
+```
+
+And
+- first verify is the grid box is still in the image boundaries (`if` condition)
+- keeps track of the count of neighbouring pixels included in the sum (using the `count` variable)
+- calculates the average RGB values by dividing the sum of the RGB values by the `count`
+
+```c
+for (int l = -1; l <= 1; l++) 
+{
+	int row = i + k;
+	int col = j + l;
+	
+	// Check if the neighboring pixel is within the image bounds
+	if (row >= 0 && row < height && col >= 0 && col < width)
+	{
+		// Accumulate the RGB values of neighboring pixels
+		redSum += image[row][col].rgbtRed;
+		greenSum += image[row][col].rgbtGreen;
+		blueSum += image[row][col].rgbtBlue;
+		count++;
+	}
+}
+```
+
+The calculated average values are assigned to the corresponding pixel in the `tempImage` array.
+
+```c
+// Calculate the average RGB values and assign them to the current pixel in the temporary image
+tempImage[i][j].rgbtRed = round((float)redSum / count);
+tempImage[i][j].rgbtGreen = round((float)greenSum / count);
+tempImage[i][j].rgbtBlue = round((float)blueSum / count);
+```
+
+Once the entire image is processed (*and that's a **lot** of loops*), the pixels from the `tempImage` array are copied back to the original `image` array (*in another loop!*),  applying the blur effect to the original image. Finally, the memory allocated for the `tempImage` array is freed.
 
 ## Trace Log
 
-```bash
+```log
+### :( grayscale correctly filters single pixel without whole number average
+**Cause**  
+expected "28 28 28\\n", not "27 27 27\\n"  
 
+**Log**  
+testing with pixel (27, 28, 28)  
+running ./testing 0 1...  
+checking for output "28 28 28\\n"... 
+
+**Expected Output:**  
+28 28 28  
+
+**Actual Output:**  
+27 27 27
+
+### :( grayscale correctly filters more complex 3x3 image
+**Cause**  
+expected "20 20 20\\n50 5...", not "20 20 20\\n50 5..."  
+
+**Log**  
+testing with sample 3x3 image  
+first row: (10, 20, 30), (40, 50, 60), (70, 80, 90)  
+second row: (110, 130, 140), (120, 140, 150), (130, 150, 160)  
+third row: (200, 210, 220), (220, 230, 240), (240, 250, 255)  
+running ./testing 0 4...  
+checking for output "20 20 20\\n50 50 50\\n80 80 80\\n127 127 127\\n137 137 137\\n147 147 147\\n210 210 210\\n230 230 230\\n248 248 248\\n"...  
+
+**Expected Output:**  
+20 20 20  
+50 50 50  
+80 80 80  
+127 127 127  
+137 137 137  
+147 147 147  
+210 210 210  
+230 230 230  
+248 248 248  
+
+**Actual Output:**  
+20 20 20  
+50 50 50  
+80 80 80  
+127 127 127  
+137 137 137  
+147 147 147  
+210 210 210  
+230 230 230  
+249 249 249
+```
+
+Have to use `round()` then on `BYTE average`.
+
+```bash
+filter-less/ $ check50 cs50/problems/2023/x/filter/less
+Connecting.......
+Authenticating...
+Verifying......
+Preparing.....
+Uploading......
+Waiting for results.......................
+Results for cs50/problems/2023/x/filter/less generated by check50 v3.3.7'
+:) helpers.c exists
+:) filter compiles
+:) grayscale correctly filters single pixel with whole number average
+:) grayscale correctly filters single pixel without whole number average
+:) grayscale leaves alone pixels that are already gray
+:) grayscale correctly filters simple 3x3 image
+:) grayscale correctly filters more complex 3x3 image
+:) grayscale correctly filters 4x4 image
+:) sepia correctly filters single pixel
+:) sepia correctly filters simple 3x3 image
+:) sepia correctly filters more complex 3x3 image
+:) sepia correctly filters 4x4 image
+:) reflect correctly filters 1x2 image
+:) reflect correctly filters 1x3 image
+:) reflect correctly filters image that is its own mirror image
+:) reflect correctly filters 3x3 image
+:) reflect correctly filters 4x4 image
+:) blur correctly filters middle pixel
+:) blur correctly filters pixel on edge
+:) blur correctly filters pixel in corner
+:) blur correctly filters 3x3 image
+:) blur correctly filters 4x4 image'
+To see the results in your browser go to https://submit.cs50.io/check50/######################################
 ```
 
 ## Style
 
 ```bash
-
+filter-less/ $ style50 helpers.c
+Results generated by style50 v2.7.5
+'Looks good!'
 ```
 
-
-## Submited
+## Submitted
 
 ```bash
-
+filter-less/ $ submit50 cs50/problems/2023/x/filter/less
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Files that will be submitted:
+'./helpers.c'
+Files that won\'t be submitted:
+./bmp.h
+./filter.c
+./images/tower.bmp
+./images/yard.bmp
+./filter
+./helpers.h
+./Makefile
+./images/courtyard.bmp
+./images/stadium.bmp
+Keeping in mind the course\'s policy on academic honesty, are you sure you want to submit these files (yes/no)? yes
+Uploading......
+Go to https://submit.cs50.io/users/see7e/cs50/problems/2023/x/filter/less to see your results.
 ```
