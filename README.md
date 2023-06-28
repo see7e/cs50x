@@ -58,7 +58,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course Progress ![Progress](https://geps.dev/progress/45)
+# Course Progress ![Progress](https://geps.dev/progress/54)
 > To view your current progress in the course, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
 ## Week 0
@@ -117,34 +117,40 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀               |                                           | Done? |
 | --------------------------- | ----------------------------------------- | ----- |
-| [Week 5](./week5/README.md) | `C` Data Structures                       | :x:   |
+| [Week 5](./week5/README.md) | `C` Data Structures                       | ✅    |
 | -                           | `C` Practice Problems 5                   | :x:   |
-| -                           | `C` [Lab 5: Inheritance](./week5/lab5.md) | :x:   |
-| -                           | `C` [Speller](./week5/speller.md)         | :x:   |
+| -                           | `C` [Lab 5: Inheritance](./week5/lab5.md) | ✅    |
+| -                           | `C` [Speller](./week5/speller.md)         | ✅    |
 
 ## Week 6
 
-| CS50x 2023 😀               |        | Done? |
-| --------------------------- | ------ | ----- |
-| [Week 6](./week6/README.md) | Python | :x:   |
+| CS50x 2023 😀               |                                                  | Done? |
+| --------------------------- | ------------------------------------------------ | ----- |
+| [Week 6](./week6/README.md) | `Python`                                         | :x:   |
+| -                           | `Python` Practice Problems 6                     | :x:   |
+| -                           | `Python` [Lab 6: World Cup](./week6/lab6.md)     | :x:   |
+| -                           | `Python` [Mario](./week6/mario.md)               | :x:   |
+| -                           | `Python` [Cash / Credit](./week6/cash-credit.md) | :x:   |
+| -                           | `Python` [Readability](./week6/readability.md)   | :x:   |
+| -                           | `Python` [DNA](./week6/dna.md)                   | :x:   |
 
 ## Week 7
 
 | CS50x 2023 😀               |     | Done? |
 | --------------------------- | --- | ----- |
-| [Week 7](./week7/README.md) | SQL | :x:   |
+| [Week 7](./week7/README.md) | `SQL` | :x:   |
 
 ## Week 8
 
 | CS50x 2023 😀               |                       | Done? |
 | --------------------------- | --------------------- | ----- |
-| [Week 8](./week8/README.md) | HTML, CSS, JavaScript | :x:   |
+| [Week 8](./week8/README.md) | `HTML`, `CSS`, `JavaScript` | :x:   |
 
 ## Week 9
 
 | CS50x 2023 😀               |       | Done? |
 | --------------------------- | ----- | ----- |
-| [Week 9](./week9/README.md) | Flask | :x:   |
+| [Week 9](./week9/README.md) | `Flask` | :x:   |
 
 ## Week 10
 
