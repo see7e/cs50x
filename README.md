@@ -163,3 +163,9 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 | CS50x 2023 😀            |               | Done? |
 | ------------------------ | ------------- | ----- |
 | [Plus](./plus/README.md) | Cybersecurity | :x:   |
+
+---
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
