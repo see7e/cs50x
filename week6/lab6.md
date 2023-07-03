@@ -1,5 +1,5 @@
 ---
-title: Problem Set 5 - Speller
+title: Lab 6 - World Cup
 tags: programação, cs50
 use: Exercise
 languages: Python
@@ -8,24 +8,25 @@ dependences: CS50
 
 <details> <summary>Table of Contents</summary>
 
-- [Lab 6: World Cup](#lab-6-world-cup)
-  - [Background](#background)
-  - [Getting Started #](#getting-started-)
-  - [Understanding](#understanding)
-  - [Implementation Details](#implementation-details)
-    - [Hints](#hints)
-    - [Testing](#testing)
-  - [Number of Simulations](#number-of-simulations)
-  - [How to Test Your Code](#how-to-test-your-code)
-  - [How to Submit](#how-to-submit)
+- [World Cup](#world-cup)
+	- [Background](#background)
+	- [Getting Started #](#getting-started-)
+	- [Understanding](#understanding)
+	- [Implementation Details](#implementation-details)
+		- [Hints](#hints)
+		- [Testing](#testing)
+	- [Number of Simulations](#number-of-simulations)
+	- [How to Test Your Code](#how-to-test-your-code)
+	- [How to Submit](#how-to-submit)
 - [Walkthrough](#walkthrough)
-  - [Result](#result)
-  - [Log Trace](#log-trace)
-  - [Submitted](#submitted)
+	- [Result](#result)
+	- [Log Trace](#log-trace)
+	- [Submitted](#submitted)
 
 </details>
 
-# Lab 6: World Cup
+---
+# World Cup
 
 You are welcome to collaborate with one or two classmates on this lab, though it is expected that every student in any such group contribute equally to the lab.
 
@@ -311,22 +312,307 @@ submit50 cs50/labs/2023/x/worldcup
 ---
 
 # Walkthrough
-> Full code [here](./src/)
+> Full code [here](./src/world-cup/tournament.py)
+
+The variable `N` represents the number of simulations to run. You can adjust this value to change the number of tournaments simulated.
+
+```python
+# Number of simulations to run
+N = 1000
+```
+
+In the `main()` function, we start by ensuring that the program is used with the correct command-line arguments. It expects the filename of the file containing the teams as the argument.
+
+```python
+def main():
+	
+	# Ensure correct usage
+	if len(sys.argv) != 2:
+		sys.exit("Usage: python tournament.py FILENAME")
+	
+	teams = []
+	# TODO: Read teams into memory from file
+	filename = sys.argv[1]
+	
+	with open(filename, "r") as file:
+		reader = csv.reader(file)
+		for row in reader:
+			try:
+				team = {"team": row[0], "rating": int(row[1])}
+			except:
+				pass
+			else:
+				teams.append(team)
+	
+	counts = {}
+	# TODO: Simulate N tournaments and keep track of win counts
+	for _ in range(N):
+		winner = simulate_tournament(teams)
+		counts[winner] = counts.get(winner, 0) + 1
+	
+	# Print each team's chances of winning, according to simulation
+	for team in sorted(counts, key=lambda team: counts[team], reverse=True):
+	
+		print(f"{team}: {counts[team] * 100 / N:.1f}% chance of winning")
+
+# ...
+```
+
+To read the teams could be directly using `open(sys.argv[1], "r")` but is cleaner using a variable to store the argument value. As the `.csv` file woks like a list within a `for` loop, use this method to iterate over each value and then append the values in the list if you can, a exception is expected with `int(row[1])` of the header, this is justo to avoid a crash.
+
+Next, to simulate multiple tournaments. In the code, `N` represents the number of simulations to run.
+Using the underscore ( `_` ) as the loop variable is a convention in Python when you don't need to use the loop variable itself. It is often used when you only need to repeat a loop a certain number of times and don't require the loop variable's value.
+The loop calls the `simulate_tournament()` function and counts the victory for each time a winner is retrieved (using `get()` method).
+
+Then the rest is the already coded to `Print each team's chances of winning, according to simulation`.
+
+The `simulate_game()`, **already built**, function takes two teams as input and simulates a game between them. It calculates the probability of team1 winning based on the Elo rating of the teams and returns `True` if team1 wins, and `False` otherwise.
+
+```python
+def simulate_game(team1, team2):
+    """Simulate a game. Return True if team1 wins, False otherwise."""
+    rating1 = team1["rating"]
+    rating2 = team2["rating"]
+    probability = 1 / (1 + 10 ** ((rating2 - rating1) / 600))
+    return random.random() < probability
+```
+
+The `simulate_round()`, **already built**, function takes a list of teams as input and simulates a round in the tournament. It pairs up teams and simulates a game between each pair. The winners of each game are added to the `winners` list. The function returns a list of the winning teams.
+
+```python
+def simulate_round(teams):
+    """Simulate a round. Return a list of winning teams."""
+    winners = []
+
+    # Simulate games for all pairs of teams
+    for i in range(0, len(teams), 2):
+        if simulate_game(teams[i], teams[i + 1]):
+            winners.append(teams[i])
+        else:
+            winners.append(teams[i + 1])
+
+    return winners
+```
+
+The `simulate_tournament()` function takes a list of teams as input and simulates a full tournament. It repeatedly calls the `simulate_round()` function until there is only one team left, which is the winner of the tournament. The function returns the name of the winning team.
+
+```python
+def simulate_tournament(teams):
+    """Simulate a tournament. Return name of winning team."""
+    # TODO
+    while len(teams) > 1:
+        teams = simulate_round(teams)
+  
+    return teams[0]["team"]
+```
+
+The `counts` dictionary, containing the win counts for each team, is returned.
 
 ## Result
 
 ```bash
+Belgium: 22.5% chance of winning
+Brazil: 21.3% chance of winning
+Portugal: 13.9% chance of winning
+Spain: 11.1% chance of winning
+Switzerland: 10.3% chance of winning
+Argentina: 8.3% chance of winning
+England: 3.1% chance of winning
+France: 3.1% chance of winning
+Denmark: 2.6% chance of winning
+Colombia: 1.4% chance of winning
+Croatia: 0.8% chance of winning
+Mexico: 0.8% chance of winning
+Uruguay: 0.6% chance of winning
+Sweden: 0.2% chance of winning
 
+real    0m0,035s
+user    0m0,030s
+sys     0m0,004s
+```
+
+My answer:
+
+```txt
+Times:
+
+10 simulations: 0m0,028s
+100 simulations: 0m0,030s
+1000 simulations: 0m0,035s
+10000 simulations: 0m0,098s
+100000 simulations: 0m0,946s
+1000000 simulations: 0m7,511s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+
+That the time required wuold be constant if the only thing that supposedly changed was the number of iterations.
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?:
+
+It seems like the predictions stabilized after about 10000 simulations
 ```
 
 ## Log Trace 
 
-```bash
+<details> <summary>1st check</summary>
+<pre>
+world-cup/ $ check50 cs50/labs/2023/x/worldcup
+Connecting......
+Authenticating...
+Verifying.......
+Preparing.....
+Uploading......
+Waiting for results............................
+Results for cs50/labs/2023/x/worldcup generated by check50 v3.3.7
+:) tournament.py exists
+:) tournament.py imports
+:| simulate_tournament handles a bracket of size 2
+	check50 ran into an error while running checks!
+	KeyError: 'name'
+	File "/usr/local/lib/python3.11/site-packages/check50/runner.py", line 148, in wrapper
+	state = check(*args)
+			^^^^^^^^^^^^
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 74, in sim_tournament_2
+	check_tournament(BRACKET2)
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 199, in check_tournament
+	actual = tournament.simulate_tournament(args[0])
+			^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	File "/tmp/tmpb3cjbtq2/sim_tournament_2/tournament.py", line 71, in simulate_tournament
+	return teams[0]["name"]
+		~~~~~~~~^^^^^^^^
+:| simulate_tournament handles a bracket of size 4
+	check50 ran into an error while running checks!
+	KeyError: 'name'
+	File "/usr/local/lib/python3.11/site-packages/check50/runner.py", line 148, in wrapper
+	state = check(*args)
+			^^^^^^^^^^^^
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 80, in sim_tournament_4
+	check_tournament(BRACKET4)
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 199, in check_tournament
+	actual = tournament.simulate_tournament(args[0])
+			^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	File "/tmp/tmpb3cjbtq2/sim_tournament_4/tournament.py", line 71, in simulate_tournament
+	return teams[0]["name"]
+		~~~~~~~~^^^^^^^^
+:| simulate_tournament handles a bracket of size 8
+	check50 ran into an error while running checks!
+	KeyError: 'name'
+	File "/usr/local/lib/python3.11/site-packages/check50/runner.py", line 148, in wrapper
+	state = check(*args)
+			^^^^^^^^^^^^
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 86, in sim_tournament_8
+	check_tournament(BRACKET8)
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 199, in check_tournament
+	actual = tournament.simulate_tournament(args[0])
+			^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	File "/tmp/tmpb3cjbtq2/sim_tournament_8/tournament.py", line 71, in simulate_tournament
+	return teams[0]["name"]
+		~~~~~~~~^^^^^^^^
+:| simulate_tournament handles a bracket of size 16
+	check50 ran into an error while running checks!
+	KeyError: 'name'
+	File "/usr/local/lib/python3.11/site-packages/check50/runner.py", line 148, in wrapper
+	state = check(*args)
+			^^^^^^^^^^^^
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 92, in sim_tournament_16
+	check_tournament(BRACKET16)
+	File "/home/ubuntu/.local/share/check50/cs50/labs/worldcup/__init__.py", line 199, in check_tournament
+	actual = tournament.simulate_tournament(args[0])
+			^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	File "/tmp/tmpb3cjbtq2/sim_tournament_16/tournament.py", line 71, in simulate_tournament
+	return teams[0]["name"]
+		~~~~~~~~^^^^^^^^
+:( correctly keeps track of wins
+	timed out while waiting for program to exit
+:( correctly reports team information for Men's World Cup
+	timed out while waiting for program to exit
+:( correctly reports team information for Women's World Cup
+	timed out while waiting for program to exit
+:( answers.txt is complete
+	answers.txt does not include timings for each number of simulation runs
+	Did you put all of your answers in 0m0.000s format?
+To see the results in your browser go to https://submit.cs50.io/check50/5fb39b1772c6dc853338b98ef3233e127816f7b3
+</pre>
+</details>
 
+It was `return teams[0]["team"]` not "name".
+
+<details> <summary>2nd check</summary>
+<pre>
+world-cup/ $ check50 cs50/labs/2023/x/worldcup
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Uploading.......
+Waiting for results...................
+Results for cs50/labs/2023/x/worldcup generated by check50 v3.3.7
+:) tournament.py exists
+:) tournament.py imports
+:) simulate_tournament handles a bracket of size 2
+:) simulate_tournament handles a bracket of size 4
+:) simulate_tournament handles a bracket of size 8
+:) simulate_tournament handles a bracket of size 16
+:( correctly keeps track of wins
+    fails to keep track of wins
+:( correctly reports team information for Men's World Cup
+    did not find team Belgium
+:( correctly reports team information for Women's World Cup
+    did not find team Germany
+:( answers.txt is complete
+    answers.txt does not include timings for each number of simulation runs
+    Did you put all of your answers in 0m0.000s format?
+To see the results in your browser go to https://submit.cs50.io/check50/2880821ec0f5dfe8d18689dabb0382224703a06c
+</pre>
+</details>
+
+Forgot to change in `team = {"team": row[0], "rating": int(row[1])}`.
+
+</br>
+
+Check passed, remember to set `N = 1000` or the program will get timed out and the check will fail.
+For the answers, just copy the running times, it kept giving error regardless of the values I changed.
+
+```bash
+world-cup/ $ check50 cs50/labs/2023/x/worldcup
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Uploading......
+Waiting for results...................
+Results for cs50/labs/2023/x/worldcup generated by check50 v3.3.7'
+:) tournament.py exists
+:) tournament.py imports
+:) simulate_tournament handles a bracket of size 2
+:) simulate_tournament handles a bracket of size 4
+:) simulate_tournament handles a bracket of size 8
+:) simulate_tournament handles a bracket of size 16
+:) correctly keeps track of wins
+:) correctly reports team information for Men\'s World Cup
+:) correctly reports team information for Women\'s World Cup
+:) answers.txt is complete'
+To see the results in your browser go to https://submit.cs50.io/check50/##################################
 ```
 
 ## Submitted
 
 ```bash
-
+world-cup/ $ submit50 cs50/labs/2023/x/worldcup
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Files that will be submitted:
+./answers.txt
+./tournament.py
+Files that won't be submitted:
+./2019w.csv
+./2018m.csv
+Keeping in mind the course's policy on academic honesty, are you sure you want to submit these files (yes/no)? yes
+Uploading.......
+Go to https://submit.cs50.io/users/see7e/cs50/labs/2023/x/worldcup to see your results.
 ```

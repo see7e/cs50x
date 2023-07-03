@@ -1,2 +1,6 @@
 # remove the desktop.ini files
 *.ini
+
+# scr/ libraries
+# why? because they're all public and you can find them in https://github.com/cs50
+src/

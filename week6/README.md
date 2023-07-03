@@ -11,7 +11,6 @@ dependences: CS50
 <details> <summary>Table of Contents</summary>
 
 - [Lecture 6](#lecture-6)
-- [Lecture 6](#lecture-6-1)
   - [Welcome! #](#welcome-)
   - [Python](#python)
   - [Hello](#hello)
@@ -32,16 +31,18 @@ dependences: CS50
   - [Greet](#greet)
   - [Exit Status](#exit-status)
   - [Search](#search)
-  - [Phonebook](#phonebook)
+  - [Phone-book](#phone-book)
   - [Comparison](#comparison)
   - [Swap](#swap)
   - [CSV](#csv)
   - [Speech](#speech)
+  - [QR Code](#qr-code)
   - [Summing Up](#summing-up)
 - [Section](#section)
 - [Shorts](#shorts)
   - [Python](#python-1)
 - [Exercises](#exercises)
+  - [Practice Problems](#practice-problems)
   - [Lab 6: World Cup](#lab-6-world-cup)
   - [Problem Set 6](#problem-set-6)
   - [What to Do](#what-to-do)
@@ -51,14 +52,35 @@ dependences: CS50
 
 </details>
 
-# Lecture 6
-
 <details>
 <summary>Keywords, lookup in <a href="./src/transcripts/lecture6.md">transcript</a></summary>
 
-- xxxxxxxx
+- concatenate
+- format string
+- 1++
+- list
+- reducing memory
+- input
+- truncation
+- integer overflow
+- `char`, `str`
+- `in`
+- object-oriented-programing
+- class, method
+- immutable (strings)
+- `do-while`, `while True`
+- pythonic
+- catch an error
+- named argument
+- concatenation of lists
+- `sys`
+- slice
+- exit, exit status
+- copies
 
 </details>
+
+---
 
 # Lecture 6
 
@@ -76,20 +98,20 @@ dependences: CS50
 
 ## Hello
 
--   Up until this point, the code has looked like this:
+Up until this point, the code has looked like this:
+
+```c
+// A program that says hello to the world
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+}
+```
     
-    ```python
-    // A program that says hello to the world
-    
-    #include <stdio.h>
-    
-    int main(void)
-    {
-        printf("hello, world\n");
-    }
-    ```
-    
--   Today, you’ll find that the process of writing and compiling code has been simplified.
+Today, you’ll find that the process of writing and compiling code has been simplified.
 -   For example, the above code will be rendered in Python as:
     
     ```python
@@ -102,7 +124,7 @@ dependences: CS50
     
 -   In C, you might remember this code:
     
-    ```python
+    ```c
     // get_string and printf with %s
     
     #include <cs50.h>
@@ -144,7 +166,7 @@ dependences: CS50
 
 ## Types
 
--   Data types in Python do not need to be explicitly declared. For example, you saw how `answer` above is a string, but we did not have to tell the interpreter this was the case: It knew on its own.
+Data types in Python do not need to be explicitly declared. For example, you saw how `answer` above is a string, but we did not have to tell the interpreter this was the case: It knew on its own.
 -   In Python, commonly used types include:
     
     ```python
@@ -154,7 +176,7 @@ dependences: CS50
       str
     ```
     
-    Notice that `long` and `double` are missing. Python will handle what data type should be used for larger and smaller numbers.
+Notice that `long` and `double` are missing. Python will handle what data type should be used for larger and smaller numbers.
     
 -   Some other data types in Python include:
     
@@ -166,61 +188,62 @@ dependences: CS50
       set
     ```
     
--   Each of these data types can be implemented in C, but in Python they can be implemented more simply.
+Each of these data types can be implemented in C, but in Python they can be implemented more simply.
 
 ## Speller
 
--   To illustrate this simplicity, let’s type ‘code dictionary.py’ in the terminal window and write code as follows:
-    
-    ```python
-    # Words in dictionary
-    words = set()
-    
-    
-    def check(word):
-        """Return true if word is in dictionary else false"""
-        if word.lower() in words:
-            return True
-        else:
-            return False
-    
-    
-    def load(dictionary):
-        """Load dictionary into memory, returning true if successful else false"""
-        file = open(dictionary, "r")
-        for line in file:
-            word = line.rstrip()
-            words.add(word)
-        file.close()
+To illustrate this simplicity, let’s type ‘code dictionary.py’ in the terminal window and write code as follows:
+
+```python
+# Words in dictionary
+words = set()
+
+
+def check(word):
+    """Return true if word is in dictionary else false"""
+    if word.lower() in words:
         return True
-    
-    
-    def size():
-        """Returns number of words in dictionary if loaded else 0 if not yet loaded"""
-        return len(words)
-    
-    
-    def unload():
-        """Unloads dictionary from memory, returning true if successful else false"""
-        return True
-    ```
-    
-    Notice that there are four functions above. In the `check` function, if a `word` is in `words`, it returns `True`. So much easier than an implementation in C! Similarly, in the `load` function the dictionary file is opened. For each line in that file, we add that line to `words`. Using `rstrip`, the trailing new line is removed from the added word. `size` simply returns the `len` or length of `words`. `unload` only needs to return `True` because Python handles memory management on its own.
-    
--   The above code illustrates why higher-level languages exist: To simplify and allow you to write code more easily.
--   However, speed is a tradeoff. Because C allows you, the programmer, to make decisions about memory management, it may run faster than Python – depending on your code. While C only runs your lines of code, Python runs all the code that comes under the hood with it when you call Python’s built-in functions.
+    else:
+        return False
+
+
+def load(dictionary):
+    """Load dictionary into memory, returning true if successful else false"""
+    file = open(dictionary, "r")
+    for line in file:
+        word = line.rstrip()
+        words.add(word)
+    file.close()
+    return True
+
+
+def size():
+    """Returns number of words in dictionary if loaded else 0 if not yet loaded"""
+    return len(words)
+
+
+def unload():
+    """Unloads dictionary from memory, returning true if successful else false"""
+    return True
+```
+
+Notice that there are four functions above.
+- In the `check` function, if a `word` is in `words`, it returns `True`. So much easier than an implementation in C! Similarly,
+- in the `load` function the dictionary file is opened. For each line in that file, we add that line to `words`. Using `rstrip`, the trailing new line is removed from the added word.
+- `size` simply returns the `len` or length of `words`.
+- `unload` only needs to return `True` because Python handles memory management on its own using the Garbage Collector. *So this function is optional as the `return` value is always the same.*
+
+The above code illustrates why higher-level languages exist: To simplify and allow you to write code more easily. However, speed is a tradeoff. Because C allows you, the programmer, to make decisions about memory management, it may run faster than Python – depending on your code. While C only runs your lines of code, Python runs all the code that comes under the hood with it when you call Python’s built-in functions.
 -   You can learn more about functions in the [Python documentation](https://docs.python.org/3/library/functions.html)
 
 ## Image Recognition
 
--   Numerous libraries have been written by contributors to Python.
--   You can utilize these libraries in your own code.
--   For example, you could simply import facial recognition utilizing a Python library like `PIL`.
--   David provided a demo of facial recognition utilizing Python and third-party libraries.
+-   Numerous libraries have been written by contributors to Python and you can utilize these libraries in your own code.
+> David provided a demo of facial recognition utilizing Python library `PIL`.
 
 ## CS50 Library
 
--   As with C, the CS50 library can be utilized within Python.
+As with C, the CS50 library can be utilized within Python.
 -   The following functions will be of particular use:
     
     ```python
@@ -238,36 +261,36 @@ dependences: CS50
 
 ## Conditionals
 
--   In C, you might remember a program like this:
-    
-    ```python
-    // Conditionals, Boolean expressions, relational operators
-    
-    #include <cs50.h>
-    #include <stdio.h>
-    
-    int main(void)
+In C, you might remember a program like this:
+
+```c
+// Conditionals, Boolean expressions, relational operators
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt user for integers
+    int x = get_int("What's x? ");
+    int y = get_int("What's y? ");
+
+    // Compare integers
+    if (x < y)
     {
-        // Prompt user for integers
-        int x = get_int("What's x? ");
-        int y = get_int("What's y? ");
-    
-        // Compare integers
-        if (x < y)
-        {
-            printf("x is less than y\n");
-        }
-        else if (x > y)
-        {
-            printf("x is greater than y\n");
-        }
-        else
-        {
-            printf("x is equal to y\n");
-        }
+        printf("x is less than y\n");
     }
-    ```
-    
+    else if (x > y)
+    {
+        printf("x is greater than y\n");
+    }
+    else
+    {
+        printf("x is equal to y\n");
+    }
+}
+```
+
 -   In Python, it would appear as follows:
     
     ```python
@@ -288,34 +311,33 @@ dependences: CS50
         print("x is equal to y")
     ```
     
-    Notice that there are no more curly braces. Instead, indentations are utilized. Second, a colon is utilized in the `if` statement. Further, `elif` replaces `else if`. Parentheses are also no longer required in the `if` and `elif` statements.
-    
+Notice that there are no more curly braces. Instead, indentations are utilized. Second, a colon is utilized in the `if` statement. Further, `elif` replaces `else if`. Parentheses are also no longer required in the `if` and `elif` statements.
 
 ## Variables
 
--   Variable declaration is simplified too. In C, you might have `int counter = 1;`. In Python, this same line would read `counter = 1`. You need not declare the type of the variable.
--   Python favors `counter += 1` to increment by one, losing the ability found in C to type `counter++`.
+Variable declaration is simplified too. In C, you might have `int counter = 1;`. In Python, this same line would read `counter = 1`. You need not declare the type of the variable.
+Python favors `counter += 1` to increment by one, losing the ability found in C to type `counter++`.
 
 ## Loops
 
--   Loops in Python are very similar to C. You may recall the following code in C:
-    
-    ```python
-    // Demonstrates while loop
-    
-    #include <stdio.h>
-    
-    int main(void)
+Loops in Python are very similar to C. You may recall the following code in C:
+
+```c
+// Demonstrates while loop
+
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 0;
+    while (i < 3)
     {
-        int i = 0;
-        while (i < 3)
-        {
-            printf("meow\n");
-            i++;
-        }
+        printf("meow\n");
+        i++;
     }
-    ```
-    
+}
+```
+
 -   In Python, this code appears as:
     
     ```python
@@ -355,167 +377,167 @@ dependences: CS50
     ```
     
     Notice that a function is utilized to abstract away the meowing.
-    
+    > `main()` is a abstraction of `__main__` which is a Dunder (builtin) method of Python  
 
 ## Calculator
 
--   We can implement a simple calculator just as we did within C. Type `code calculator.py` into the terminal window and write code as follows:
-    
-    ```python
-    # Addition with int [using get_int]
-    
-    from cs50 import get_int
-    
-    # Prompt user for x
-    x = get_int("x: ")
-    
-    # Prompt user for y
-    y = get_int("y: ")
-    
-    # Perform addition
-    print(x + y)
-    ```
-    
-    Notice how the CS50 library is imported. Then, `x` and `y` are gathered from the user. Finally, the result is printed. Notice that the `main` function that would have been seen in a C program is gone entirely! While one could utilize a `main` function, it is not required.
-    
--   It’s possible for one to remove the training wheels of the CS50 library. Modify your code as follows:
-    
-    ```python
-    # Addition with int [using input]
-    
-    # Prompt user for x
-    x = input("x: ")
-    
-    # Prompt user for y
-    y = input("y: ")
-    
-    # Perform addition
-    print(x + y)
-    ```
-    
-    Notice how executing the above code results in strange program behavior. Why might this be so?
-    
--   You may have guessed that the interpreter understood `x` and `y` to be strings. You can fix your code by employing the `int` function as follows:
-    
-    ```python
-    # Addition with int [using input]
-    
-    # Prompt user for x
-    x = int(input("x: "))
-    
-    # Prompt user for y
-    y = int(input("y: "))
-    
-    # Perform addition
-    print(x + y)
-    ```
-    
-    Notice how the input for `x` and `y` is passed to the `int` function which converts it to an integer.
-    
--   We can expand the abilities of our calculator. Modify your code as follows:
-    
-    ```python
-    # Division with integers, demonstration lack of truncation
-    
-    # Prompt user for x
-    x = int(input("x: "))
-    
-    # Prompt user for y
-    y = int(input("y: "))
-    
-    # Divide x by y
-    z = x / y
-    print(z)
-    ```
-    
-    Notice that executing this code results in a value, but that if you were to see more digits after `.333333` you’d see that we are faced with _floating-point imprecision_.
-    
--   We can reveal this imprecision by modifying our codes slightly:
-    
-    ```python
-    # Floating-point imprecision
-    
-    # Prompt user for x
-    x = int(input("x: "))
-    
-    # Prompt user for y
-    y = int(input("y: "))
-    
-    # Divide x by y
-    z = x / y
-    print(f"{z:.50f}")
-    ```
-    
-    Notice that this code reveals the imprecision. Python still faces this issue, just as C does.
-    
+We can implement a simple calculator just as we did within C. Type `code calculator.py` into the terminal window and write code as follows:
+
+```python
+# Addition with int [using get_int]
+
+from cs50 import get_int
+
+# Prompt user for x
+x = get_int("x: ")
+
+# Prompt user for y
+y = get_int("y: ")
+
+# Perform addition
+print(x + y)
+```
+
+Notice how the CS50 library is imported. Then, `x` and `y` are gathered from the user. Finally, the result is printed. Notice that the `main` function that would have been seen in a C program is gone entirely! While one could utilize a `main` function, it is not required.
+
+It’s possible for one to remove the training wheels of the CS50 library. Modify your code as follows:
+
+```python
+# Addition with int [using input]
+
+# Prompt user for x
+x = input("x: ")
+
+# Prompt user for y
+y = input("y: ")
+
+# Perform addition
+print(x + y)
+```
+
+Notice how executing the above code results in strange program behavior. Why might this be so?
+
+You may have guessed that the interpreter understood `x` and `y` to be strings. You can fix your code by employing the `int` function as follows:
+
+```python
+# Addition with int [using input]
+
+# Prompt user for x
+x = int(input("x: "))
+
+# Prompt user for y
+y = int(input("y: "))
+
+# Perform addition
+print(x + y)
+```
+
+Notice how the input for `x` and `y` is passed to the `int` function which converts it to an integer.
+
+We can expand the abilities of our calculator. Modify your code as follows:
+
+```python
+# Division with integers, demonstration lack of truncation
+
+# Prompt user for x
+x = int(input("x: "))
+
+# Prompt user for y
+y = int(input("y: "))
+
+# Divide x by y
+z = x / y
+print(z)
+```
+
+Notice that executing this code results in a value, but that if you were to see more digits after `.333333` you’d see that we are faced with _floating-point imprecision_.
+
+We can reveal this imprecision by modifying our codes slightly:
+
+```python
+# Floating-point imprecision
+
+# Prompt user for x
+x = int(input("x: "))
+
+# Prompt user for y
+y = int(input("y: "))
+
+# Divide x by y
+z = x / y
+print(f"{z:.50f}")
+```
+
+Notice that this code reveals the imprecision. Python still faces this issue, just as C does.
+
 
 ## Compare
 
--   In C, we faced challenges when we wanted to compare two values. Consider the following code:
-    
-    ```python
-    // Conditionals, Boolean expressions, relational operators
-    
-    #include <cs50.h>
-    #include <stdio.h>
-    
-    int main(void)
+In C, we faced challenges when we wanted to compare two values. Consider the following code:
+
+```c
+// Conditionals, Boolean expressions, relational operators
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt user for integers
+    int x = get_int("What's x? ");
+    int y = get_int("What's y? ");
+
+    // Compare integers
+    if (x < y)
     {
-        // Prompt user for integers
-        int x = get_int("What's x? ");
-        int y = get_int("What's y? ");
-    
-        // Compare integers
-        if (x < y)
-        {
-            printf("x is less than y\n");
-        }
-        else if (x > y)
-        {
-            printf("x is greater than y\n");
-        }
-        else
-        {
-            printf("x is equal to y\n");
-        }
+        printf("x is less than y\n");
     }
-    ```
-    
--   In Python, we can execute the above as follows:
-    
-    ```python
-    # Conditionals, Boolean expressions, relational operators
-    
-    from cs50 import get_int
-    
-    # Prompt user for integers
-    x = get_int("What's x? ")
-    y = get_int("What's y? ")
-    
-    # Compare integers
-    if x < y:
-        print("x is less than y")
-    elif x > y:
-        print("x is greater than y")
-    else:
-        print("x is equal to y")
-    ```
-    
-    Notice that the CS50 library is imported. Further, minor changes exist in the `if` statement.
-    
+    else if (x > y)
+    {
+        printf("x is greater than y\n");
+    }
+    else
+    {
+        printf("x is equal to y\n");
+    }
+}
+```
+
+In Python, we can execute the above as follows:
+
+```python
+# Conditionals, Boolean expressions, relational operators
+
+from cs50 import get_int
+
+# Prompt user for integers
+x = get_int("What's x? ")
+y = get_int("What's y? ")
+
+# Compare integers
+if x < y:
+    print("x is less than y")
+elif x > y:
+    print("x is greater than y")
+else:
+    print("x is equal to y")
+```
+
+Notice that the CS50 library is imported. Further, minor changes exist in the `if` statement.
+
 -   Further looking at comparisons, consider the following code in C:
-    
-    ```python
+
+    ```c
     // Logical operators
-    
+
     #include <cs50.h>
     #include <stdio.h>
-    
+
     int main(void)
     {
         // Prompt user to agree
         char c = get_char("Do you agree? ");
-    
+
         // Check whether agreed
         if (c == 'Y' || c == 'y')
         {
@@ -527,51 +549,54 @@ dependences: CS50
         }
     }
     ```
-    
+
 -   The above can be implemented as follows:
-    
+
     ```python
     # Logical operators
-    
+
     from cs50 import get_string
-    
+
     # Prompt user to agree
     s = get_string("Do you agree? ")
-    
+
     # Check whether agreed
     if s == "Y" or s == "y":
         print("Agreed.")
     elif s == "N" or s == "n":
         print("Not agreed.")
     ```
-    
-    Notice that the two vertical bars utilized in C is replaced with `or`. Indeed, people often enjoy Python because it is more readable by humans. Also, notice that `char` does not exist in Python. Instead, `str`s are utilized.
-    
+
+Notice that the two vertical bars utilized in C is replaced with `or`. Indeed, people often enjoy Python because it is more readable by humans. Also, notice that `char` does not exist in Python. Instead, `str`s are utilized.
+
 -   Another approach to this same code could be as follows:
-    
+
     ```python
     # Logical operators, using lists
-    
+
     from cs50 import get_string
-    
+
     # Prompt user to agree
     s = get_string("Do you agree? ")
-    
+
     # Check whether agreed
     if s in ["y", "yes"]:
         print("Agreed.")
     elif s in ["n", "no"]:
         print("Not agreed.")
     ```
-    
-    Notice how we are able to express multiple keywords like `y` and `yes`.
-    
+
+Notice how we are able to express multiple keywords like `y` and `yes`.
+
 
 ## Object-Oriented Programming
 
 -   Up until this point, our programs in this course have been linear: sequential.
--   It’s possible to have certain types of values not only have properties or attributes inside of them but have functions as well. In Python, these values are known as _objects_
--   In C, we could create a `struct` where you could associate multiple variables inside a single self-created data type. In Python, we can do this and also include functions in a self-created data type. When a function belongs to a specific _object_, it is known as a _method_.
+
+It’s possible to have certain types of values not only have properties or attributes inside of them but have functions as well. In Python, these values are known as _objects_
+
+In C, we could create a `struct` where you could associate multiple variables inside a single self-created data type. In Python, we can do this and also include functions in a self-created data type. When a function belongs to a specific _object_, it is known as a _method_.
+
 -   For example, `strs` in Python have a built-in _methods_. Therefore, you could modify your code as follows:
     
     ```python
@@ -619,7 +644,7 @@ dependences: CS50
 
 -   Returning to `meow.c` from weeks earlier, recall the following code:
     
-    ```python
+    ```c
     // Demonstrates while loop
     
     #include <stdio.h>
@@ -699,10 +724,10 @@ dependences: CS50
 
 ## Mario
 
--   Recall a few weeks ago our challenge of building three blocks on top of one another, like in Mario.
-    
-    ![three vertical blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide073.png "mario blocks")
-    
+Recall a few weeks ago our challenge of building three blocks on top of one another, like in Mario.
+
+![three vertical blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide073.png "mario blocks")
+
 -   In Python, we can implement something akin to this as follows:
     
     ```python
@@ -712,108 +737,133 @@ dependences: CS50
         print("#")
     ```
     
--   In C, we had the advantage of a `do-while` loop. However, in Python it is convention to utilize a `while` loop, as Python does not have a `do while` loop. You can write code as follows in a file called `mario.py`:
-    
-    ```python
-    # Prints a column of bricks, using a helper function to get input
-    
-    from cs50 import get_int
-    
-    
-    def main():
-        height = get_height()
-        for i in range(height):
-            print("#")
-    
-    
-    def get_height():
-        while True:
-            n = get_int("Height: ")
+In C, we had the advantage of a `do-while` loop. However, in Python it is convention to utilize a `while` loop, as Python does not have a `do while` loop. You can write code as follows in a file called `mario.py`:
+
+```python
+# Prints a column of bricks, using a helper function to get input
+
+from cs50 import get_int
+
+
+def main():
+    height = get_height()
+    for i in range(height):
+        print("#")
+
+
+def get_height():
+    while True:
+        n = get_int("Height: ")
+        if n > 0:
+            return n
+
+
+main()
+```
+
+The scope of `n` is everywhere in the `get_height()` function once it is assigned a value, just because of the Scope Boundaries, which are different from `C`.
+The `return` statement has the same effect of `break`, it stops the loop iteration and additionaly gives the desired value.
+**Further notice that by convention (PEP8?), there are double spaces between functions.**
+
+We can take away the training wheels of the CS50 library as follows:
+
+```python
+# Prints a column of bricks, catching exceptions
+
+def main():
+    height = get_height()
+    for i in range(height):
+        print("#")
+
+
+def get_height():
+    while True:
+        try:
+            n = int(input("Height: "))
             if n > 0:
                 return n
+        except ValueError:
+            print("Not an integer")
+
+
+main()
+```
+
+Notice that `try` is utilized to attempt to convert `n` to an integer. If it cannot do so, an error is outputted.
+
+Sometimes using `try` is tricky if you don't pass an actual ExceptionValue or it may even bypass important values, so you can filter to try only where you expect the error to happen, and if it passes, use `else` statment to continue:
+
+```python
+def get_height():
+    while True:
+        try:
+            n = int(input("Height: "))
+        except ValueError:
+            print("Not an integer")
+        else:
+            if n > 0:
+                return n
+```
+
+Consider the following image:
     
+![four horizontal question blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide075.png "mario blocks")
     
-    main()
-    ```
-    
-    Notice how the scope of `n` is everywhere in the `get_height()` function once it is assigned a value. Further notice that by convention, there are double spaces between functions.
-    
--   We can take away the training wheels of the CS50 library as follows:
-    
-    ```python
-    # Prints a column of bricks, catching exceptions
-    
-    def main():
-        height = get_height()
-        for i in range(height):
-            print("#")
-    
-    
-    def get_height():
-        while True:
-            try:
-                n = int(input("Height: "))
-                if n > 0:
-                    return n
-            except ValueError:
-                print("Not an integer")
-    
-    
-    main()
-    ```
-    
-    Notice that `try` is utilized to attempt to convert `n` to an integer. If it cannot do so, an error is outputted.
-    
--   Consider the following image:
-    
-    ![four horizontal question blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide075.png "mario blocks")
-    
--   In Python, we could implement by modifying your code as follows:
-    
-    ```python
-    # Prints a row of 4 question marks with a loop
-    
-    for i in range(4):
-        print("?", end="")
+In Python, we could implement by modifying your code as follows, using the named argument `end`:
+
+```python
+# Prints a row of 4 question marks with a loop
+
+for i in range(4):
+    print("?", end="")
+print()
+```
+
+Notice that you can override the behavior of the `print` function to stay on the same line as the previous print.
+
+Similar in spirit to previous iterations, we can further simplify this program:
+
+```python
+# Prints a row of 4 question marks without a loop
+
+print("?" * 4)
+```
+
+Notice that we can utilize `*` to multiply the print statement to repeat `4` times.
+
+> If you watched the video, at this point David says that Python don´t have pointers. Actually  each variable is indeed a pointer, but this is just if you don't have enough pain in your life
+
+What about a large block of bricks?
+
+![three by three block of mario blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide078.png "mario blocks")
+
+To implement the above, you can modify your code as follows:
+
+```python
+# Prints a 3-by-3 grid of bricks with loops
+
+for i in range(3):
+    for j in range(3):
+        print("#", end="")
     print()
-    ```
-    
-    Notice that you can override the behavior of the `print` function to stay on the same line as the previous print.
-    
--   Similar in spirit to previous iterations, we can further simplify this program:
-    
-    ```python
-    # Prints a row of 4 question marks without a loop
-    
-    print("?" * 4)
-    ```
-    
-    Notice that we can utilize `*` to multiply the print statement to repeat `4` times.
-    
--   What about a large block of bricks?
-    
-    ![three by three block of mario blocks](https://cs50.harvard.edu/x/2023/notes/6/cs50Week6Slide078.png "mario blocks")
-    
--   To implement the above, you can modify your code as follows:
-    
-    ```python
-    # Prints a 3-by-3 grid of bricks with loops
-    
-    for i in range(3):
-        for j in range(3):
-            print("#", end="")
-        print()
-    ```
-    
-    Notice how one `for` loop exists inside another. The `print` statement adds a new line at the end of each row of bricks.
+```
+
+or just:
+
+```python
+for i in range(3):
+    print("#" * 3)
+```
+
+Notice how one `for` loop exists inside another. The `print` statement adds a new line at the end of each row of bricks.
     
 -   You can learn more about the `print` function in the [Python documentation](https://docs.python.org/3/library/functions.html#print)
-    
+
 
 ## Scores
 
--   `list`s are a data structure within Python.
--   `list`s have built in methods or functions within them.
+`list`s are a data structure within Python. They have built in methods or functions within them.
+
 -   For example, consider the following code:
     
     ```python
@@ -831,10 +881,10 @@ dependences: CS50
     average = sum(scores) / len(scores)
     print(f"Average: {average}")
     ```
-    
-    Notice that you can use the built-in `append` method, whereby you can `append` the score to the list. Also notice that we use the `sum` function to add all elements in the list.
-    
--   You can even ultilize the following syntax:
+
+There's some built-in functions that you can use the like the `append()` method, whereby you can append the score to the list. Also some mathematical functions like `sum()` to calculate the sum of all elements in the list.
+
+-   You can even utilize the following syntax:
     
     ```python
     # Averages three numbers using a list and a loop with + operator
@@ -851,8 +901,8 @@ dependences: CS50
     average = sum(scores) / len(scores)
     print(f"Average: {average}")
     ```
-    
-    Notice that `+=` is utilized to append the score to the list. In this case we place square brackets around `score` because only a `list` can be added to another `list` using `+` or `+=`.
+
+Notice that `+=` is utilized to append the score to the list. In this case we place square brackets around `score` because only a `list` can be added to another `list` using `+` or `+=`.
     
 -   You can learn more about lists in the [Python documentation](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range)
 -   You can also learn more about `len` in the [Python documentation](https://docs.python.org/3/library/functions.html#len)
@@ -888,34 +938,36 @@ dependences: CS50
 
 ## Greet
 
--   As with C, you can also utilize command-line arguments. Consider the following code:
+As with C, you can also utilize command-line arguments. Consider the following code:
+
+```python
+# Prints a command-line argument
+
+from sys import argv
+
+if len(argv) == 2:
+    print(f"hello, {argv[1]}")
+else:
+    print("hello, world")
+```
+
+Notice that `argv[1]` is printed using a _formatted string_, noted by the `f` present in the `print` statement.
     
-    ```python
-    # Prints a command-line argument
-    
-    from sys import argv
-    
-    if len(argv) == 2:
-        print(f"hello, {argv[1]}")
-    else:
-        print("hello, world")
-    ```
-    
-    Notice that `argv[1]` is printed using a _formatted string_, noted by the `f` present in the `print` statement.
-    
--   You can print all the arguments in `argv` as follows:
-    
-    ```python
-    # Printing command-line arguments, indexing into argv
-    
-    from sys import argv
-    
-    for i in range(len(argv)):
-        print(argv[i])
-    ```
-    
-    Notice that the above will not present the word `python` if executed, and the first argument will be the name of the file you are running. You can think of the word `python` as being analogous to `./` when we were running programs in C.
-    
+You can print all the arguments in `argv` as follows:
+
+```python
+# Printing command-line arguments, indexing into argv
+
+from sys import argv
+
+for i in range(len(argv)):
+# or
+#for i in argv:
+    print(argv[i])
+```
+
+Notice that the above will not present the word `python` if executed, and the first argument will be the name of the file you are running. You can think of the word `python` as being analogous to `./` when we were running programs in C.
+
 -   You can slice pieces of lists away. Consider the following code:
     
     ```python
@@ -926,108 +978,111 @@ dependences: CS50
     for arg in argv[1:]:
         print(arg)
     ```
-    
-    Notice that executing this code will result in the name of the file you are running being sliced away.
+
+Notice that executing this code will result in the name of the file you are running being sliced away.
     
 -   You can learn more about the `sys` library in the [Python documentation](https://docs.python.org/3/library/sys.html)
     
 
 ## Exit Status
 
--   The `sys` library also has built-in methods. We can use `sys.exit(i)` to exit the program with a specific exit code:
-    
-    ```python
-    # Exits with explicit value, importing sys
-    
-    import sys
-    
-    if len(sys.argv) != 2:
-        print("Missing command-line argument")
-        sys.exit(1)
-    
-    print(f"hello, {sys.argv[1]}")
-    sys.exit(0)
-    ```
-    
-    Notice that dot-notation is used to utilize the built-in functions of `sys`.
+The `sys` library also has built-in methods. We can use `sys.exit(i)` to exit the program with a specific exit code:
+
+```python
+# Exits with explicit value, importing sys
+
+import sys
+
+if len(sys.argv) != 2:
+    print("Missing command-line argument")
+    sys.exit(1)
+
+print(f"hello, {sys.argv[1]}")
+sys.exit(0)
+```
+
+Notice that dot-notation is used to utilize the built-in functions of `sys`. And to access the exit value:
+
+```bash
+echo $?
+```
     
 
 ## Search
 
--   Python can also be utilized to search. In your terminal window, type `code names.py` and write code as follows:
-    
-    ```
-    # Implements linear search for names
-    
-    import sys
-    
-    # A list of names
-    names = ["Bill", "Charlie", "Fred", "George", "Ginny", "Percy", "Ron"]
-    
-    # Ask for name
-    name = input("Name: ")
-    
-    # Search for name
-    for n in names:
-        if n == name:
-            print("Found")
-            sys.exit(0)
-    
-    print("Not found")
-    sys.exit(1)
-    ```
-    
-    Notice that this code functions. Indeed, it implements a linear search.
-    
--   You can utilize the built-in abilities of Python as follows:
-    
-    ```python
-    # Implements linear search for names using `in`
-    
-    import sys
-    
-    # A list of names
-    names = ["Bill", "Charlie", "Fred", "George", "Ginny", "Percy", "Ron"]
-    
-    # Ask for name
-    name = input("Name: ")
-    
-    # Search for name
-    if name in names:
+Python can also be utilized to search (linear search). In your terminal window, type `code names.py` and write code as follows:
+
+```python
+# Implements linear search for names
+
+import sys
+
+# A list of names
+names = ["Bill", "Charlie", "Fred", "George", "Ginny", "Percy", "Ron"]
+
+# Ask for name
+name = input("Name: ")
+
+# Search for name
+for n in names:
+    if n == name:
         print("Found")
         sys.exit(0)
-    
-    print("Not found")
-    sys.exit(1)
-    ```
-    
-    Notice that the `in` preposition is utilized. Python understands how to implement the lower-level code to do a linear search.
-    
 
-## Phonebook
+print("Not found")
+sys.exit(1)
+```
 
--   Recall that a _dictionary_ or `dict` is a collection of _key_ and _value_ pairs.
--   You can implement a dictionary in Python as follows:
-    
-    ```python
-    # Implements a phone book
-    
-    from cs50 import get_string
-    
-    people = {
-        "Carter": "+1-617-495-1000",
-        "David": "+1-949-468-2750"
-    }
-    
-    # Search for name
-    name = get_string("Name: ")
-    if name in people:
-        print(f"Number: {people[name]}")
-    ```
-    
-    Notice that the dictionary is implemented using curly braces. Then, the statement `if name in people` searches to see if the `name` is in the `people` dictionary. Further, notice how, in the `print` statement, we can index into the people dictionary using the value of `name`. Very useful!
-    
+You can utilize the built-in abilities of Python as follows:
+
+```python
+# Implements linear search for names using `in`
+
+import sys
+
+# A list of names
+names = ["Bill", "Charlie", "Fred", "George", "Ginny", "Percy", "Ron"]
+
+# Ask for name
+name = input("Name: ")
+
+# Search for name
+if name in names:
+    print("Found")
+    sys.exit(0)
+
+print("Not found")
+sys.exit(1)
+```
+
+Notice that the `in` preposition is utilized. Python understands how to implement the lower-level code to do a linear search.
+
+
+## Phone-book
+
+Recall that a _dictionary_ or `dict` is a collection of _key_ and _value_ pairs. You can implement a dictionary in Python as follows:
+
+```python
+# Implements a phone book
+
+from cs50 import get_string
+
+people = {
+    "Carter": "+1-617-495-1000",
+    "David": "+1-949-468-2750"
+}
+
+# Search for name
+name = get_string("Name: ")
+if name in people:
+    print(f"Number: {people[name]}")
+```
+
+Notice that the dictionary is implemented using curly braces. Then, the statement `if name in people` searches to see if the `name` is in the `people` dictionary. Further, notice how, in the `print` statement, we can index into the people dictionary using the value of `name`. Very useful!
+
 -   Python has done their best to get to _constant time_ using their built-in searches.
+
+> As definition a `dictionary` resembles a `struct` in C but with a power-up.  
 
 ## Comparison
 
@@ -1046,102 +1101,113 @@ dependences: CS50
     else:
         print("Different")
     ```
-    
-    Notice how Python utilizes the `==` to be able to compare two variables. Further, notice that Python allows you to compare two strings without examining strings character by character using pointers as in C.
-    
+
+Notice how Python utilizes the ` == ` to be able to compare two variables. Further, notice that Python allows you to compare two strings without examining strings character by character using pointers as in C. Again, each variable is an copy (instance) of the original value stored in memory.
 
 ## Swap
 
--   Further, we can implement a program that swaps values as we did in C. Consider the following code in Python:
-    
-    ```python
-    # Swaps two integers
-    
-    x = 1
-    y = 2
-    
-    print(f"x is {x}, y is {y}")
-    x, y = y, x
-    print(f"x is {x}, y is {y}")
-    ```
-    
-    Notice that each value is swapped, using some very _Pythonic_ syntax $x, y = y, x$.
-    
+Further, we can implement a program that swaps values as we did in C. Consider the following code in Python:
+
+```python
+# Swaps two integers
+
+x = 1
+y = 2
+
+print(f"x is {x}, y is {y}")
+x, y = y, x
+print(f"x is {x}, y is {y}")
+```
+
+Notice that each value is swapped, using some very _Pythonic_ syntax $x, y = y, x$.
+
 
 ## CSV
 
--   You can also utilize Python to engage with CSV files. Consider the following program called `phonebook.py`:
-    
-    ```python
-    # Saves names and numbers to a CSV file
-    
-    import csv
-    
-    # Get name and number
-    name = input("Name: ")
-    number = input("Number: ")
-    
-    # Open CSV file
-    with open("phonebook.csv", "a") as file:
-    
-        # Print to file
-        writer = csv.writer(file)
-        writer.writerow([name, number])
-    ```
-    
-    Notice that utilizing the `with` block of code, with the `writer` and its work happening below it indented, prevents us from needing to `close` our file once finished.
-    
--   Commonly, CSV files have columns that carry specific names. A `DictWriter` can used to create the CSV file and assign specific names to each column. Consider the following modification to our code:
-    
-    ```python
-    # Saves names and numbers to a CSV file using a DictWriter
-    
-    import csv
-    
-    # Get name and number
-    name = input("Name: ")
-    number = input("Number: ")
-    
-    # Open CSV file
-    with open("phonebook.csv", "a") as file:
-    
-        # Print to file
-        writer = csv.DictWriter(file, fieldnames=["name", "number"])
-        writer.writerow({"name": name, "number": number})
-    ```
-    
-    Notice the `name` and `number` columns are defined in the penultimate row of code, and values are added in the final line.
-    
+You can also utilize Python to engage with CSV files. Consider the following program called `phonebook.py`:
+
+```python
+# Saves names and numbers to a CSV file
+
+import csv
+
+# Get name and number
+name = input("Name: ")
+number = input("Number: ")
+
+# Open CSV file
+with open("phonebook.csv", "a") as file:
+
+    # Print to file
+    writer = csv.writer(file)
+    writer.writerow([name, number])
+```
+
+Utilizing the `with` block of code, with the `writer()` and its work happening below it indented, run a sort of loop and cloeses at the end, preventing from needing to `close` our file once finished.
+
+Commonly, CSV files have columns that carry specific names. A `DictWriter` can used to create the CSV file and assign specific names to each column. Consider the following modification to our code:
+
+```python
+# Saves names and numbers to a CSV file using a DictWriter
+
+import csv
+
+# Get name and number
+name = input("Name: ")
+number = input("Number: ")
+
+# Open CSV file
+with open("phonebook.csv", "a") as file:
+
+    # Print to file
+    writer = csv.DictWriter(file, fieldnames=["name", "number"])
+    writer.writerow({"name": name, "number": number})
+```
+
+The `name` and `number` columns are defined in the penultimate row of code, and values are added in the final line.
+
 -   You can learn more about the CSV files in Python in the [Python documentation](https://docs.python.org/3/library/csv.html)
-    
 
 ## Speech
 
--   Using a third-party library, Python can do text-to-speech.
-    
-    ```python
-    # Says hello to someone
-    
-    import pyttsx3
-    
-    engine = pyttsx3.init()
-    name = input("What's your name? ")
-    engine.say(f"hello, {name}")
-    engine.runAndWait()
-    ```
-    
--   Further, you can run the following code:
-    
-    ```python
-    # Says "This was CS50"
-    
-    import pyttsx3
-    
-    engine = pyttsx3.init()
-    engine.say("This was CS50")
-    engine.runAndWait()
-    ```
-    
+Using a third-party library, Python can do text-to-speech.
+
+```python
+# Says hello to someone
+
+import pyttsx3
+
+engine = pyttsx3.init()
+name = input("What's your name? ")
+engine.say(f"hello, {name}")
+engine.runAndWait()
+```
+
+Further, you can run the following code:
+
+```python
+# Says "This was CS50"
+
+import pyttsx3
+
+engine = pyttsx3.init()
+engine.say("This was CS50")
+engine.runAndWait()
+```
+
+
+## QR Code
+
+Using a library to generate a QR Code for a youtube link.
+
+```python
+import os
+import qrcode
+
+img = qrcode.make("ttps://youtu.be/xvFZj05PgG0")
+
+os.sytem("open qr.png)
+```
 
 ## Summing Up
 
@@ -1164,7 +1230,12 @@ See you next time!
 # Section 
 > [Transcript](./src/transcripts/section6.md)
 
-- xxxxxxxx
+- Strings 
+- Dot notation
+- Loops 
+- Dictionaries
+- Libraries 
+- File Reading, Writing
 
 ---
 
@@ -1173,12 +1244,24 @@ See you next time!
 ## Python 
 > [Transc](./src/transcripts/shorts6_python.md)
 
+This is just a review of the information presented during the Lecture and the Section along with some syntax explanations.
+
 ---
 
 # Exercises
 
+## Practice Problems
+
+In addition to this week’s lab and problem set, you’re welcome to try any of these (optional!) practice problems:
+
+-   Bank [#](https://cs50.harvard.edu/x/2023/problems/6//bank/), from [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python), for practice with `str`'s
+-   Frank, Ian and Glen’s Letters [#](https://cs50.harvard.edu/x/2023/problems/6//figlet/), from [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python), for practice with libraries and command-line arguments
+-   Jar [#](https://cs50.harvard.edu/x/2023/problems/6//jar/), from [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python), for an introduction to classes and object-oriented programming, if feeling more comfortable
+-   Seven Day Average [#](https://cs50.harvard.edu/x/2023/problems/6//seven-day-average/), for practice with requests, `dict`s, and data, if feeling more comfortable
+-   Taqueria [#](https://cs50.harvard.edu/x/2023/problems/6//taqueria/), from [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python), for practice with `dict`s and `try`/`except` blocks
+
 ## [Lab 6: World Cup](./lab6.md)
-> Full code [here](./src/lab6.py)
+> Full code [here](./src/world-cup/tournament.py)
 
 ## Problem Set 6
 
@@ -1197,7 +1280,7 @@ Be sure you have completed Lab 6 [#](https://cs50.harvard.edu/x/2023/psets/6/../
     -   [this version of Mario](https://cs50.harvard.edu/x/2023/psets/6/mario/less/) in Python, if feeling less comfortable
     -   [this version of Mario](https://cs50.harvard.edu/x/2023/psets/6/mario/more/) in Python, if feeling more comfortable
 5.  Submit one of:
-    -   Cash [#](https://cs50.harvard.edu/x/2023/psets/6/cash/) in Python, if feeling less comfortable
+    -   [Cash](./cash.md) [#](https://cs50.harvard.edu/x/2023/psets/6/cash/) in Python, if feeling less comfortable
     -   Credit [#](https://cs50.harvard.edu/x/2023/psets/6/credit/) in Python, if feeling more comfortable
 6.  Submit [Readability](./readability.md) [#](https://cs50.harvard.edu/x/2023/psets/6/readability/) in Python
 7.  Submit [DNA](./dna.md) [#](https://cs50.harvard.edu/x/2023/psets/6//dna/) in Python

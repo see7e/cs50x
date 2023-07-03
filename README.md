@@ -6,6 +6,8 @@ languages: NULL
 dependences: NULL
 ---
 
+[![communities](https://img.shields.io/badge/communities--red.svg)](https://cs50.harvard.edu/x/communities)
+
 # CS50 - Introduction to Computer Science
 
 This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
@@ -14,7 +16,7 @@ This material is distributed by `Harvard © 2023 edX LLC`. It was copied durin
 
 	Much awaits you, so here's how to begin!
 
-First join some of CS50's [communities](https://cs50.harvard.edu/x/communities), so that you can reach out to classmates and staff with questions:
+<details> <summary>First join some of CS50's communities, so that you can reach out to classmates and staff with questions:</summary>
 
 1.  If you're the YouTube type:
     -   subscribe to CS50's channel at [youtube.com/cs50](http://www.youtube.com/subscription_center?add_user=cs50tv)
@@ -39,6 +41,8 @@ First join some of CS50's [communities](https://cs50.harvard.edu/x/communities),
 8.  If you're the Snapchat type:
     -   add [cs50](https://www.snapchat.com/add/cs50)
 
+</details>
+
 After that, watch each of the course's lectures and submit the course's labs, problem sets, and final project:
 
 1.  Watch [Week 0](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@a8730f85a9a94d41a784a58c4b6d8bdc/block-v1:HarvardX+CS50+X+type@vertical+block@31304400fd444ea9860a8833cce5c248)'s lecture. Submit [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/).
@@ -58,8 +62,8 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course Progress ![Progress](https://geps.dev/progress/54)
-> To view your current progress in the course, visit [cs50 gradebook](https://cs50.me/cs50x)!
+# Course Progress  ![Progress](https://geps.dev/progress/54)
+> To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
 ## Week 0
 
@@ -75,7 +79,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 | -                               | `C` [Practice Problems 1](./week1/problems1.md) | :x:   |
 | -                               | `C` [Lab 1: Population](./week1/lab1.md)        | ✅    |
 | -                               | `C` [Hello](./week1/hello.md)                   | ✅    |
-| -                               | `C` [Mario](./week1/mario.md)                   | ✅    |
+| -                               | `C` [Mario](./week1/mario.md) (more)            | ✅    |
 | -                               | `C` [Cash or Credit](./week1/cash_credit.md)    | ✅    |
 
 ## Week 2
@@ -124,15 +128,16 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ## Week 6
 
-| CS50x 2023 😀               |                                                  | Done? |
-| --------------------------- | ------------------------------------------------ | ----- |
-| [Week 6](./week6/README.md) | `Python`                                         | :x:   |
-| -                           | `Python` Practice Problems 6                     | :x:   |
-| -                           | `Python` [Lab 6: World Cup](./week6/lab6.md)     | :x:   |
-| -                           | `Python` [Mario](./week6/mario.md)               | :x:   |
-| -                           | `Python` [Cash / Credit](./week6/cash-credit.md) | :x:   |
-| -                           | `Python` [Readability](./week6/readability.md)   | :x:   |
-| -                           | `Python` [DNA](./week6/dna.md)                   | :x:   |
+| CS50x 2023 😀               |                                                | Done? |
+| --------------------------- | ---------------------------------------------- | ----- |
+| [Week 6](./week6/README.md) | `Python`                                       | ✅    |
+| -                           | `Python` Practice Problems 6                   | :x:   |
+| -                           | `Python` [Lab 6: World Cup](./week6/lab6.md)   | ✅    |
+| -                           | `Python` [Mario](./week6/mario.md) (more)      | ✅    |
+| -                           | `Python` [Cash](./week6/cash.md)               | ✅    |
+| -                           | `Python` [Credit](./week6/credit.md)           | :x:   |
+| -                           | `Python` [Readability](./week6/readability.md) | ✅    |
+| -                           | `Python` [DNA](./week6/dna.md)                 | ✅    |
 
 ## Week 7
 
