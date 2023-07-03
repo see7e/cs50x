@@ -2,7 +2,7 @@
 title: CS50 - Week 6
 tags: programação, cs50
 use: Documentation
-languages: C
+languages: Python 
 dependences: CS50
 ---
 

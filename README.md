@@ -62,7 +62,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course Progress  ![Progress](https://geps.dev/progress/54)
+# Course Progress  ![Progress](https://geps.dev/progress/63)
 > To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
 ## Week 0
@@ -141,9 +141,13 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ## Week 7
 
-| CS50x 2023 😀               |     | Done? |
-| --------------------------- | --- | ----- |
-| [Week 7](./week7/README.md) | `SQL` | :x:   |
+| CS50x 2023 😀               |                                           | Done? |
+| --------------------------- | ----------------------------------------- | ----- |
+| [Week 7](./week7/README.md) | `SQL`                                     | :x:   |
+| -                           | `SQL` Practice Problems 7                 | :x:   |
+| -                           | `SQL` [Lab 7: Songs](./week7/lab7.md)     | :x:   |
+| -                           | `SQL` [Movies](./week7/movies.md)         | :x:   |
+| -                           | `SQL` [Fiftyville](./week7/fiftyville.md) | :x:   |
 
 ## Week 8
 
