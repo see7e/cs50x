@@ -143,7 +143,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀               |                                           | Done? |
 | --------------------------- | ----------------------------------------- | ----- |
-| [Week 7](./week7/README.md) | `SQL`                                     | :x:   |
+| [Week 7](./week7/README.md) | `Python` / `SQL`                          | :x:   |
 | -                           | `SQL` Practice Problems 7                 | :x:   |
 | -                           | `SQL` [Lab 7: Songs](./week7/lab7.md)     | :x:   |
 | -                           | `SQL` [Movies](./week7/movies.md)         | :x:   |

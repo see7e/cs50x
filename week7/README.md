@@ -37,7 +37,23 @@ dependences: CS50
 <details>
 <summary>Keywords, lookup in <a href="./src/transcripts/lecture7.md">transcript</a></summary>
 
-- xxxxxxxxx
+- flat-file
+- database
+- `DictReader`, keys
+- sorted by (key, value)
+- lambda (anonymmus) functions
+- relational database
+- sequel
+- CRUD
+- sequel-lite
+- alias
+- querie
+- insertion
+- predicate, filter
+- relattionships
+- one/many to one/many
+- primary/foreign key, references
+- nest (queries)
 
 </details>
 
@@ -55,12 +71,11 @@ dependences: CS50
 
 ## Flat-File Database
 
--   As you have likely seen before, data can often be described in patterns of columns and tables.
--   Spreadsheets like those created in Microsoft Excel and Google Sheets can be outputted to a `csv` or _comma-separated values_ file.
--   If you look at a `csv` file, you’ll notice that the file is flat in that all of our data is stored in a single table represented by a text file. We call this form of data a _flat-file database_.
--   Python comes with native support for `csv` files.
--   In your terminal window, type `code favorites.py` and write code as follows:
-    
+As you have likely seen before, data can often be described in patterns of columns and tables.
+Spreadsheets like those created in Microsoft Excel and Google Sheets can be outputted to a `csv` or _comma-separated values_ `fiftyville.md` 
+If you look at a `csv` file, you’ll notice that the file is flat in that all of our data is stored in a single table represented by a text file. We call this form of data a _flat-file database_.
+
+-   Python comes with native support for `csv` files. In your terminal window, type `code favorites.py` and write code as follows:
     ```python
     # Prints all favorites in CSV using csv.reader
     
@@ -79,11 +94,10 @@ dependences: CS50
         for row in reader:
             print(row[1])
     ```
-    
-    Notice that the `csv` library is imported. Further, we created a `reader` that will hold the result of `csv.reader(file)`. The `csv.reader` function reads each row from the file, and in our code we store the results in `reader`. `print(row[1])`, therefore, will print the language from the `favorites.csv` file.
-    
+
+Notice that the `csv` library is imported. Further, we created a `reader` that will hold the result of `csv.reader(file)`. The `csv.reader` function reads each row from the file, and in our code we store the results in `reader`. `print(row[1])`, therefore, will print the language from the `favorites.csv` file.
+
 -   You can improve your code as follows:
-    
     ```python
     # Stores favorite in a variable
     
@@ -105,7 +119,6 @@ dependences: CS50
     ```
     
     Notice that `favorite` is stored and then printed. Also notice that we use the `next` function to skip to the next line of our reader.
-    
 -   Python also allows you to index by the keys of a list. Modify your code as follows:
     
     ```python
@@ -125,42 +138,42 @@ dependences: CS50
     ```
     
     Notice that this example directly utilizes the `language` key in the print statement.
-    
--   To count the number of favorite languages expressed in the `csv` file, we can do the following:
-    
-    ```python
-    # Counts favorites using variables
-    
-    import csv
-    
-    # Open CSV file
-    with open("favorites.csv", "r") as file:
-    
-        # Create DictReader
-        reader = csv.DictReader(file)
-    
-        # Counts
-        scratch, c, python = 0, 0, 0
-    
-        # Iterate over CSV file, counting favorites
-        for row in reader:
-            favorite = row["language"]
-            if favorite == "Scratch":
-                scratch += 1
-            elif favorite == "C":
-                c += 1
-            elif favorite == "Python":
-                python += 1
-    
-    # Print counts
-    print(f"Scratch: {scratch}")
-    print(f"C: {c}")
-    print(f"Python: {python}")
-    ```
-    
-    Notice that each language is counted using `if` statements.
-    
--   Python allows us to use a dictionary to count the `counts` of each language. Consider the following improvement upon our code:
+
+To count the number of favorite languages expressed in the `csv` file, we can do the following:
+
+```python
+# Counts favorites using variables
+
+import csv
+
+# Open CSV file
+with open("favorites.csv", "r") as file:
+
+	# Create DictReader
+	reader = csv.DictReader(file)
+
+	# Counts
+	scratch, c, python = 0, 0, 0
+
+	# Iterate over CSV file, counting favorites
+	for row in reader:
+		favorite = row["language"]
+		if favorite == "Scratch":
+			scratch += 1
+		elif favorite == "C":
+			c += 1
+		elif favorite == "Python":
+			python += 1
+
+# Print counts
+print(f"Scratch: {scratch}")
+print(f"C: {c}")
+print(f"Python: {python}")
+```
+
+Notice that each language is counted using `if` statements.
+
+-   Python allows us to **use a dictionary to count the `counts` of each language**. Consider the following improvement upon our code:
     
     ```python
     # Counts favorites using dictionary
@@ -222,71 +235,81 @@ dependences: CS50
     
     Notice the `sorted(counts)` at the bottom of the code.
     
--   If you look at the parameters for the `sorted` function in the Python documentation, you will find it has many built-in parameters. You can leverage some of these built-in parameters as follows:
-    
-    ```python
-    # Sorts favorites by value
-    
-    import csv
-    
-    # Open CSV file
-    with open("favorites.csv", "r") as file:
-    
-        # Create DictReader
-        reader = csv.DictReader(file)
-    
-        # Counts
-        counts = {}
-    
-        # Iterate over CSV file, counting favorites
-        for row in reader:
-            favorite = row["language"]
-            if favorite in counts:
-                counts[favorite] += 1
-            else:
-                counts[favorite] = 1
-    
-    def get_value(language):
-        return counts[language]
-    
-    # Print counts
-    for favorite in sorted(counts, key=get_value, reverse=True):
-        print(f"{favorite}: {counts[favorite]}")
-    ```
-    
-    Notice that a function called `get_value` is created, and that the function itself is passed in as an argument to the `sorted` function. The `key` argument allows you to tell Python the method you wish to use to sort items.
-    
--   Python has a unique ability that we have not seen to date: It allows for the utilization of _anonymous_ or `lambda` functions. These functions can be utilized when you want to not bother creating an entirely different function. Notice the following modification:
-    
-    ```python
-    # Sorts favorites by value using lambda function
-    
-    import csv
-    
-    # Open CSV file
-    with open("favorites.csv", "r") as file:
-    
-        # Create DictReader
-        reader = csv.DictReader(file)
-    
-        # Counts
-        counts = {}
-    
-        # Iterate over CSV file, counting favorites
-        for row in reader:
-            favorite = row["language"]
-            if favorite in counts:
-                counts[favorite] += 1
-            else:
-                counts[favorite] = 1
-    
-    # Print counts
-    for favorite in sorted(counts, key=lambda language: counts[language], reverse=True):
-        print(f"{favorite}: {counts[favorite]}")
-    ```
-    
-    Notice that the `get_value` function has been removed. Instead, `lambda language: counts[language]` does in one line what our previous two-line function did.
-    
+If you look at the parameters for the `sorted` function in the Python documentation, you will find it has many built-in parameters. You can leverage some of these built-in parameters as follows:
+
+```python
+# Sorts favorites by value
+
+import csv
+
+# Open CSV file
+with open("favorites.csv", "r") as file:
+
+	# Create DictReader
+	reader = csv.DictReader(file)
+
+	# Counts
+	counts = {}
+
+	# Iterate over CSV file, counting favorites
+	for row in reader:
+		favorite = row["language"]
+		if favorite in counts:
+			counts[favorite] += 1
+		else:
+			counts[favorite] = 1
+
+def get_value(language):
+	return counts[language]
+
+# Print counts
+for favorite in sorted(counts, key=get_value, reverse=True):
+	print(f"{favorite}: {counts[favorite]}")
+```
+
+When you use `key=get_value` in the `sorted` function, it means that the `get_value` function will be called for each element in the iterable (in this case, the `counts` dictionary) to determine the value by which the elements will be sorted.
+
+In your code, the `get_value` function takes a language as an argument and returns the count of that language from the `counts` dictionary. This means that when you call `sorted(counts, key=get_value, reverse=True)`, the `get_value` function will be called for each language in `counts` to determine the value for sorting. The `reverse=True` parameter ensures that the sorting is done in descending order.
+
+So, the resulting sorted list will contain the languages from the `counts` dictionary, sorted based on their count values in descending order. The `print` statement within the loop then displays each language along with its corresponding count.
+
+**The `key` argument allows you to tell Python the method you wish to use to sort items.
+
+Python has a unique ability that we have not seen to date: It allows for the utilization of _anonymous_ or `lambda` functions. These functions can be utilized when you want to not bother creating an entirely different function. Notice the following modification:
+ 
+```python
+# Sorts favorites by value using lambda function
+
+import csv
+
+# Open CSV file
+with open("favorites.csv", "r") as file:
+
+	# Create DictReader
+	reader = csv.DictReader(file)
+
+	# Counts
+	counts = {}
+
+	# Iterate over CSV file, counting favorites
+	for row in reader:
+		favorite = row["language"]
+		if favorite in counts:
+			counts[favorite] += 1
+		else:
+			counts[favorite] = 1
+
+# Print counts
+for favorite in sorted(counts, key=lambda language: counts[language], reverse=True):
+	print(f"{favorite}: {counts[favorite]}")
+```
+
+Notice that the `get_value` function has been removed. Instead:
+```python
+'''[...]''', lambda language: counts[language], '''[...]'''
+```
+It starts with the keyword, the argument and the return value.
+
 -   We can change the column we are examining, focusing on our favorite problem instead:
     
     ```python
@@ -317,7 +340,7 @@ dependences: CS50
     ```
     
     Notice that `problem` replaced `language`.
-    
+
 -   What if we wanted to allow users to provide input directly in the terminal? We can modify our code, leveraging our previous knowledge about user input:
     
     ```python
@@ -349,78 +372,105 @@ dependences: CS50
     ```
     
     Notice how compact our code is compared to our experience in C.
-    
+
 
 ## Relational Databases
 
 -   Google, Twitter, and Meta all use relational databases to store their information at scale.
--   Relational databases store data in rows and columns in structures called _tables_.
--   SQL allows for four types of commands:
-    
-    ```sql
-      Create
-      Read
-      Update
-      Delete
-    ```
-    
--   These four operations are affectionately called _CRUD_.
--   We can create a SQL database at the terminal by typing `sqlite3 favorites.db`. Upon being prompted, we will agree that we want to create `favorites.db` by pressing `y`.
--   You will notice a different prompt as we are now inside a program called `sqlite3`.
--   We can put `sqlite3` into `csv` mode by typing `.mode csv`. Then, we can import our data from our `csv` file by typing `.import favorites.csv favorites`. It seems that nothing has happened!
--   We can type `.schema` to see the structure of the database.
--   You can read items from a table using the syntax `SELECT columns FROM table`.
--   For example, you can type `SELECT * FROM favorites;` which will iterate every row in `favorites`.
--   You can get a subset of the data using the command `SELECT language FROM favorites;`.
--   SQL supports many commands to access data, including:
-    
-    ```sql
-      AVG
-      COUNT
-      DISTINCT
-      LOWER
-      MAX
-      MIN
-      UPPER
-    ```
-    
--   For example, you can type `SELECT COUNT(language) FROM favorites;`. Further, you can type `SELECT DISTINCT(language) FROM favorites;` to get a list of the individual languages within the database. You could even type `SELECT COUNT(DISTINCT(language)) FROM favorites;` to get a count of those.
-    
-    ```python
-    # Searches database popularity of a problem
-    
-    import csv
-    
-    from cs50 import SQL
-    
-    # Open database
-    db = SQL("sqlite:///favorites.db")
-    
-    # Prompt user for favorite
-    favorite = input("Favorite: ")
-    
-    # Search for title
-    rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
-    
-    # Get first (and only) row
-    row = rows[0]
-    
-    # Print popularity
-    print(row["COUNT(*)"])
-    ```
-    
--   SQL offers additional commands we can utilize in our queries:
-    
-    ```sql
-      WHERE       -- adding a Boolean expression to filter our data
-      LIKE        -- filtering responses more loosely
-      ORDER BY    -- ordering responses
-      LIMIT       -- limiting the number of responses
-      GROUP BY    -- grouping responses together
-    ```
-    
-    Notice that we use `--` to write a comment in SQL.
-    
+
+Relational databases store data in rows and columns in structures called _tables_. Sequel-Query-Language (SQL) allows for four types of commands:
+
+```sql
+  Create
+  Read
+  Update
+  Delete
+```
+
+These four operations are affectionately called _CRUD_, for convention, the SQL commands are all in uppercase.
+
+> We can create a SQL database at the terminal by typing `sqlite3 favorites.db`. Upon being prompted, we will agree that we want to create `favorites.db` by pressing `y`. You will notice a different prompt as we are now inside a program called `sqlite3`.
+>
+> We can put `sqlite3` into `csv` mode by typing `.mode csv`. Then, we can import our data from our `csv` file by typing `.import favorites.csv favorites`. It seems that nothing has happened!
+>
+ > We can type `.schema` to see the structure of the database.
+ >
+ > **`.command` is a `sqlite3` exclusive syntax.**
+
+You can read items from a table using the syntax 
+
+```sql
+SELECT columns FROM table;
+```
+
+For example, you can type
+
+```sql
+SELECT * FROM favorites;
+```
+
+This translates to "select all from ..." which will iterate every row in `favorites`. You can get a subset of the data using the command `SELECT language FROM favorites;`.
+
+**SQL supports many commands to access data, including:**
+
+```sql
+  AVG       -- average
+  COUNT     -- count
+  DISTINCT  -- different
+  LOWER     -- 
+  MAX       -- maximum
+  MIN       -- minimum
+  UPPER     -- 
+```
+> Notice that we use `--` to write a comment in SQL.
+
+For example, you can type `SELECT COUNT(language) FROM favorites;`. Further, you can type `SELECT DISTINCT(language) FROM favorites;` to get a list of the individual languages within the database.
+
+You could even type 
+```sql
+SELECT COUNT(DISTINCT(language)) FROM favorites;
+```
+to get a count of those. Even further, there's a possibility to use Alias:
+
+```sql
+SELECT COUNT(DISTINCT(language)) AS n FROM favorites;
+```
+
+Similarly these queries can be injected using Python, this time using `cs50` library's `execute()` command:
+
+```python
+# Searches database popularity of a problem
+
+import csv
+
+from cs50 import SQL
+
+# Open database
+db = SQL("sqlite:///favorites.db")
+
+# Prompt user for favorite
+favorite = input("Favorite: ")
+
+# Search for title
+rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
+
+# Get first (and only) row
+row = rows[0]
+
+# Print popularity
+print(row["COUNT(*)"])
+```
+
+SQL offers additional commands we can utilize in our queries:
+
+```sql
+  WHERE       -- adding a Boolean expression to filter our data
+  LIKE        -- filtering responses more loosely
+  ORDER BY    -- ordering responses
+  LIMIT       -- limiting the number of responses
+  GROUP BY    -- grouping responses together
+```
+
 -   For example, we can execute `SELECT COUNT(*) FROM favorites WHERE language = 'C';`. A count is presented.
 -   Further, we could type `SELECT COUNT(*) FROM favorites WHERE language = 'C' AND problem = 'Mario';`. Notice how the `AND` is utilized to narrow our results.
 -   Similarly, we could execute `SELECT language, COUNT(*) FROM favorites GROUP BY language;`. This would offer a temporary table that would show the language and count.
@@ -437,29 +487,30 @@ dependences: CS50
 -   IMDb offers a database of people, shows, writers, starts, genres, and ratings. Each of these tables is related to one another as follows:
     
     ![six boxes that represent various sql tables arrows are drawn to each showing their many relationships with one another](https://cs50.harvard.edu/x/2023/notes/7/cs50Week7Slide025.png "imdb relationships")
-    
+
 -   After downloading [`shows.db`](https://github.com/cs50/lectures/blob/2022/fall/7/src7/imdb/shows.db), you can execute `sqlite3 shows.db` in your terminal window.
 -   Upon executing `.schema` you will find not only each of the tables but the individual fields inside each of these fields.
 -   As you can see by the image above, `shows` has an `id` field. The `genres` table has a `show_id` field which has data that is common between it and the `shows` table.
 -   As you can see also in the image above, `show_id` exists in all of the tables. In the `shows` table, it is simply called `id`. This common field between all the fields is called a _key_. Primary keys are used to identify a unique record in a table. _Foreign keys_ are used to build relationships between tables by pointing to the primary key in another table.
 -   By storing data in a relational database, as above, data can be more efficiently stored.
--   In _sqlite_, we have five datatypes, including:
-    
-    ```sql
-      BLOB       -- binary large objects that are groups of ones and zeros
-      INTEGER    -- an integer
-      NUMERIC    -- for numbers that are formatted specially like dates
-      REAL       -- like a float
-      TEXT       -- for strings and the like
-    ```
-    
--   Additionally, columns can be set to add special constraints:
-    
-    ```sql
-      NOT NULL
-      UNIQUE
-    ```
-    
+
+In _sqlite_, we have five datatypes, including:
+
+```sql
+BLOB       -- binary large objects that are groups of ones and zeros
+INTEGER    -- an integer
+NUMERIC    -- for numbers that are formatted specially like dates
+REAL       -- like a float
+TEXT       -- for strings and the like
+```
+
+Additionally, columns can be set to add special constraints:
+
+```sql
+NOT NULL
+UNIQUE
+```
+
 -   To illustrate the relationship between these tables further, we could execute the following command: `SELECT * FROM people LIMIT 10;`. Examining the output, we could execute `SELECT * FROM shows LIMIT 10;`. Further, we could execute `SELECT * FROM stars LIMIT 10;`. `show_id` is a foreign key in this final query because `show_id` corresponds to the unique `id` field in `shows`. `person_id` corresponds to the unique `id` field in the `people` column.
 -   We can further play with this data to understand these relationships. Execute `SELECT * FROM genres;`. There are a lot of genres!
 -   We can further limit this data down by executing `SELECT * FROM genres WHERE genre = 'Comedy' LIMIT 10;`. From this query, you can see that there are 10 shows presented.
@@ -478,7 +529,7 @@ dependences: CS50
     ```
     
     Notice that this query nests together two queries. An inner query is used by an outer query.
-    
+
 -   We can refine further by executing
     
     ```sql
@@ -491,7 +542,7 @@ dependences: CS50
     )
     ORDER BY title LIMIT 10;
     ```
-    
+
 -   What if you wanted to find all shows in which Steve Carell stars? You could execute `SELECT * FROM people WHERE name = 'Steve Carell';` You would find his individual `id`. You could utilize this `id` to locate many `shows` in which he appears. However, this would be tedious to attempt this one by one. How could we next our queries to make this more streamlined? Consider the following:
     
     ```sql
@@ -501,7 +552,7 @@ dependences: CS50
     ```
     
     Notice that this lengthy query will result in a final result that is useful in discovering the answer to our question.
-    
+
 
 ## `JOIN`
 
@@ -700,12 +751,12 @@ In addition to this week’s lab and problem set, you’re welcome to try any of
 
 ## What to Do
 
-Be sure you have completed Lab 7 [#](https://cs50.harvard.edu/x/2023/psets/7/../../labs/7/) before beginning this problem set.
+Be sure you have completed [Lab 7](./lab7.md) [#](https://cs50.harvard.edu/x/2023/psets/7/../../labs/7/) before beginning this problem set.
 
 1.  Log into [code.cs50.io](https://code.cs50.io) using your GitHub account
 2.  Run `update50` in your codespace’s terminal window to ensure your codespace is up-to-date and, when prompted, click **Rebuild now**
-3.  Submit Movies [#](https://cs50.harvard.edu/x/2023/psets/7/movies/)
-4.  Submit Fiftyville [#](https://cs50.harvard.edu/x/2023/psets/7/fiftyville/)
+3.  Submit [Movies](./movies.md) [#](https://cs50.harvard.edu/x/2023/psets/7/movies/)
+4.  Submit [Fiftyville](./fiftyville.md) [#](https://cs50.harvard.edu/x/2023/psets/7/fiftyville/)
 
 ## Advice
 
