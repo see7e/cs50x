@@ -54,6 +54,14 @@ dependences: CS50
 - one/many to one/many
 - primary/foreign key, references
 - nest (queries)
+- join, on
+- implicit (join)
+- wildcard
+- indexes
+- race conditions
+- transaction
+- atomic
+- sanitize
 
 </details>
 
@@ -308,6 +316,7 @@ Notice that the `get_value` function has been removed. Instead:
 ```python
 '''[...]''', lambda language: counts[language], '''[...]'''
 ```
+
 It starts with the keyword, the argument and the return value.
 
 -   We can change the column we are examining, focusing on our favorite problem instead:
@@ -409,7 +418,7 @@ For example, you can type
 SELECT * FROM favorites;
 ```
 
-This translates to "select all from ..." which will iterate every row in `favorites`. You can get a subset of the data using the command `SELECT language FROM favorites;`.
+This translates to **"select all from ..."** which will iterate every row in `favorites`. You can get a subset of the data using the command `SELECT language FROM favorites;`.
 
 **SQL supports many commands to access data, including:**
 
@@ -518,9 +527,7 @@ UNIQUE
 -   We can further our query to be more efficient by executing
     
     ```sql
-    SELECT title
-    FROM shows
-    WHERE id IN (
+    SELECT title FROM shows WHERE id IN (
         SELECT show_id
         FROM genres
         WHERE genre = 'Comedy'
@@ -528,14 +535,12 @@ UNIQUE
     LIMIT 10;
     ```
     
-    Notice that this query nests together two queries. An inner query is used by an outer query.
+    Notice that this query nests together two queries. An inner query is used by an outer query. Furthermore the `id` and `show_id` are technically the same value.
 
 -   We can refine further by executing
     
     ```sql
-    SELECT title
-    FROM shows
-    WHERE id IN (
+    SELECT title FROM shows WHERE id IN (
         SELECT show_id
         FROM genres
         WHERE genre = 'Comedy'
@@ -559,16 +564,16 @@ UNIQUE
 -   Consider the following two tables:
     
     ![two boxes representing the shows and genres table with an arrow connecting id and show id](https://cs50.harvard.edu/x/2023/notes/7/cs50Week7Slide030.png "primary and foreign keys")
-    
--   How could we combine tables temporarily? Tables could be joined together using the `JOIN` command.
+
+How could we combine tables temporarily? Tables could be joined together using the `JOIN` command.
 -   Execute the following command:
     
     ```sql
     SELECT * FROM shows
-      JOIN ratings on shows.id = ratings.show_id
+      JOIN ratings ON shows.id = ratings.show_id
       WHERE title = 'The Office';
     ```
-    
+
 -   Now you can see all the shows that have been called _The Office_.
 -   You could similarly apply `JOIN` to our Steve Carell query above by executing the following:
     
@@ -580,7 +585,7 @@ UNIQUE
     ```
     
     Notice how each `JOIN` command tells us which columns are aligned to each which other columns.
-    
+
 -   This could be similarly implemented as follows:
     
     ```sql
@@ -591,115 +596,157 @@ UNIQUE
     ```
     
     Notice that this achieves the same results.
-    
+
 -   The wildcard `%` operator can be used to find all people whose names start with `Steve C` one could employ the syntax `SELECT * FROM people WHERE name LIKE 'Steve C%';`.
 
 ## Indexes
 
--   While relational databases have the ability to be more fast and more robust than utilizing a `CSV` file, data can be optimized within a table using _indexes_.
--   Indexes can be utilized to speed up our queries.
--   We can track the speed of our queries by executing `.timer on` in `sqlite3`.
+While relational databases have the ability to be more fast and more robust than utilizing a `CSV` file, data can be optimized within a table using _indexes_. Can be utilized to speed up our queries.
+
+We can track the speed of our queries by executing `.timer on` in `sqlite3`.
+
 -   To understand how indexes can speed up our queries, run the following: `SELECT * FROM shows WHERE title = 'The Office';` Notice the time that displays after the query executes.
--   Then, we can create an index with the syntax `CREATE INDEX title_index on shows (title);`. This tells `sqlite3` to create an index and perform some special under-the-hood optimization relating to this column `title`.
--   This will create a data structure called a _B Tree_, a data structure that looks similar to a binary tree. However, unlike a binary tree, there can be more than two child notes.
-    
-    ![one node at the top from which come four children and below that there are three children coming from one of the nodes and two from another two from another and three from another](https://cs50.harvard.edu/x/2023/notes/7/cs50Week7Slide039.png "b tree")
-    
+  
+  Then, we can create an index with the syntax `CREATE INDEX title_index on shows (title);`. This tells `sqlite3` to create an index and perform some special under-the-hood optimization relating to this column `title`.
+
+This will create a data structure called a _B Tree_, a data structure that looks similar to a binary tree. However, unlike a binary tree, there can be more than two child notes.
+
+![one node at the top from which come four children and below that there are three children coming from one of the nodes and two from another two from another and three from another](https://cs50.harvard.edu/x/2023/notes/7/cs50Week7Slide039.png "b tree")
+  
 -   Running the query `SELECT * FROM shows WHERE title = 'The Office';`, you will notice that the query runs much more quickly!
 -   Unfortunately, indexing all columns would result in utilizing more storage space. Therefore, there is a tradeoff for enhanced speed.
 
 ## Using SQL in Python
 
--   To assist in working with SQL in this course, the CS50 Library can be utilized as follows in your code:
-    
-    ```
-    from cs50 import SQL
-    ```
-    
--   Similar to previous uses of the CS50 Library, this library will assist with the complicated steps of utilizing SQL within your Python code.
--   You can read more about the CS50 Library’s SQL functionality in the [documentation](https://cs50.readthedocs.io/libraries/cs50/python/#cs50.SQL).
--   Recall where we last left off in `favorites.py`. Your code should appear as follows:
-    
-    ```python
-    # Favorite problem instead of favorite language
-    
-    import csv
-    
-    # Open CSV file
-    with open("favorites.csv", "r") as file:
-    
-        # Create DictReader
-        reader = csv.DictReader(file)
-    
-        # Counts
-        counts = {}
-    
-        # Iterate over CSV file, counting favorites
-        for row in reader:
-            favorite = row["problem"]
-            if favorite in counts:
-                counts[favorite] += 1
-            else:
-                counts[favorite] = 1
-    
-    # Print count
-    favorite = input("Favorite: ")
-    if favorite in counts:
-        print(f"{favorite}: {counts[favorite]}")
-    ```
-    
--   Modify your code as follows:
-    
-    ```python
-    # Searches database popularity of a problem
-    
-    import csv
-    
-    from cs50 import SQL
-    
-    # Open database
-    db = SQL("sqlite:///favorites.db")
-    
-    # Prompt user for favorite
-    favorite = input("Favorite: ")
-    
-    # Search for title
-    rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
-    
-    # Get first (and only) row
-    row = rows[0]
-    
-    # Print popularity
-    print(row["COUNT(*)"])
-    ```
-    
-    Notice that `db = SQL("sqlite:///favorites.db")` provide Python the location of the database file. Then, the line that begins with `rows` executes SQL commands utilizing `db.execute`. Indeed, this command passes the syntax within the quotation marks to the `db.execute` function. We can issue any SQL command using this syntax. Further, notice that `rows` is returned as a list of dictionaries. In this case, there is only one result, one row, returned to the rows list as a dictionary.
-    
+To assist in working with SQL in this course, the CS50 Library can be utilized as follows in your code:
+
+```python
+from cs50 import SQL
+```
+
+Similar to previous uses of the CS50 Library, this library will assist with the complicated steps of utilizing SQL within your Python code. You can read more about the CS50 Library’s SQL functionality in the [documentation](https://cs50.readthedocs.io/libraries/cs50/python/#cs50.SQL).
+
+Recall where we last left off in `favorites.py`. Your code should appear as follows:
+
+```python
+# Favorite problem instead of favorite language
+
+import csv
+
+# Open CSV file
+with open("favorites.csv", "r") as file:
+
+	# Create DictReader
+	reader = csv.DictReader(file)
+	
+	# Counts
+	counts = {}
+	
+	# Iterate over CSV file, counting favorites
+	for row in reader:
+		favorite = row["problem"]
+		if favorite in counts:
+			counts[favorite] += 1
+		else:
+			counts[favorite] = 1
+
+# Print count
+favorite = input("Favorite: ")
+if favorite in counts:
+	print(f"{favorite}: {counts[favorite]}")
+```
+
+Modify your code as follows:
+
+```python
+# Searches database popularity of a problem
+
+import csv
+from cs50 import SQL
+
+# Open database
+db = SQL("sqlite:///favorites.db")
+
+# Prompt user for favorite
+favorite = input("Favorite: ")
+
+# Search for title
+rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
+
+# Get first (and only) row
+row = rows[0]
+
+# Print popularity
+print(row["COUNT(*)"])
+```
+
+`db = SQL("sqlite:///favorites.db")` provide Python the location of the database file.
+Then, the line that begins with `rows` executes SQL commands utilizing `db.execute`. Indeed, this command passes the syntax within the quotation marks to the `db.execute` function. We can issue any SQL command using this syntax.
+Further, notice that `rows` is returned as a list of dictionaries. In this case, there is only one result, one row, returned to the rows list as a dictionary.
+
+An improvement could be to rename the column using and alias, use formatted strings to insert the user input and if want to retrieve only the first row:
+
+```python
+# Search for title
+rows = db.execute("SELECT COUNT(*) AS n FROM favorites WHERE problem LIKE ?", f"%{favorite}%)
+
+# Print popularity of the first row
+print(rows[0]["n"])
+```
 
 ## Race Conditions
 
--   Utilization of SQL can sometimes result in some problems.
--   You can imagine a case where multiple users could be accessing the same database and executing commands at the same time.
--   This could result in glitches where code is interrupted by other people’s actions. This could result in a loss of data.
--   Built-in SQL features such as `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK` help avoid some of these race condition problems.
+Utilization of SQL can sometimes result in some problems. You can imagine a case where multiple users could be accessing the same database and executing commands at the same time. This could result in glitches where code is interrupted by other people’s actions. This could result in a loss of data.
+
+Built-in SQL features such as `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK` help avoid some of these race condition problems.
+
+```python
+db.execute("BEGIN TRANSACTION")
+rows = db.execute("SELECT likes FROM posts WHERE id = ?", id)
+likes = rows[0]["likes"]
+db.execute("UPDATE posts SET like = ? WHERE id = ?, likes + 1, id")
+db.execute("COMMIT")
+```
 
 ## SQL Injection Attacks
 
--   Now, still considering the code above, you might be wondering what the `?` question marks do above. One of the problems that can arise in real-world applications of SQL is what is called an _injection attack_. An injection attack is where a malicious actor could input malicious SQL code.
+Now, still considering the code above, you might be wondering what the `?` question marks do above. One of the problems that can arise in real-world applications of SQL is what is called an _injection attack_. An injection attack is where a malicious actor could input malicious SQL code.
+
 -   For example, consider a login screen as follows:
-    
     ![harvard key login screen with username and password fields](https://cs50.harvard.edu/x/2023/notes/7/cs50Week7Slide051.png "harvard key login screen")
-    
--   Without the proper protections in our own code, a bad actor could run malicious code. Consider the following:
-    
-    ```python
-    rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
-    ```
-    
-    Notice that because the `?` is in place, validation can be run on `favorite` before it is blindly accepted by the query.
-    
--   You never want to utilize formatted strings in queries as above or blindly trust the user’s input.
--   Utilizing the CS50 Library, the library will _sanitize_ and remove any potentially malicious characters.
+
+Without the proper protections in our own code, i.e.:
+
+```python
+rows = db.execute(f"SELECT * FROM users WHERE username = {username} AND password = {password}")
+if rows:
+	# ...
+```
+
+A bad actor could run malicious code (e.g. `some_email@domain.com'--` or `...); ...'--'`) and behind the code, it actually:
+
+```python
+rows = db.execute(f"SELECT * FROM users WHERE username = 'some_email@domain.com'-- AND password = {password}")
+if rows:
+	# ...
+```
+
+And the query will look like:
+
+```sql
+SELECT * FROM users WHERE username = 'some_email@domain.com'-- AND password = {password}
+```
+
+Then consider the following:
+
+```python
+rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
+```
+
+Notice that because the `?` is in place, validation can be run on `favorite` before it is blindly accepted by the query.
+
+You never want to utilize formatted strings in queries as above or blindly trust the user’s input.
+Utilizing the CS50 Library, the library will _sanitize_ and remove any potentially malicious characters.
 
 ## Summing Up
 
@@ -708,7 +755,7 @@ In this lesson, you learned more syntax related to Python. Further, you learned 
 -   Flat-file databases
 -   Relational databases
 -   SQL
--   `JOIN`s
+-   `JOIN`'s
 -   Indexes
 -   Using SQL in Python
 -   Race conditions
@@ -720,7 +767,12 @@ See you next time!
 # Section 
 > [Transcript](./src/transcripts/section7.md)
 
-- xxxxxxxxx
+- Selecting
+- Ordering 
+- Limiting
+- Aggregating
+- Database Design
+- JOINs
 
 ---
 
@@ -741,7 +793,6 @@ In addition to this week’s lab and problem set, you’re welcome to try any of
 -   Hall of Prophecy [#](https://cs50.harvard.edu/x/2023/problems/7/prophecy/) for practice refactoring a database, using `CREATE`
 
 ## [Lab 7: Songs](./lab7.md)
-> Full code [here](./src/lab7.c)
 
 ## Problem Set 7
 

@@ -99,45 +99,57 @@ For each of the following problems, you should write a single SQL query that out
 You’re welcome to check your queries’ results against [IMDb](https://www.imdb.com/) itself, but realize that ratings on the website might differ from those in `movies.db`, as more votes might have been cast since we downloaded the data!
 
 1.  In `1.sql`, write a SQL query to list the titles of all movies released in 2008.
-    -   Your query should output a table with a single column for the title of each movie.
+>   Your query should output a table with a single column for the title of each movie.
+
 2.  In `2.sql`, write a SQL query to determine the birth year of Emma Stone.
-    -   Your query should output a table with a single column and a single row (not counting the header) containing Emma Stone’s birth year.
-    -   You may assume that there is only one person in the database with the name Emma Stone.
+>   Your query should output a table with a single column and a single row (not counting the header) containing Emma Stone’s birth year.
+>   You may assume that there is only one person in the database with the name Emma Stone.
+
 3.  In `3.sql`, write a SQL query to list the titles of all movies with a release date on or after 2018, in alphabetical order.
-    -   Your query should output a table with a single column for the title of each movie.
-    -   Movies released in 2018 should be included, as should movies with release dates in the future.
+>   Your query should output a table with a single column for the title of each movie.
+>   Movies released in 2018 should be included, as should movies with release dates in the future.
+
 4.  In `4.sql`, write a SQL query to determine the number of movies with an IMDb rating of 10.0.
-    -   Your query should output a table with a single column and a single row (not counting the header) containing the number of movies with a 10.0 rating.
+>   Your query should output a table with a single column and a single row (not counting the header) containing the number of movies with a 10.0 rating.
+
 5.  In `5.sql`, write a SQL query to list the titles and release years of all Harry Potter movies, in chronological order.
-    -   Your query should output a table with two columns, one for the title of each movie and one for the release year of each movie.
-    -   You may assume that the title of all Harry Potter movies will begin with the words “Harry Potter”, and that if a movie title begins with the words “Harry Potter”, it is a Harry Potter movie.
+>   Your query should output a table with two columns, one for the title of each movie and one for the release year of each movie.
+>   You may assume that the title of all Harry Potter movies will begin with the words “Harry Potter”, and that if a movie title begins with the words “Harry Potter”, it is a Harry Potter movie.
+
 6.  In `6.sql`, write a SQL query to determine the average rating of all movies released in 2012.
-    -   Your query should output a table with a single column and a single row (not counting the header) containing the average rating.
+>   Your query should output a table with a single column and a single row (not counting the header) containing the average rating.
+
 7.  In `7.sql`, write a SQL query to list all movies released in 2010 and their ratings, in descending order by rating. For movies with the same rating, order them alphabetically by title.
-    -   Your query should output a table with two columns, one for the title of each movie and one for the rating of each movie.
-    -   Movies that do not have ratings should not be included in the result.
+>   Your query should output a table with two columns, one for the title of each movie and one for the rating of each movie.
+>   Movies that do not have ratings should not be included in the result.
+
 8.  In `8.sql`, write a SQL query to list the names of all people who starred in Toy Story.
-    -   Your query should output a table with a single column for the name of each person.
-    -   You may assume that there is only one movie in the database with the title Toy Story.
+>   Your query should output a table with a single column for the name of each person.
+>   You may assume that there is only one movie in the database with the title Toy Story.
+
 9.  In `9.sql`, write a SQL query to list the names of all people who starred in a movie released in 2004, ordered by birth year.
-    -   Your query should output a table with a single column for the name of each person.
-    -   People with the same birth year may be listed in any order.
-    -   No need to worry about people who have no birth year listed, so long as those who do have a birth year are listed in order.
-    -   If a person appeared in more than one movie in 2004, they should only appear in your results once.
+>   Your query should output a table with a single column for the name of each person.
+>   People with the same birth year may be listed in any order.
+>   No need to worry about people who have no birth year listed, so long as those who do have a birth year are listed in order.
+>   If a person appeared in more than one movie in 2004, they should only appear in your results once.
+
 10.  In `10.sql`, write a SQL query to list the names of all people who have directed a movie that received a rating of at least 9.0.
-    -   Your query should output a table with a single column for the name of each person.
-    -   If a person directed more than one movie that received a rating of at least 9.0, they should only appear in your results once.
+>   Your query should output a table with a single column for the name of each person.
+>   If a person directed more than one movie that received a rating of at least 9.0, they should only appear in your results once.
+
 11.  In `11.sql`, write a SQL query to list the titles of the five highest rated movies (in order) that Chadwick Boseman starred in, starting with the highest rated.
-    -   Your query should output a table with a single column for the title of each movie.
-    -   You may assume that there is only one person in the database with the name Chadwick Boseman.
+>   Your query should output a table with a single column for the title of each movie.
+>   You may assume that there is only one person in the database with the name Chadwick Boseman.
+
 12.  In `12.sql`, write a SQL query to list the titles of all movies in which both Johnny Depp and Helena Bonham Carter starred.
-    -   Your query should output a table with a single column for the title of each movie.
-    -   You may assume that there is only one person in the database with the name Johnny Depp.
-    -   You may assume that there is only one person in the database with the name Helena Bonham Carter.
+>   Your query should output a table with a single column for the title of each movie.
+>   You may assume that there is only one person in the database with the name Johnny Depp.
+>   You may assume that there is only one person in the database with the name Helena Bonham Carter.
+
 13.  In `13.sql`, write a SQL query to list the names of all people who starred in a movie in which Kevin Bacon also starred.
-    -   Your query should output a table with a single column for the name of each person.
-    -   There may be multiple people named Kevin Bacon in the database. Be sure to only select the Kevin Bacon born in 1958.
-    -   Kevin Bacon himself should not be included in the resulting list.
+>   Your query should output a table with a single column for the name of each person.
+>   There may be multiple people named Kevin Bacon in the database. Be sure to only select the Kevin Bacon born in 1958.
+>   Kevin Bacon himself should not be included in the resulting list.
 
 
 ## Usage
@@ -169,19 +181,19 @@ While `check50` is available for this problem, you’re encouraged to instead te
 
 If you’re using the `movies.db` database provided in this problem set’s distribution, you should find that
 
--   Executing `1.sql` results in a table with 1 column and 10,050 rows.
--   Executing `2.sql` results in a table with 1 column and 1 row.
--   Executing `3.sql` results in a table with 1 column and 88,918 rows.
--   Executing `4.sql` results in a table with 1 column and 1 row.
--   Executing `5.sql` results in a table with 2 columns and 12 rows.
--   Executing `6.sql` results in a table with 1 column and 1 row.
--   Executing `7.sql` results in a table with 2 columns and 7,085 rows.
--   Executing `8.sql` results in a table with 1 column and 4 rows.
--   Executing `9.sql` results in a table with 1 column and 18,946 rows.
--   Executing `10.sql` results in a table with 1 column and 3,392 rows.
--   Executing `11.sql` results in a table with 1 column and 5 rows.
--   Executing `12.sql` results in a table with 1 column and 7 rows.
--   Executing `13.sql` results in a table with 1 column and 182 rows.
+> -   Executing `1.sql` results in a table with 1 column and 10,050 rows.
+> -   Executing `2.sql` results in a table with 1 column and 1 row.
+> -   Executing `3.sql` results in a table with 1 column and 88,918 rows.
+> -   Executing `4.sql` results in a table with 1 column and 1 row.
+> -   Executing `5.sql` results in a table with 2 columns and 12 rows.
+> -   Executing `6.sql` results in a table with 1 column and 1 row.
+> -   Executing `7.sql` results in a table with 2 columns and 7,085 rows.
+> -   Executing `8.sql` results in a table with 1 column and 4 rows.
+> -   Executing `9.sql` results in a table with 1 column and 18,946 rows.
+> -   Executing `10.sql` results in a table with 1 column and 3,392 rows.
+> -   Executing `11.sql` results in a table with 1 column and 5 rows.
+> -   Executing `12.sql` results in a table with 1 column and 7 rows.
+> -   Executing `13.sql` results in a table with 1 column and 182 rows.
 
 Note that row counts do not include header rows that only show column names.
 
@@ -203,12 +215,181 @@ submit50 cs50/problems/2023/x/movies
 
 ## Acknowledgements
 
-Information courtesy of IMDb ([imdb.com](https://www.imdb.com)). Used with permissio
+Information courtesy of IMDb ([imdb.com](https://www.imdb.com)). Used with permission.
 
 ---
 
 # Walkthrough
 > Full code [here](./src/)
+
+Executing `.schema` gives:
+
+```sql
+sqlite> .schema
+CREATE TABLE movies (
+                    id INTEGER,
+                    title TEXT NOT NULL,
+                    year NUMERIC,
+                    PRIMARY KEY(id)
+                );
+CREATE TABLE stars (
+                movie_id INTEGER NOT NULL,
+                person_id INTEGER NOT NULL,
+                FOREIGN KEY(movie_id) REFERENCES movies(id),
+                FOREIGN KEY(person_id) REFERENCES people(id)
+            );
+CREATE TABLE directors (
+                movie_id INTEGER NOT NULL,
+                person_id INTEGER NOT NULL,
+                FOREIGN KEY(movie_id) REFERENCES movies(id),
+                FOREIGN KEY(person_id) REFERENCES people(id)
+            );
+CREATE TABLE ratings (
+                movie_id INTEGER NOT NULL,
+                rating REAL NOT NULL,
+                votes INTEGER NOT NULL,
+                FOREIGN KEY(movie_id) REFERENCES movies(id)
+            );
+CREATE TABLE people (
+                id INTEGER,
+                name TEXT NOT NULL,
+                birth NUMERIC,
+                PRIMARY KEY(id)
+            );
+```
+
+Same as Lab 7 here are the queries:
+
+1. `SELECT title FROM movies WHERE year LIKE 2008;`
+	```sql
+	sqlite> SELECT COUNT(title) FROM movies WHERE year LIKE 2008;
+    /*
+    +--------------+
+    | COUNT(title) |
+    +--------------+
+    | 10050        |
+    +--------------+*/
+    ```
+2. `SELECT birth FROM people WHERE name LIKE 'Emma Stone';`
+3. `SELECT title FROM movies WHERE year >= 2018 ORDER BY title  ASC;`
+4. `SELECT COUNT(movie_id) FROM ratings WHERE rating = 10;`
+5. `SELECT title, year FROM movies WHERE title LIKE 'Harry Potter%' ORDER BY year ASC;`
+6. `SELECT AVG(rating) FROM ratings WHERE movie_id IN (SELECT id FROM movies WHERE year = 2012);`
+7. 
+    ```sql
+    sqlite> SELECT title, rating FROM movies
+    ...> JOIN ratings ON movies.id = ratings.movie_id
+    ...> WHERE movies.year = 2010
+    ...> ORDER BY rating DESC, title;
+    /*
+    +--------------------------------------------------------+--------+
+    |                         title                          | rating |
+    +--------------------------------------------------------+--------+
+    | Amaren ideia                                           | 9.8    |
+    | The American Buffalo                                   | 9.8    |
+    | The Great Mystery                                      | 9.8    |
+    | ...                                                    | ...    |
+    +--------------------------------------------------------+--------+*/
+    ```
+
+8. 
+    ```sql
+    sqlite> SELECT name FROM people
+    ...> WHERE id IN (
+    ...>     SELECT person_id FROM stars
+    ...>     WHERE movie_id IN (
+    ...>         SELECT id FROM movies
+    ...>         WHERE title LIKE 'Toy Story'
+    ...>     )
+    ...> );
+    /*
+    +-------------+
+    |    name     |
+    +-------------+
+    | Tom Hanks   |
+    | Tim Allen   |
+    | Jim Varney  |
+    | Don Rickles |
+    +-------------+*/
+    ```
+
+9. 
+    ```sql
+    SELECT  name FROM people
+    WHERE id IN (
+        SELECT person_id FROM stars
+        WHERE movie_id IN (
+            SELECT id FROM movies
+            WHERE year = 2004
+        )
+    )
+    ORDER BY birth;
+    ```
+
+10. It gets timed out.
+    ```sql
+    SELECT name FROM people
+    WHERE id IN (
+        SELECT person_id FROM directors
+        WHERE movie_id IN (
+            SELECT id FROM ratings
+            WHERE rating >= 9.0
+        )
+    );
+    ```
+
+11. 
+    ```sql
+    sqlite> SELECT title FROM movies
+    ...> JOIN ratings ON movies.id = ratings.movie_id
+    ...> JOIN stars ON movies.id = stars.movie_id
+    ...> JOIN people ON stars.person_id = people.id
+    ...> WHERE people.name = 'Chadwick Boseman'
+    ...> ORDER BY ratings.rating DESC
+    ...> LIMIT 5;
+    /*
+    +--------------------------+
+    |          title           |
+    +--------------------------+
+    | 42                       |
+    | Black Panther            |
+    | Marshall                 |
+    | Ma Rainey's Black Bottom |
+    | Get on Up                |
+    +--------------------------+*/
+    ```
+
+12. 
+    ```sql
+    sqlite> SELECT title FROM movies
+    ...> JOIN stars AS s1 ON movies.id = s1.movie_id
+    ...> JOIN stars AS s2 ON movies.id = s2.movie_id
+    ...> JOIN people AS p1 ON s1.person_id = p1.id
+    ...> JOIN people AS p2 ON s2.person_id = p2.id
+    ...> WHERE p1.name = 'Johnny Depp' AND p2.name = 'Helena Bonham Carter';
+    /*
+    +------------------------------------------------+
+    |                     title                      |
+    +------------------------------------------------+
+    | Corpse Bride                                   |
+    | Charlie and the Chocolate Factory              |
+    | Sweeney Todd: The Demon Barber of Fleet Street |
+    | Alice in Wonderland                            |
+    | Dark Shadows                                   |
+    | Johnny's Inferno                               |
+    | Alice Through the Looking Glass                |
+    +------------------------------------------------+*/
+    ```
+
+13. Not good, don't kwon why returned 'Kevin Bacon'
+    ```sql
+    SELECT DISTINCT p.name FROM people AS p
+    JOIN stars AS s1 ON p.id = s1.person_id
+    JOIN movies AS m1 ON s1.movie_id = m1.id
+    JOIN stars AS s2 ON m1.id = s2.movie_id
+    JOIN people AS p2 ON s2.person_id = p2.id
+    WHERE p2.name = 'Kevin Bacon';
+    ```
 
 ## Result
 
@@ -219,11 +400,59 @@ Information courtesy of IMDb ([imdb.com](https://www.imdb.com)). Used with permi
 ## Log Trace 
 
 ```bash
-
+movies/ $ check50 cs50/problems/2023/x/movies
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Uploading......
+Waiting for results.......................
+Results for cs50/problems/2023/x/movies generated by check50 v3.3.7
+:) SQL files exists
+:) 1.sql produces correct result
+:) 2.sql produces correct result
+:) 3.sql produces correct result
+:) 4.sql produces correct result
+:) 5.sql produces correct result
+:) 6.sql produces correct result
+:) 7.sql produces correct result
+:) 8.sql produces correct result
+:) 9.sql produces correct result
+:( 10.sql produces correct result
+    Query did not return results
+:) 11.sql produces correct result
+:) 12.sql produces correct result
+:( 13.sql produces correct result
+    expected "Tom Hanks\nBil...", not "Kevin Bacon\nT..."
+To see the results in your browser go to https://submit.cs50.io/check50/
 ```
 
 ## Submitted
 
 ```bash
-
+movies/ $ submit50 cs50/problems/2023/x/movies
+Connecting......
+Authenticating...
+Verifying......
+Preparing.....
+Files that will be submitted:
+./3.sql
+./10.sql
+./11.sql
+./7.sql
+./1.sql
+./8.sql
+./2.sql
+./5.sql
+./9.sql
+./4.sql
+./12.sql
+./6.sql
+./13.sql
+Files that won't be submitted:
+./LICENSE
+./movies.db
+Keeping in mind the course's policy on academic honesty, are you sure you want to submit these files (yes/no)? yes
+Uploading......
+Go to https://submit.cs50.io/users/see7e/cs50/problems/2023/x/movies to see your results.
 ```
