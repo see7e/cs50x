@@ -62,7 +62,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course Progress  ![Progress](https://geps.dev/progress/63)
+# Course Progress  ![Progress](https://geps.dev/progress/72)
 > To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
 ## Week 0
@@ -151,9 +151,12 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ## Week 8
 
-| CS50x 2023 😀               |                       | Done? |
-| --------------------------- | --------------------- | ----- |
-| [Week 8](./week8/README.md) | `HTML`, `CSS`, `JavaScript` | :x:   |
+| CS50x 2023 😀               |                                                              | Done? |
+| --------------------------- | ------------------------------------------------------------ | ----- |
+| [Week 8](./week8/README.md) | `HTML`, `CSS`, `JavaScript`                                  | :x:   |
+| -                           | `HTML`, `CSS`, `JavaScript` Practice Problems 8              | :x:   |
+| -                           | `HTML`, `CSS`, `JavaScript` [Lab 8: Trivia](./week8/lab8.md) | :x:   |
+| -                           | `HTML`, `CSS`, `JavaScript` [Homepage](./week8/homepage.md)  | :x:   |
 
 ## Week 9
 
