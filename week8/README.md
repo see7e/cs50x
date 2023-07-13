@@ -2,7 +2,7 @@
 title: CS50 - Week 8
 tags: programação, cs50
 use: Documentation
-languages: C
+languages: HTML, CSS, JS
 dependences: CS50
 ---
 
@@ -11,37 +11,37 @@ dependences: CS50
 <details> <summary>Table of Contents</summary>
 
 - [Lecture 8](#lecture-8)
-  - [Welcome! #](#welcome-)
-  - [Routers](#routers)
-  - [DNS](#dns)
-  - [HTTP](#http)
-  - [HTML](#html)
-    - [Structure](#structure)
-    - [Paragraphs](#paragraphs)
-    - [Headers](#headers)
-    - [Lists / Tables](#lists--tables)
-    - [Images / Videos](#images--videos)
-    - [Links](#links)
-    - [The Head - Meta](#the-head---meta)
-  - [CSS](#css)
-  - [Frameworks](#frameworks)
-  - [JavaScript](#javascript)
-  - [Summing Up](#summing-up)
+	- [Welcome! #](#welcome-)
+	- [Routers](#routers)
+	- [DNS](#dns)
+	- [HTTP](#http)
+	- [HTML](#html)
+		- [Structure](#structure)
+		- [Paragraphs](#paragraphs)
+		- [Headers](#headers)
+		- [Lists / Tables](#lists--tables)
+		- [Images / Videos](#images--videos)
+		- [Links](#links)
+		- [The Head - Meta](#the-head---meta)
+	- [CSS](#css)
+	- [Frameworks](#frameworks)
+	- [JavaScript](#javascript)
+	- [Summing Up](#summing-up)
 - [Section](#section)
 - [Shorts](#shorts)
-  - [Internet Primer](#internet-primer)
-  - [IP](#ip)
-  - [TCP](#tcp)
-  - [HTTP](#http-1)
-  - [HTML](#html-1)
-  - [CSS](#css-1)
-  - [JavaScript](#javascript-1)
-  - [DOM](#dom)
+	- [Internet Primer](#internet-primer)
+	- [IP](#ip)
+	- [TCP](#tcp)
+	- [HTTP](#http-1)
+	- [HTML](#html-1)
+	- [CSS](#css-1)
+	- [JavaScript](#javascript-1)
+	- [DOM](#dom)
 - [Exercises](#exercises)
-  - [Practice Problems](#practice-problems)
-  - [Lab 8: Trivia](#lab-8-trivia)
-  - [Problem Set 8](#problem-set-8)
-  - [What to Do](#what-to-do)
+	- [Practice Problems](#practice-problems)
+	- [Lab 8: Trivia](#lab-8-trivia)
+	- [Problem Set 8](#problem-set-8)
+	- [What to Do](#what-to-do)
 
 </details>
 

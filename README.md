@@ -160,9 +160,12 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ## Week 9
 
-| CS50x 2023 😀               |       | Done? |
-| --------------------------- | ----- | ----- |
-| [Week 9](./week9/README.md) | `Flask` | :x:   |
+| CS50x 2023 😀               |                                              | Done? |
+| --------------------------- | -------------------------------------------- | ----- |
+| [Week 9](./week9/README.md) | `Flask`                                      | :x:   |
+| -                           | `Flask` Practice Problems 9                  | :x:   |
+| -                           | `Flask` [Lab 9 - Birthdays](./week9/lab9.md) | :x:   |
+| -                           | `Flask` [Finance](./week9/finance.md)        | :x:   |
 
 ## Week 10
 
