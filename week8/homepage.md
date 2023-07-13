@@ -20,7 +20,6 @@ dependences: CS50
   - [How to Submit](#how-to-submit)
 - [Walkthrough](#walkthrough)
   - [Result](#result)
-  - [Log Trace](#log-trace)
   - [Submitted](#submitted)
 
 </details>
@@ -107,9 +106,9 @@ Create a simple homepage that introduces yourself, your favorite hobby or extrac
 
 Implement in your `homepage` directory a website that must:
 
--   Contain at least four different `.html` pages, at least one of which is `index.html` (the main page of your website), and it should be possible to get from any page on your website to any other page by following one or more hyperlinks.
--   Use at least ten (10) distinct HTML tags besides `<html>`, `<head>`, `<body>`, and `<title>`. Using some tag (e.g., `<p>`) multiple times still counts as just one (1) of those ten!
--   Integrate one or more features from Bootstrap into your site. Bootstrap is a popular library (that comes with lots of CSS classes and more) via which you can beautify your site. See [Bootstrap’s documentation](https://getbootstrap.com/docs/5.2/) to get started. In particular, you might find some of [Bootstrap’s components](https://getbootstrap.com/docs/5.2/components/) of interest. To add Bootstrap to your site, it suffices to include
+- [x]  Contain at least four different `.html` pages, at least one of which is `index.html` (the main page of your website), and it should be possible to get from any page on your website to any other page by following one or more hyperlinks.
+- [x]  Use at least ten (10) distinct HTML tags besides `<html>`, `<head>`, `<body>`, and `<title>`. Using some tag (e.g., `<p>`) multiple times still counts as just one (1) of those ten!
+- [x]  Integrate one or more features from Bootstrap into your site. Bootstrap is a popular library (that comes with lots of CSS classes and more) via which you can beautify your site. See [Bootstrap’s documentation](https://getbootstrap.com/docs/5.2/) to get started. In particular, you might find some of [Bootstrap’s components](https://getbootstrap.com/docs/5.2/components/) of interest. To add Bootstrap to your site, it suffices to include
     
     ```html
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -125,9 +124,9 @@ Implement in your `homepage` directory a website that must:
     
     to link your own CSS.
     
--   Have at least one stylesheet file of your own creation, `styles.css`, which uses at least five (5) different CSS selectors (e.g. tag (`example`), class (`.example`), or ID (`#example`)), and within which you use a total of at least five (5) different CSS properties, such as `font-size`, or `margin`; and
--   Integrate one or more features of JavaScript into your site to make your site more interactive. For example, you can use JavaScript to add alerts, to have an effect at a recurring interval, or to add interactivity to buttons, dropdowns, or forms. Feel free to be creative!
--   Ensure that your site looks nice on browsers both on mobile devices as well as laptops and desktops.
+- [x]  Have at least one stylesheet file of your own creation, `styles.css`, which uses at least five (5) different CSS selectors (e.g. tag (`example`), class (`.example`), or ID (`#example`)), and within which you use a total of at least five (5) different CSS properties, such as `font-size`, or `margin`; and
+- [x]  Integrate one or more features of JavaScript into your site to make your site more interactive. For example, you can use JavaScript to add alerts, to have an effect at a recurring interval, or to add interactivity to buttons, dropdowns, or forms. Feel free to be creative!
+- [x]  Ensure that your site looks nice on browsers both on mobile devices as well as laptops and desktops.
 
 ## Testing
 
@@ -176,22 +175,72 @@ submit50 cs50/problems/2023/x/homepage
 ---
 
 # Walkthrough
-> Full code [here](./src/)
+> HomePage Index [here](./src/homepage/index.html)
 
+As you know, I'm a bit lasy, so the sites reflect the exercises of this week.
+
+- HomePage index
+- RadioShack Redo
+- Trivia!
+
+I've used some concepts of the Lecture and the Lab, to build the same Navbar Header, to keep a pattern style that links all of the pages as requested.
 ## Result
 
 ```bash
+Index of /
+(drwxr-xr-x)	13-jul.-2023 14:53		radio1996/
+(drwxr-xr-x)	13-jul.-2023 14:53		radio1997/
+(drwxr-xr-x)	13-jul.-2023 14:53		radiotoday/
+(-rw-r--r--)	13-jul.-2023 14:53	7.3k	index.html
+(-rw-r--r--)	13-jul.-2023 14:53	2.6k	styles.css
+(-rw-r--r--)	13-jul.-2023 14:53	6.9k	trivia.html
 
-```
-
-## Log Trace 
-
-```bash
-
+Node.js v20.3.1/ http-server server running @ localhost
 ```
 
 ## Submitted
 
 ```bash
-
+homepage/ $ submit50 cs50/problems/2023/x/homepage
+Connecting.........
+Authenticating...
+Verifying........
+Preparing.....
+Files that will be submitted:
+./index.html
+./radio1997/src/steve_logo.gif
+./radio1997/src/wall.gif
+./radio1997/src/storelocator_logo.gif
+./radio1997/src/2_dots.gif
+./radio1997/src/family_radio.gif
+./radio1997/src/srevices_logo.gif
+./radio1997/src/dth_sat.gif
+./radio1997/src/anmclr.gif
+./radio1997/src/cellular.gif
+./radio1997/src/img_40f7b7a4.gif
+./radio1997/src/75.gif
+./radio1996/src/big_rgrey1.gif
+./styles.css
+./radio1997/src/dot_clear.gif
+./radio1997/index.html
+./radio1997/src/about_logo.gif
+./radio1997/src/computer.gif
+./radio1996/src/mclogo.gif
+./trivia.html
+./radiotoday/src/radioshack-logo.png
+./radio1996/src/rsfetur2.gif
+./radio1997/src/you_got.gif
+./radiotoday/index.html
+./radio1997/src/1_dots.gif
+./radio1997/src/repair_logo.gif
+./radio1996/index.html
+./radio1997/src/support_logo.gif
+./radio1997/src/red_ball_2.gif
+./radio1997/src/sun.jpeg
+./radio1997/src/radioshack.gif
+./radio1996/src/longall.gif
+./radio1997/src/new_Sizz.gif
+Keeping in mind the course's policy on academic honesty, are you sure you want to submit these files (yes/no)? yes
+Uploading.......
+Go to https://submit.cs50.io/users/see7e/cs50/problems/2023/x/homepage to see your results.
 ```
