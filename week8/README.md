@@ -768,7 +768,7 @@ The `integrity=""` and `crossorigin=""` refers to the connection type to the ser
 
 ## JavaScript
 
-> **Warning**
+> [!IMPORTANT]  
 > This course utilizes Bootstrap and some [JQuery](https://jquery.com/) functions. Is important to know that since `v5.0` of Bootstrap, [JQuery dependencies were dropped](https://getbootstrap.com/docs/5.3/migration/#javascript).
 
 JavaScript is another programming language that allows for interactivity within web pages.
