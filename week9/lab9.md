@@ -18,7 +18,6 @@ dependences: CS50
     - [Testing](#testing)
   - [How to Submit](#how-to-submit)
 - [Walkthrough](#walkthrough)
-  - [Result](#result)
   - [Log Trace](#log-trace)
   - [Submitted](#submitted)
 
@@ -94,6 +93,7 @@ app.py  birthdays.db  static/  templates/
 
 If you run into any trouble, follow these same steps again and see if you can determine where you went wrong!
 
+
 ## Understanding
 
 In `app.py`, you’ll find the start of a Flask web application. The application has one route (`/`) that accepts both `POST` requests (after the `if`) and `GET` requests (after the `else`). Currently, when the `/` route is requested via `GET`, the `index.html` template is rendered. When the `/` route is requested via `POST`, the user is redirected back to `/` via `GET`.
@@ -147,22 +147,103 @@ submit50 cs50/labs/2023/x/birthdays
 ---
 
 # Walkthrough
-> Full code [here](./src/)
+> HTML code [here](./src/birthdays/templates/index.html)
+> Python code [here](./src/birthdays/app.py)
 
-## Result
+In `index.html`, tree simple inputs for the Name, Month and Day, and another one for the form submission. Could have used Jinja for construction but isn't effective for only three elements.
 
-```bash
-
+```html
+<h2>Add a Birthday</h2>
+<!-- TODO: Create a form for users to submit a name, a month, and a day -->
+<form action="/" method="post">
+    <input type="text" id="name" name="name" placeholder="Name" required>
+    <input type="text" id="month" name="month" placeholder="Month" required>
+    <input type="text" id="day" name="day" placeholder="Day" required>
+    <input type="submit" value="Add Birthday">
+</form>
 ```
+
+Contrary to the previous situation, for the presentation of the information in the Database file, I've used a loop to add in each row the values returned by the query.
+
+```html
+<tbody>
+    <!-- Loop through the database entries to display them in this table -->
+    {% for birthday in birthdays %}
+    <tr>
+        <td>{{ birthday.name }}</td>
+        <td>{{ birthday.month }}/{{ birthday.day }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+```
+
+Behind the scenes, in `app.py`. To add the user's entry into the database, used `execute("query...")` with the values retrieved using `form.get(...)` of the requisition.
+
+Further, if the request is the default `GET`, just send the `birthday` dictionary to the Jinja.
+
+```python
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        # Get the user's entry from the form
+        name = request.form.get("name")
+        month = request.form.get("month")
+        day = request.form.get("day")
+
+        # TODO: Add the user's entry into the database
+        db.execute("INSERT INTO birthdays (name, month, day) VALUES (?, ?, ?)", name, month, day)
+
+        return redirect("/")
+
+    else:
+        # TODO: Display the entries in the database on index.html
+        birthdays = db.execute("SELECT * FROM birthdays")
+        return render_template("index.html", birthdays=birthdays)
+```
+
 
 ## Log Trace 
 
-```bash
+Returned the expected HTTP request values, **200 OK** for `GET` and **302 Found** for `POST` redirecting back to `index.html`.
 
+```bash
+birthdays/ $ flask run
+ * Debug mode: off
+INFO: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on https://see7e-glowing-broccoli-q76xqwx64xwhx7rq-5000.preview.app.github.dev
+INFO: Press CTRL+C to quit
+INFO:  * Restarting with stat
+INFO: SELECT * FROM birthdays
+INFO: 127.0.0.1 - - [21/Jul/2023 14:45:59] "GET / HTTP/1.1" 200 -
+INFO: 127.0.0.1 - - [21/Jul/2023 14:45:59] "GET /static/styles.css HTTP/1.1" 200 -
+INFO: INSERT INTO birthdays (name, month, day) VALUES ('Keeper', '9', '1')
+INFO: 127.0.0.1 - - [21/Jul/2023 14:49:09] "POST / HTTP/1.1" 302 -
+INFO: SELECT * FROM birthdays
+INFO: 127.0.0.1 - - [21/Jul/2023 14:49:09] "GET / HTTP/1.1" 200 -
+INFO: 127.0.0.1 - - [21/Jul/2023 14:49:09] "GET /static/styles.css HTTP/1.1" 200 -
 ```
+
 
 ## Submitted
 
-```bash
+	# check50
+	## cs50/labs/2023/x/birthdays
+	---
+	### :) Birthdays
 
+```bash
+birthdays/ $ submit50 cs50/labs/2023/x/birthdays
+Connecting.......
+Authenticating...
+Verifying........
+Preparing.....
+Files that will be submitted:
+./static/styles.css
+./app.py
+./birthdays.db
+./templates/index.html
+Keeping in mind the course's policy on academic honesty, are you sure you want to submit these files (yes/no)? yes
+Uploading.......
+Go to https://submit.cs50.io/users/see7e/cs50/labs/2023/x/birthdays to see your results.
+birthdays/ $ 
 ```

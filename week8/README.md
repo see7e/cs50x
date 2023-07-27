@@ -968,9 +968,16 @@ See you next time!
 > [Transcript](./src/transcripts/section8.md)
 
 - HTTP
+	Are the rules that define how the computers should interact within the internet. 
+
 - HTML
-- css
+	Is the structure that translates to the type of the page itself, is constructed as a Tree (DOM), where the document have the different elements. 
+
+- CSS
+	Represents the styles that could be applied to each element of the document. Works with a cascade principle, using inheritance as the tree of the DOM.
+
 - JavaScript
+	Actual programming language, that manipulates the DOM tree and do some fun stuff.
 
 ---
 
