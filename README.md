@@ -158,6 +158,12 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 | -                           | `HTML`, `CSS`, `JavaScript` [Lab 8: Trivia](./week8/lab8.md)              | ✅    |
 | -                           | `HTML`, `CSS`, `JavaScript` [Homepage](./week8/homepage.md)               | ✅    |
 
+## Plus
+
+| CS50x 2023 😀            |               | Done? |
+| ------------------------ | ------------- | ----- |
+| [Plus](./plus/README.md) | Cybersecurity | :x:   |
+
 ## Week 9
 
 | CS50x 2023 😀               |                                              | Done? |
@@ -177,13 +183,8 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀                      |               | Done? |
 | ---------------------------------- | ------------- | ----- |
-| [Final Project](./final/README.md) | Final Project | :x:   |
+| [Final Project](./p-final/README.md) | Final Project | :x:   |
 
-## Plus
-
-| CS50x 2023 😀            |               | Done? |
-| ------------------------ | ------------- | ----- |
-| [Plus](./plus/README.md) | Cybersecurity | :x:   |
 
 ---
 

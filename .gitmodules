@@ -1,3 +1,3 @@
-[submodule "final"]
-	path = final
-	url = https://github.com/see7e/WealthWave/tree/main
+[submodule "p-final"]
+	path = p-final
+	url = https://github.com/see7e/WealthWave
