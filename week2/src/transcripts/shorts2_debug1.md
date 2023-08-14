@@ -1,6 +1,6 @@
 ---
 title: SHORST2 - DEBUGGIN1 - TRANSCRIPT
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Transcript
 languages: NULL
 dependences: CS50

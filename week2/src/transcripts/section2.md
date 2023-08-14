@@ -1,6 +1,6 @@
 ---
 title: SECTION2 - TRANSCRIPT
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Transcript
 languages: NULL
 dependences: CS50
@@ -118,7 +118,7 @@ Maybe at the top of our file, what's the first thing we would do here? Can I ask
 
 AUDIENCE: You would have to include from the one, the packages, like, from like CS50 and ST-- I forgot it. 
 
-CARTER ZENKE: Yeah, yeah. You're totally right. So we want to make sure we include some libraries or some packages perhaps in our program because we actually use those functions in our program. So we might first include the CS50 library by #include CS50.h. And we might also want to include the standard I/O library. The first standard input and output, meaning some functions we can use to get user input and then print something out to the screen here. 
+CARTER ZENKE: Yeah, yeah. You're totally right. So we want to make sure we include some libraries or some packages perhaps in our program because we actually use those functions in our program. So we might first include the CS50 library by include CS50.h. And we might also want to include the standard I/O library. The first standard input and output, meaning some functions we can use to get user input and then print something out to the screen here. 
 
 And then what else would we need, kind of template here? What kind of function is going to be the core part of our program here? How would we do that? Could I ask McKenna? 
 

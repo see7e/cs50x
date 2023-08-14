@@ -1,10 +1,12 @@
 ---
 title: CS50 - Introduction
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: NULL
 dependences: NULL
 ---
+
+[![communities](https://img.shields.io/badge/communities--red.svg)](https://cs50.harvard.edu/x/communities)
 
 # CS50 - Introduction to Computer Science
 
@@ -14,7 +16,7 @@ This material is distributed by `Harvard © 2023 edX LLC`. It was copied durin
 
 	Much awaits you, so here's how to begin!
 
-First join some of CS50's [communities](https://cs50.harvard.edu/x/communities), so that you can reach out to classmates and staff with questions:
+<details> <summary>First join some of CS50's communities, so that you can reach out to classmates and staff with questions:</summary>
 
 1.  If you're the YouTube type:
     -   subscribe to CS50's channel at [youtube.com/cs50](http://www.youtube.com/subscription_center?add_user=cs50tv)
@@ -39,6 +41,8 @@ First join some of CS50's [communities](https://cs50.harvard.edu/x/communities),
 8.  If you're the Snapchat type:
     -   add [cs50](https://www.snapchat.com/add/cs50)
 
+</details>
+
 After that, watch each of the course's lectures and submit the course's labs, problem sets, and final project:
 
 1.  Watch [Week 0](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@a8730f85a9a94d41a784a58c4b6d8bdc/block-v1:HarvardX+CS50+X+type@vertical+block@31304400fd444ea9860a8833cce5c248)'s lecture. Submit [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/).
@@ -58,31 +62,133 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course
-> To view your current progress in the course, visit the course gradebook at [cs50.me/cs50x](https://cs50.me/cs50x)!
+# Course Progress  ![Progress](https://geps.dev/progress/100)
+> To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
+
+## Week 0
+
+| CS50x 2023 😀                         |                                      | Done? |
+| ------------------------------------- | ------------------------------------ | ----- |
+| [Week 0 - Scratch](./week0/README.md) | [`Scratch`](./week0/problem_set0.md) | ✅    |
+
+## Week 1
+
+| CS50x 2023 😀                   |                                                 | Done? |
+| ------------------------------- | ----------------------------------------------- | ----- |
+| [Week 1 - C](./week1/README.md) | `C`                                             | ✅    |
+| -                               | `C` [Practice Problems 1](./week1/problems1.md) | :x:   |
+| -                               | `C` [Lab 1: Population](./week1/lab1.md)        | ✅    |
+| -                               | `C` [Hello](./week1/hello.md)                   | ✅    |
+| -                               | `C` [Mario](./week1/mario.md) (more)            | ✅    |
+| -                               | `C` [Cash or Credit](./week1/cash_credit.md)    | ✅    |
+
+## Week 2
+
+| CS50x 2023 😀                        |                                             | Done? |
+| ------------------------------------ | ------------------------------------------- | ----- |
+| [Week 2 - Arrays](./week2/README.md) | `C` Arrays                                  | ✅    |
+| -                                    | `C` [Lab 2: Scrabble](./week2/lab2.md)      | ✅    |
+| -                                    | `C` [Readability](./week2/readability.md)   | ✅    |
+| -                                    | `C` [Bulbs](./week2/bulbs.md)               | ✅    |
+| -                                    | `C` [Caesar](./week2/caesar.md)             | :x:   |
+| -                                    | `C` [Substitution](./week2/substitution.md) | :x:   |
+| -                                    | `C` [Wordle50](./week2/wordle50.md)         | :x:   |
+
+## Week 3
+
+| CS50x 2023 😀               |                                                                            | Done? |
+| --------------------------- | -------------------------------------------------------------------------- | ----- |
+| [Week 3](./week3/README.md) | `C` Algorithms                                                             | ✅    |
+| -                           | `C` Practice Problems 3 - [Recursive `atoi`](./week3/src/recursive_atoi.c) | ✅    |
+| -                           | `C` [Lab 2: Sort](./week3/lab3.md)                                         | ✅    |
+| -                           | `C` [Plurality](./week3/plurality.md)                                      | ✅    |
+| -                           | `C` [Runoff](./week3/runoff.md)                                            | ✅    |
+| -                           | `C` [Tidman](./week3/tidman.md)                                            | :x:   |
+
+## Week 4
+
+| CS50x 2023 😀               |                                        | Done? |
+| --------------------------- | -------------------------------------- | ----- |
+| [Week 4](./week4/README.md) | `C` Memory                             | ✅    |
+| -                           | `C` Practice Problems 4                | :x:   |
+| -                           | `C` [Lab 4: Simley](./week4/smiley.md) | ✅    |
+| -                           | `C` [Lab 4: Volume](./week4/volume.md) | :x:   |
+| -                           | `C` [Filter](./week4/filter.md)        | ✅    |
+| -                           | `C` [Recover](./week4/recover.md)      | ✅    |
+| -                           | `C` [Reverse](./week4/reverse.md)      | :x:   |
+
+## Week 5
+
+| CS50x 2023 😀               |                                           | Done? |
+| --------------------------- | ----------------------------------------- | ----- |
+| [Week 5](./week5/README.md) | `C` Data Structures                       | ✅    |
+| -                           | `C` Practice Problems 5                   | :x:   |
+| -                           | `C` [Lab 5: Inheritance](./week5/lab5.md) | ✅    |
+| -                           | `C` [Speller](./week5/speller.md)         | ✅    |
+
+## Week 6
+
+| CS50x 2023 😀               |                                                | Done? |
+| --------------------------- | ---------------------------------------------- | ----- |
+| [Week 6](./week6/README.md) | `Python`                                       | ✅    |
+| -                           | `Python` Practice Problems 6                   | :x:   |
+| -                           | `Python` [Lab 6: World Cup](./week6/lab6.md)   | ✅    |
+| -                           | `Python` [Mario](./week6/mario.md) (more)      | ✅    |
+| -                           | `Python` [Cash](./week6/cash.md)               | ✅    |
+| -                           | `Python` [Credit](./week6/credit.md)           | :x:   |
+| -                           | `Python` [Readability](./week6/readability.md) | ✅    |
+| -                           | `Python` [DNA](./week6/dna.md)                 | ✅    |
+
+## Week 7
+
+| CS50x 2023 😀               |                                           | Done? |
+| --------------------------- | ----------------------------------------- | ----- |
+| [Week 7](./week7/README.md) | `Python` / `SQL`                          | ✅    |
+| -                           | `SQL` Practice Problems 7                 | :x:   |
+| -                           | `SQL` [Lab 7: Songs](./week7/lab7.md)     | ✅    |
+| -                           | `SQL` [Movies](./week7/movies.md)         | ✅    |
+| -                           | `SQL` [Fiftyville](./week7/fiftyville.md) | ✅    |
+
+## Week 8
+
+| CS50x 2023 😀               |                                                                           | Done? |
+| --------------------------- | ------------------------------------------------------------------------- | ----- |
+| [Week 8](./week8/README.md) | `HTML`, `CSS`, `JavaScript`                                               | ✅    |
+| -                           | `HTML`, `CSS`, `JavaScript` [Practice Problems 8 - Redo](./week8/redo.md) | ✅    |
+| -                           | `HTML`, `CSS`, `JavaScript` [Lab 8: Trivia](./week8/lab8.md)              | ✅    |
+| -                           | `HTML`, `CSS`, `JavaScript` [Homepage](./week8/homepage.md)               | ✅    |
+
+## Plus
+
+| CS50x 2023 😀            |               | Done? |
+| ------------------------ | ------------- | ----- |
+| [Plus](./plus/README.md) | Cybersecurity | :x:   |
+
+## Week 9
+
+| CS50x 2023 😀               |                                              | Done? |
+| --------------------------- | -------------------------------------------- | ----- |
+| [Week 9](./week9/README.md) | `Flask`                                      | ✅    |
+| -                           | `Flask` Practice Problems 9                  | :x:   |
+| -                           | `Flask` [Lab 9 - Birthdays](./week9/lab9.md) | ✅    |
+| -                           | `Flask` [Finance](./week9/finance.md)        | ✅    |
+
+## Week 10
+
+| CS50x 2023 😀                 |                                  | Done? |
+| ----------------------------- | -------------------------------- | ----- |
+| [Week 10](./week10/README.md) | Emoji                            | :x:   |
+| -                             | [Seminars](./week10/seminars.md) | :x:   |
+
+## Final Project
+
+| CS50x 2023 😀                        |               | Done? |
+| ------------------------------------ | ------------- | ----- |
+| [Final Project](./p-final/README.md) | Final Project | ✅    |
 
 
-| CS50x 2023 😀                         |                                                 | ![Progress](https://geps.dev/progress/27)                              |
-| ------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------- |
-| [Week 0 - Scratch](./week0/README.md) | [`Scratch`](./week0/problem_set0.md)            | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| [Week 1 - C](./week1/README.md)       | `C` [Lab 1: Population](./week1/lab1.md)        | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Hello](./week1/hello.md)                   | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Mario](./week1/mario.md)                   | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Cash or Credit](./week1/cash_credit.md)    | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Practice Problems 1](./week1/problems1.md) | :x:                                                                    |
-| [Week 2 - Arrays](./week2/README.md)  | `C` [Lab 2: Scrabble](./week2/lab2.md)          | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Readability](./week2/readability.md)       | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Bulbs](./week2/bulbs.md)                   | ![done](https://img.shields.io/badge/done-%20-green?style=flat-square) |
-| -                                     | `C` [Caesar](./week2/caesar.md)                 | :x:                                                                    |
-| -                                     | `C` [Substitution](./week2/substitution.md)     | :x:                                                                    |
-| -                                     | `C` [Wordle50](./week2/wordle50.md)             | :x:                                                                    |
-| -                                     | `C` [Practice Problems 2](./week2/problems2.md) | :x:                                                                    |
-| [Week 3]()                            | Algorithms                                      | :x:                                                                    |
-| [Week 4]()                            | Memory                                          | :x:                                                                    |
-| [Week 5]()                            | Data Structures                                 | :x:                                                                    |
-| [Week 6]()                            | Python                                          | :x:                                                                    |
-| [Week 7]()                            | SQL                                             | :x:                                                                    |
-| [Week 8]()                            | HTML, CSS, JavaScript                           | :x:                                                                    |
-| [Week 9]()                            | Flask                                           | :x:                                                                    |
-| [Week 10]()                           | Emoji                                           | :x:                                                                    |
-| Plus                                  | Cybersecurity                                   | :x:                                                                    |
+---
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.

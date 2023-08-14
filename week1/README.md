@@ -1,12 +1,12 @@
 ---
 title: CS50 - Week 1
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: C
 dependences: CS50
 ---
 
-> This material is distribured by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my undersantding and integrated to the previous Data Structure of `Programing Studies`.
+> This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
 
 <details> <summary>Table of Contents</summary>
 
@@ -690,7 +690,6 @@ See you next time!
 ---
 
 # Section 1
-
 > [Transcript](./src/transcripts/section1.md)
 
 This is mostly the seme content of the [Lecture](#lecture-1) and below is the main topics reviewed in the class.
@@ -704,7 +703,6 @@ This is mostly the seme content of the [Lecture](#lecture-1) and below is the ma
 # Shorts
 
 ## Data Types
-
 > [Transc](./src/transcripts/shorts1_data_types.md)
 
 -   `int`, is used for variables that will store integers.
@@ -801,7 +799,6 @@ CS50 header file (`#include <cs50.h>`) has defined two more data types:
     -   Inequality (x is different from y) (`x != y`)
 
 ## Conditional Statements
-
 > [Transc](./src/transcripts/shorts1_conditionals.md)
 
 -   `if` / `else if` / `else`
@@ -809,7 +806,6 @@ CS50 header file (`#include <cs50.h>`) has defined two more data types:
 -   `switch` / `case`
 
 ## Loops
-
 > [Transc](./src/transcripts/shorts1_loops.md)
 
 - `while`
@@ -817,7 +813,6 @@ CS50 header file (`#include <cs50.h>`) has defined two more data types:
 - `for`
 
 ## Command Line
-
 > [Transc](./src/transcripts/shorts1_comand_line.md)
 
 - `GUI` x `CLI`

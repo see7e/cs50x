@@ -1,12 +1,12 @@
 ---
 title: CS50 - Week 2
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Documentation
 languages: C
 dependences: CS50
 ---
 
-> This material is distribured by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my undersantding and integrated to the previous Data Structure of `Programing Studies`.
+> This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
 
 <details> <summary>Table of Contents</summary>
 
@@ -27,8 +27,9 @@ dependences: CS50
   - [Variables and Scope](#variables-and-scope)
   - [Debugging](#debugging-1)
   - [Arrays](#arrays-1)
-  - [Comant Line Arguments](#comant-line-arguments)
+  - [Command  Line Arguments](#command--line-arguments)
 - [Exercises](#exercises)
+  - [Practice Problems 2 #](#practice-problems-2-)
   - [Lab 2: Scrabble](#lab-2-scrabble)
   - [Problem Set 2](#problem-set-2)
     - [What to Do](#what-to-do)
@@ -746,6 +747,14 @@ variable itself. That means that the variable in the caller is unchanged unless 
 ---
 
 # Exercises
+
+## Practice Problems 2 [#](https://cs50.harvard.edu/x/2023/problems/2/#week-2-practice-problems)
+
+In addition to this week’s lab and problem set, you’re welcome to try any of these (optional!) practice problems:
+
+-   Hours [#](https://cs50.harvard.edu/x/2023/problems/2/hours/), for practice with arrays, passing arrays as parameters to a function, integer division and type casting
+-   N0 V0w3ls [#](https://cs50.harvard.edu/x/2023/problems/2/no-vowels/), for practice with strings, command-line arguments, and writing an entire program from scratch
+-   Password [#](https://cs50.harvard.edu/x/2023/problems/2/password/), for practice iterating through a string, using the `ctype` library, and using Boolean variables
 
 ## [Lab 2: Scrabble](./lab2.md)
 > Full code [here](./src/lab2.c)

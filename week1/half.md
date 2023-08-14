@@ -1,6 +1,6 @@
 ---
 title: Practice Problems 1 - Half
-tags: studies, programação, cs50
+tags: programação, cs50
 use: Exercise
 languages: C
 dependences: CS50
