@@ -1,5 +1,5 @@
 ---
-title: LECTURE# - TRANSCRIPT
+title: LECTURE9 - TRANSCRIPT
 tags: programação, cs50
 use: Transcript
 languages: NULL

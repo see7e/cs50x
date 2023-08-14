@@ -62,7 +62,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ---
 
-# Course Progress  ![Progress](https://geps.dev/progress/90)
+# Course Progress  ![Progress](https://geps.dev/progress/100)
 > To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
 ## Week 0
@@ -175,15 +175,16 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 ## Week 10
 
-| CS50x 2023 😀                 |       | Done? |
-| ----------------------------- | ----- | ----- |
-| [Week 10](./week10/README.md) | Emoji | :x:   |
+| CS50x 2023 😀                 |                                  | Done? |
+| ----------------------------- | -------------------------------- | ----- |
+| [Week 10](./week10/README.md) | Emoji                            | :x:   |
+| -                             | [Seminars](./week10/seminars.md) | :x:   |
 
 ## Final Project
 
-| CS50x 2023 😀                      |               | Done? |
-| ---------------------------------- | ------------- | ----- |
-| [Final Project](./p-final/README.md) | Final Project | :x:   |
+| CS50x 2023 😀                        |               | Done? |
+| ------------------------------------ | ------------- | ----- |
+| [Final Project](./p-final/README.md) | Final Project | ✅    |
 
 
 ---
