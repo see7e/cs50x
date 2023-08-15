@@ -163,7 +163,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀            |               | Done? |
 | ------------------------ | ------------- | ----- |
-| [Plus](./plus/README.md) | Cybersecurity | :x:   |
+| [Plus](./plus/README.md) | Cybersecurity | ✅    |
 
 ## Week 9
 
@@ -178,7 +178,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀                 |                                  | Done? |
 | ----------------------------- | -------------------------------- | ----- |
-| [Week 10](./week10/README.md) | Emoji                            | :x:   |
+| [Week 10](./week10/README.md) | Emoji                            | ✅    |
 | -                             | [Seminars](./week10/seminars.md) | :x:   |
 
 ## Final Project
