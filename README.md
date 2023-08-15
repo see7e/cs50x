@@ -198,4 +198,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Certificate
 
-![Certificate](./src_main/CS50x.png)
+![Certificate](./src/CS50x.png)
