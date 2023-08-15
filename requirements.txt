@@ -3,7 +3,7 @@ authentication==1.1.0
 autopep8==2.0.2
 beautifulsoup4==4.12.2
 colorama==0.4.6
-cryptography==41.0.2
+cryptography==41.0.3
 cs50==9.2.5
 style50==2.7.5
 submit50==3.1.1
