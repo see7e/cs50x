@@ -1,5 +1,6 @@
 ---
 title: CS50 - Introduction
+alias: cs50x
 tags: programação, cs50
 use: Documentation
 languages: NULL
@@ -162,7 +163,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀            |               | Done? |
 | ------------------------ | ------------- | ----- |
-| [Plus](./plus/README.md) | Cybersecurity | :x:   |
+| [Plus](./plus/README.md) | Cybersecurity | ✅    |
 
 ## Week 9
 
@@ -177,7 +178,7 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 
 | CS50x 2023 😀                 |                                  | Done? |
 | ----------------------------- | -------------------------------- | ----- |
-| [Week 10](./week10/README.md) | Emoji                            | :x:   |
+| [Week 10](./week10/README.md) | Emoji                            | ✅    |
 | -                             | [Seminars](./week10/seminars.md) | :x:   |
 
 ## Final Project
@@ -192,3 +193,9 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
+
+---
+
+## Certificate
+
+![Certificate](./src_main/CS50x.png)
