@@ -1,5 +1,6 @@
 ---
 title: CS50 - Introduction
+alias: cs50x
 tags: programação, cs50
 use: Documentation
 languages: NULL
@@ -192,3 +193,9 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
+
+---
+
+## Certificate
+
+![Certificate](./src_main/CS50x.png)
