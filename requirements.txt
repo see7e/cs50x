@@ -19,7 +19,7 @@ lib50==3.0.7
 line_profiler==4.0.3
 numpy==1.25.2
 pexpect==4.8.0
-Pygments==2.15.1
+Pygments==2.16.1
 python_magic==0.4.27
 pytz==2023.3
 PyYAML==6.0.1
