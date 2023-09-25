@@ -14,7 +14,7 @@ Before we get into web programming itself, I think it's probably a good idea to 
 
 So with that said, let's talk about how we interact with the internet. So here we are. Here's us. We're pretty looking forward to getting onto the internet, which as we all know, is chock full of cats. 
 
-Now do we just connect to the internet like this? Well, probably not. Intuitively, you know that, say for example, when you change your Wi-Fi network on your computer, you don't see one called internet unless that just so happens to be the name of your local Wi-Fi. Right? 
+Now do we just connect to the internet like this? Well, probably not. Intuitively, you know that, say for example, when you change your WiFi network on your computer, you don't see one called internet unless that just so happens to be the name of your local WiFi. Right? 
 
 It's usually something like home. Or if you're at work, it might be the name of your company. There's not just one option called internet. And so something or some things exist in between when we want to connect to the internet. What are some of those things? Well, we're going to talk about that. We're also going to talk about some of the important things we need in order to be able to connect to the internet. And the first of these things is an IP address. So you've probably heard the term IP address before. What does it mean? Well, an IP address is basically a unique identifier of your computer on a network. Just like every home or office has a unique address to which one could send a mail. 
 

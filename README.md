@@ -66,6 +66,32 @@ After that, watch each of the course's lectures and submit the course's labs, pr
 # Course Progress  ![Progress](https://geps.dev/progress/100)
 > To view your current progress in the course projects, visit [cs50 gradebook](https://cs50.me/cs50x)!
 
+```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#23375E',
+      'primaryTextColor': '#FFF',
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#F8B229'
+    }
+  }
+}%%
+
+gantt
+	title My Roadmap
+    dateFormat  DD-MM-YYYY
+
+    section Courses
+    CS50 - C                    :done, c1, 02-05-2023, 28-06-2023
+    CS50 - Python               :done, c2, after c1, 03-07-2023
+    CS50 - SQL                  :done, c3, after c2, 7d
+    CS50 - HTML, CSS, JS        :done, c4, after c3, 7d
+    CS50 - Flask                :done, c5, after c4, 7d
+    CS50 - Final Project        :done, c6, after c5, 14-08-2023
+```
+
 ## Week 0
 
 | CS50x 2023 😀                         |                                      | Done? |

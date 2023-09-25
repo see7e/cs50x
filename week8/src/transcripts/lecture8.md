@@ -122,7 +122,7 @@ So if we take a look at the internet in the early days, it pretty much was just 
 
 And nowadays what you can think of these dots on the screen as representing are these things called routers, sort of computers or really servers that somehow have wires or maybe wireless connections between them that allow data to flow from point A to B to C. And then this, of course, has been now magnified across the entire globe and even above ground as well so that we can connect all the more readily to systems anywhere. 
 
-Now, in order to route the data from one router to another, we need to somehow make routing decisions. And this is the kind of thing that the internet service providers, the ISPs of the world just handle for us. You and I plug our Macs, our PCs into the network here at Harvard or equivalently at Yale or we somehow get online via Wi-Fi or cellular technology. 
+Now, in order to route the data from one router to another, we need to somehow make routing decisions. And this is the kind of thing that the internet service providers, the ISPs of the world just handle for us. You and I plug our Macs, our PCs into the network here at Harvard or equivalently at Yale or we somehow get online via WiFi or cellular technology. 
 
 And then some of these larger entities, these bigger companies or countries, handle most of the data getting from point A to point B. And if you think about what these routers represent, they're indeed just servers somehow interconnected, not unlike this grid of tiles here, for instance, back in the Zoom days. And in fact here we have, I claim, a grid of routers implemented here by the course's teaching fellows and course assistants and TAs. 
 
