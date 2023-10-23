@@ -1,6 +1,7 @@
 ---
 title: CS50 - Introduction
-alias: cs50x
+aliases:
+- cs50x
 tags: programação, cs50
 use: Documentation
 languages: NULL
