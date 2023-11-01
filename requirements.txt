@@ -5,7 +5,7 @@ beautifulsoup4==4.12.2
 colorama==0.4.6
 cryptography==41.0.3
 cs50==9.2.5
-style50==2.7.5
+style50==2.9.0
 submit50==3.1.1
 check50==3.3.8
 check50-checkstyle==0.6
