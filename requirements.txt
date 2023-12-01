@@ -25,7 +25,7 @@ pytz==2023.3
 PyYAML==6.0.1
 Requests==2.31.0
 setuptools==68.1.2
-SQLAlchemy==2.0.20
+SQLAlchemy==2.0.23
 sqlparse==0.4.4
 termcolor==2.3.0
 tqdm==4.66.1
