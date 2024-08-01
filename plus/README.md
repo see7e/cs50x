@@ -1,6 +1,6 @@
 ---
 title: CS50 - Plus - Cybersecrity
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: Flask
 dependences: CS50

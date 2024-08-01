@@ -1,6 +1,6 @@
 ---
 title: CS50 - Week 8
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: HTML, CSS, JS
 dependences: CS50

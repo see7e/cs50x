@@ -1,6 +1,6 @@
 ---
 title: Problem Set 9 - Finance
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: Flask
 dependences: CS50

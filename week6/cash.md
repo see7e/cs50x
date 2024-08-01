@@ -1,6 +1,6 @@
 ---
 title: Problem Set 6 - Cash
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: Python
 dependences: CS50

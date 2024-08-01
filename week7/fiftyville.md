@@ -1,6 +1,6 @@
 ---
 title: Problem Set 7 - Fiftyville
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: Python, SQL
 dependences: CS50

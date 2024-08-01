@@ -2,7 +2,7 @@
 title: CS50 - Introduction
 aliases:
 - cs50x
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: NULL
 dependences: NULL

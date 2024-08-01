@@ -1,6 +1,6 @@
 ---
 title: Lab 6 - World Cup
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: Python
 dependences: CS50

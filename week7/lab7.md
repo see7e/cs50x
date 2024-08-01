@@ -1,6 +1,6 @@
 ---
 title: Lab 7 - Songs
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: SQL
 dependences: CS50
