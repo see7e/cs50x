@@ -1,6 +1,6 @@
 ---
 title: SHORTS8 - IP - TRANSCRIPT
-tags: programação, cs50
+tags: programming, cs50
 use: Transcript
 languages: NULL
 dependences: CS50

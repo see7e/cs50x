@@ -1,6 +1,6 @@
 ---
 title: Problem Set 7 -  Movies
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: Python, SQL
 dependences: CS50

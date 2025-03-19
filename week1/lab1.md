@@ -1,6 +1,6 @@
 ---
 title: Lab1 - Population Growth
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: NULL
 dependences: CS50

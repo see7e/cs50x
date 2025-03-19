@@ -1,6 +1,6 @@
 ---
 title: Practice Problems 8 - Redo
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: HTML, CSS, JavaScript
 dependences: CS50

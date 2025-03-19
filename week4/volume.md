@@ -1,6 +1,6 @@
 ---
 title: Lab 4 - Volume
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: C
 dependences: CS50

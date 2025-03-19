@@ -1,6 +1,6 @@
 ---
 title: CS50 - Bugs and Debugging
-tags: programação, cs50
+tags: programming, cs50
 use: Documentation
 languages: NULL
 dependences: CS50

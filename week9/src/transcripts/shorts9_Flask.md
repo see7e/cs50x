@@ -1,6 +1,6 @@
 ---
 title: SHORTS9 - FLASK - TRANSCRIPT
-tags: programação, cs50
+tags: programming, cs50
 use: Transcript
 languages: NULL
 dependences: CS50

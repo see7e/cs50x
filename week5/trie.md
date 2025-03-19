@@ -1,6 +1,6 @@
 ---
 title: Practice Problems 5 - Trie
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: C
 dependences: CS50

@@ -1,6 +1,6 @@
 ---
 title: Problem Set 3 - Runoff
-tags: programação, cs50
+tags: programming, cs50
 use: Exercise
 languages: C
 dependences: CS50
