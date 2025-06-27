@@ -89,7 +89,7 @@ _Abstract data structures_ are those that we can conceptually imagine. When lear
 
 ## Stacks and Queues
 
-_Queues_ are one form of abstract data structure. They have specific properties. Namely, they are FIFO or “first in first out.”
+[*Queues*](ds_queue.md) are one form of abstract data structure. They have specific properties. Namely, they are FIFO or “first in first out.”
 > E.g. you can imagine yourself in a line for a ride at an amusement park. The first person in the line gets to go on the ride first. The last person gets to go on the ride last.
 
 Queues have specific actions associated with them. For example, 
@@ -271,7 +271,7 @@ The above code has a limitation that resides in the static size of the `CAPACITY
 
 -   You can imagine how using `realloc()` for a queue or stack could be useful. As the amount of data grows, `realloc` could be used to grow or shrink the stack or queue. The process time will grow as the amount of data increases.
 
-## Linked Lists
+## [Linked Lists](ds_linked_list.md)
 
 > In recent weeks, you have learned about three useful primitives. A `struct` is a data type that you can define yourself. A `.` in _dot notation_ allows you to access variables inside that structure. The `*` operator is used to declare a pointer or dereference a variable.
 

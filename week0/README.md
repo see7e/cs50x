@@ -105,23 +105,14 @@ Table of Contents
 -   If you imagine using a light bulb, a single bulb can only count from zero to one.
 -   However, if you were to have three light bulbs, there are more options open to you!
 -   Using three light bulbs, the following could represent zero:
-    
 -   Similarly, the following would represent one:
-    
 -   By this logic, we could propose that the following equals two:
-    
 -   Extending this logic further, the following represents three:
-    
 -   Four would appear as:
-    
 -   We could, in fact, using only three light bulbs count as high as seven!
-    
 -   As a heuristic, we could imagine that the following values represent each possible place in our _binary digit_:
-    
 -   Computers use ‘base-2’ to count. This can be pictured as follows:
-    
 -   Therefore, you could say that it would require three bits (the four’s place, the two’s place, and the one’s place) to represent a number as high as seven.
-    
 -   Computers generally use eight bits to represent a number. For example, `00000101` is the number 5 in _binary_.
 
 ## Bites
@@ -137,10 +128,8 @@ cada casa do bite consegue "contar" até 255, onde cada casa representa um inter
 -   Since there is an overlap between the ones and zeros that represent numbers and letters, the _ASCII_ standard was created to map specific letters to specific numbers.
 -   For example, the letter `A` was decided to map to the number 65.
 -   If you received a text message, the binary under that message might represent the numbers 72, 73, and 33. Mapping these out to ASCII, your message would look as follows:
-    
 -   Thank goodness for standards like ASCII that allow us to agree upon these values!
 -   Here is an expanded map of ASCII values:
-    
     ![ASCII map](https://cs50.harvard.edu/x/2023/notes/0/cs50Week0Slide93.png "ASCII map")
     
 -   If you wish, you can learn more about [ASCII](https://en.wikipedia.org/wiki/ASCII).

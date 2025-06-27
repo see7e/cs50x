@@ -6,7 +6,7 @@ languages: NULL
 dependences: CS50
 ---
 
-[MUSIC PLAYING] DOUG LLOYD: All right, so bubble sort is an algorithm you can use to sort a set of elements. Let's take a look at how it works. 
+[MUSIC PLAYING] DOUG LLOYD: All right, so [Bubble Sort - Algorithm](algo_bubble_sort.md) is an algorithm you can use to sort a set of elements. Let's take a look at how it works. 
 
 So the basic idea behind bubble sort is this. We generally want to move higher valued elements generally to the right, and lower valued elements generally to the left, as we would expect. We want the lower things to be at the beginning, and the higher things to be at the end. 
 

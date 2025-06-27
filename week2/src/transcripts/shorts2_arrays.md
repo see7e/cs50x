@@ -6,7 +6,7 @@ languages: NULL
 dependences: CS50
 ---
 
-[MUSIC PLAYING] DOUG LLOYD: All right. Working with single variables is pretty fun. But what if we want to work with a lot of variables, but we don't want to have a bunch of different names flying around our code? In this case, arrays are going to come in really handy. Arrays are a really fundamental data structure for any programming language that you will use. And they're really, really useful, particularly, as we'll see, in CS 50. 
+[MUSIC PLAYING] DOUG LLOYD: All right. Working with single variables is pretty fun. But what if we want to work with a lot of variables, but we don't want to have a bunch of different names flying around our code? In this case, arrays are going to come in really handy. [Arrays](ds_array.md) are a really fundamental data structure for any programming language that you will use. And they're really, really useful, particularly, as we'll see, in CS 50. 
 
 We use arrays to hold values of the same data type at contiguous memory locations. That is to say, it's a way that we can group a bunch of integers together in memory or a bunch of characters or floats in memory really close together and work with them without having to give each one its own unique name, which can get cumbersome after a little while. 
 

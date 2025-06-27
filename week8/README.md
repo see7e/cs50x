@@ -116,7 +116,7 @@ Numbers range from `0` to `255`. IP addresses are 32-bits, meaning that these ad
 
 In the real world, servers do a lot of work for us.
 
-_TCP_, or transmission control protocol, is used to distinguish web services from one another. For example, `80` is used to denote HTTP and `443` is used to denote HTTPS. These numbers are _port numbers_.
+_[[TCP]]_, or transmission control protocol, is used to distinguish web services from one another. For example, `80` is used to denote HTTP and `443` is used to denote HTTPS. These numbers are _port numbers_.
 
 When information is sent from one location to another, an IP address and TCP port number are sent.
 
@@ -128,7 +128,7 @@ TCP will acknowledge when all the data has been transmitted and received.
 
 It would be very tedious if you needed to remember an address number to visit a website.
 
-_DNS_, or _domain name systems_, is a collection of servers on the internet that are used to route website addresses like "`harvard.edu`" to a specific IP address.
+_[[DNS]]_, or _domain name systems_, is a collection of servers on the internet that are used to route website addresses like "`harvard.edu`" to a specific IP address.
 
 DNS simply hold a table or database that links specific, fully qualified domain names to specific IP addresses.
 

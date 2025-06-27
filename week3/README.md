@@ -132,7 +132,7 @@ dependences: CS50
 
 ## Running Time
 
--   _running time_ involves an analysis using [*Big O*](../../Other/big_o_notation.md) notation. Take a look at the following graph:
+-   _running time_ involves an analysis using [*Big O*](big_o_notation.md) notation. Take a look at the following graph:
     
     ![chart with: "size of problem" as x-axis; "time to solve" as y-axis; red, steep straight line from origin to top of graph close to yellow, less steep straight line from origin to top of graph both labeled "O(n)"; green, curved line that gets less and less steep from origin to right of graph labeled "O(log n)](https://cs50.harvard.edu/x/2023/notes/3//cs50Week3Slide042.png "big o graphed")
     

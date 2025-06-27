@@ -1,9 +1,13 @@
 ---
 title: Lab 9 - Birthdays
-tags: programming, cs50
+tags:
+  - programming
+  - cs50
+  - python
+  - flask
 use: Documentation
-languages: Flask
-dependences: CS50
+languages: Python
+dependences: CS50, Flask
 ---
 
 > This material is distributed by `Harvard © 2023 edX LLC`. It was copied during the execution of the Course, and have been modified due to my understanding and integrated to the previous Data Structure of `Programing Studies`.
@@ -35,7 +39,8 @@ Create a web application to keep track of friends’ birthdays.
 
 ## Getting Started [#](https://cs50.harvard.edu/x/2023/labs/9/#lab-9-birthdays#getting-started)
 
-Started CS50x in 2021 or prior and need to migrate your work from CS50 IDE to the new VS Code codespace? Be sure to check out our instructions on how to [migrate](https://cs50.harvard.edu/x/2023/labs/9/#lab-9-birthdays../../new/) your files!
+> [!WARNING]
+> Started CS50x in 2021 or prior and need to migrate your work from CS50 IDE to the new VS Code codespace? Be sure to check out our instructions on how to [migrate](https://cs50.harvard.edu/x/2023/labs/9/#lab-9-birthdays../../new/) your files!
 
 Open [VS Code](https://code.cs50.io/).
 

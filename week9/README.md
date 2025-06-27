@@ -1077,3 +1077,12 @@ Be sure you have completed [Lab 9](https://cs50.harvard.edu/x/2023/psets/9/../..
 1.  Log into [code.cs50.io](https://code.cs50.io) using your GitHub account
 2.  Run `update50` in your codespace’s terminal window to ensure your codespace is up-to-date and, when prompted, click **Rebuild now**
 3.  Submit [Finance](./finance.md) [#](https://cs50.harvard.edu/x/2023/psets/9/finance/)
+
+---
+
+# Transcripts
+
+- [lecture9](lecture9.md)
+- [section9](section9.md)
+- [shorts9_AJAX](shorts9_AJAX.md)
+- [shorts9_Flask](shorts9_Flask.md)
