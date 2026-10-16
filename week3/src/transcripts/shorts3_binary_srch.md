@@ -1,6 +1,6 @@
 ---
-title: SHORST3 - BINARY SEARCH - TRANSCRIPT
-tags: programming, cs50
+title: SHORTS3 - BINARY SEARCH - TRANSCRIPT
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50

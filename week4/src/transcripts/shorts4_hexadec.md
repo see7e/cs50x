@@ -1,6 +1,6 @@
 ---
-title: SHORST4 - HEXADECIMAL - TRANSCRIPT
-tags: programming, cs50
+title: SHORTS4 - HEXADECIMAL - TRANSCRIPT
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50

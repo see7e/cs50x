@@ -1,6 +1,6 @@
 ---
-title: SHORST3 - SELECTION SORT - TRANSCRIPT
-tags: programming, cs50
+title: SHORTS3 - SELECTION SORT - TRANSCRIPT
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50

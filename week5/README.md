@@ -1,6 +1,6 @@
 ---
 title: CS50 - Week 5
-tags: programming, cs50
+tags: [programming, cs50]
 use: Documentation
 languages: C
 dependences: CS50

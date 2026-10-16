@@ -1,6 +1,6 @@
 ---
 title: Problem Set 6 - Credit
-tags: programming, cs50
+tags: [programming, cs50]
 use: Exercise
 languages: Python
 dependences: CS50

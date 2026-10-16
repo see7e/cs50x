@@ -1,6 +1,6 @@
 ---
-title: SHORST2 - DEBUGGIN2 - TRANSCRIPT
-tags: programming, cs50
+title: SHORTS2 - DEBUGGING2 - TRANSCRIPT
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50

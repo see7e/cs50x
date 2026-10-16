@@ -1,6 +1,6 @@
 ---
 title: SHORTS5 - LISTS1 - TRANSCRIPT
-tags: programming, cs50
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50
@@ -8,7 +8,7 @@ dependences: CS50
 
 [MUSIC PLAYING] 
 
-DOUG LLOYD: OK, so at this point in the course, we've covered a lot of the basics of [C](../../../../../Languages/C/README.md). We know a lot about variables, [arrays](ds_array.md), [Pointers](Pointers.md), all that good stuff. Those are all sort of built in to see as the fundamentals, but we can do more, right? We can combine things together in interesting ways. 
+DOUG LLOYD: OK, so at this point in the course, we've covered a lot of the basics of [C](../../../../../Languages/C/README.md). We know a lot about variables, [arrays](../../../../../Docs/ds-array.md), [Pointers](Pointers.md), all that good stuff. Those are all sort of built in to see as the fundamentals, but we can do more, right? We can combine things together in interesting ways. 
 
 And so let's do that, let's start to branch out of what C gives us, and start to create our own data structures using these building blocks together to do something really valuable, useful. One way we can do this is to talk about collections. So so far we've had one kind of data structure for representing collections of like values, similar values. That would be an array. We have collections of integers, or collections of characters and so on. 
 

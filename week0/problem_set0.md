@@ -1,6 +1,6 @@
 ---
 title: Problem Set 0 - Scratch
-tags: programming, cs50
+tags: [programming, cs50]
 use: Exercise
 languages: NULL
 dependences: CS50

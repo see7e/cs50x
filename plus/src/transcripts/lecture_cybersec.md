@@ -1,6 +1,6 @@
 ---
 title: LECTURE_PLUS - TRANSCRIPT
-tags: programming, cs50
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50

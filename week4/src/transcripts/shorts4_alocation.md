@@ -1,6 +1,6 @@
 ---
-title: SHORST4 - DINAMICALY MEMORY ALOCATION - TRANSCRIPT
-tags: programming, cs50
+title: SHORTS4 - DYNAMIC MEMORY ALLOCATION - TRANSCRIPT
+tags: [programming, cs50]
 use: Transcript
 languages: NULL
 dependences: CS50
